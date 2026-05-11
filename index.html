@@ -1,1 +1,1097 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Operações de Taxa — Scanner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ─── CSS Variables ─── */
+:root {
+  --bg:          #F5F3EE;        /* papel creme */
+  --bg2:         #EDEAE3;        /* card levemente mais escuro */
+  --bg3:         #E2DED5;        /* borda/divisor */
+  --ink:         #1A1714;        /* texto principal */
+  --ink2:        #5A5550;        /* texto secundário */
+  --ink3:        #9A9590;        /* texto sutil */
+  --gold:        #B8860B;        /* acento dourado */
+  --gold-light:  #F5E6B4;        /* fundo tag dourada */
+  --green:       #2D6A4F;        /* supera CDI */
+  --green-light: #D8F3DC;
+  --red:         #9B2226;        /* perda/risco */
+  --red-light:   #FFE8E8;
+  --blue:        #1D3557;        /* collar / proteção */
+  --blue-light:  #D6EAF8;
+  --amber:       #C77B2A;        /* aviso americano */
+  --amber-light: #FEF3CD;
+  --shadow:      0 2px 12px rgba(26,23,20,0.08);
+  --shadow-lg:   0 8px 32px rgba(26,23,20,0.12);
+  --radius:      12px;
+  --radius-sm:   8px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ─── Header ─── */
+.header {
+  background: var(--ink);
+  color: #F5F3EE;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.header-brand { display: flex; align-items: baseline; gap: 12px; }
+.header-brand h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+}
+.header-brand .tagline {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.header-time {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #9A9590;
+  letter-spacing: 0.5px;
+}
+
+/* ─── Layout ─── */
+.container { max-width: 1280px; margin: 0 auto; padding: 28px 24px; }
+
+/* ─── Config Card ─── */
+.config-card {
+  background: white;
+  border: 1px solid var(--bg3);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+.config-card h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  font-weight: 400;
+  margin-bottom: 18px;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.config-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+.field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--ink2);
+  margin-bottom: 6px;
+}
+.field input[type="number"],
+.field input[type="text"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--bg3);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  font-family: 'DM Mono', monospace;
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color .2s;
+}
+.field input:focus { border-color: var(--gold); }
+
+.indicator-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  border-radius: 99px;
+  padding: 6px 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+}
+.indicator-pill .label { color: var(--ink3); font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; }
+.indicator-pill .value { color: var(--ink); }
+
+/* ─── Data Input ─── */
+.data-input-card {
+  background: white;
+  border: 1.5px dashed var(--bg3);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  transition: border-color .2s;
+}
+.data-input-card:hover { border-color: var(--gold); }
+.data-input-card h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+.data-input-card textarea {
+  width: 100%;
+  height: 100px;
+  padding: 12px;
+  border: 1px solid var(--bg3);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--ink);
+  resize: vertical;
+  outline: none;
+}
+.data-input-card textarea:focus { border-color: var(--gold); }
+.data-input-hint { font-size: 12px; color: var(--ink3); margin-top: 8px; }
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .18s;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--ink); color: white; }
+.btn-primary:hover { background: #2D2926; transform: translateY(-1px); box-shadow: var(--shadow); }
+.btn-gold { background: var(--gold); color: white; }
+.btn-gold:hover { background: #9A7009; transform: translateY(-1px); box-shadow: var(--shadow); }
+.btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--bg3); }
+.btn-outline:hover { border-color: var(--ink2); }
+.btn-ai { background: linear-gradient(135deg, #1D3557, #2D6A4F); color: white; }
+.btn-ai:hover { opacity: .9; transform: translateY(-1px); box-shadow: var(--shadow-lg); }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none !important; }
+
+/* ─── Indicators Row ─── */
+.indicators-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+/* ─── Allocation Bar ─── */
+.allocation-card {
+  background: white;
+  border: 1px solid var(--bg3);
+  border-radius: var(--radius);
+  padding: 20px 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+.allocation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.allocation-header h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+.allocation-numbers { display: flex; gap: 24px; flex-wrap: wrap; }
+.alloc-num { text-align: center; }
+.alloc-num .val {
+  font-family: 'DM Mono', monospace;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--gold);
+}
+.alloc-num .lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--ink3); }
+.bar-track {
+  background: var(--bg2);
+  border-radius: 99px;
+  height: 10px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--gold), var(--amber));
+  transition: width .6s cubic-bezier(.34,1.56,.64,1);
+}
+
+/* ─── Section ─── */
+.section { margin-bottom: 32px; }
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-count {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  padding: 3px 10px;
+  border-radius: 99px;
+  color: var(--ink2);
+}
+
+/* ─── Op Cards ─── */
+.ops-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
+}
+
+.op-card {
+  background: white;
+  border: 1px solid var(--bg3);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: transform .18s, box-shadow .18s;
+  position: relative;
+  overflow: hidden;
+}
+.op-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.op-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--amber));
+}
+.op-card.collar::before {
+  background: linear-gradient(90deg, var(--blue), #2D6A4F);
+}
+.op-card.suggested {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px var(--gold-light), var(--shadow-lg);
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+.card-ticker { font-family: 'DM Serif Display', serif; font-size: 20px; font-weight: 400; }
+.card-option { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--ink2); margin-top: 1px; }
+.card-taxa-mes {
+  text-align: right;
+}
+.card-taxa-mes .val {
+  font-family: 'DM Mono', monospace;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--green);
+}
+.card-taxa-mes .lbl { font-size: 10px; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.6px; }
+
+/* Badges */
+.badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 99px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+.badge-supera  { background: var(--green-light); color: var(--green); }
+.badge-nao    { background: var(--red-light); color: var(--red); }
+.badge-otm    { background: var(--blue-light); color: var(--blue); }
+.badge-itm    { background: var(--red-light); color: var(--red); }
+.badge-atm    { background: var(--amber-light); color: var(--amber); }
+.badge-american { background: var(--amber-light); color: var(--amber); }
+.badge-sem-oferta { background: var(--red-light); color: var(--red); }
+.badge-collar { background: var(--blue-light); color: var(--blue); }
+.badge-ai     { background: linear-gradient(135deg, #D6EAF8, #D8F3DC); color: var(--blue); }
+
+/* Data Grid */
+.data-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 12px;
+  margin-bottom: 14px;
+}
+.data-row { display: flex; flex-direction: column; }
+.data-row .key { font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--ink3); font-weight: 600; }
+.data-row .val { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--ink); font-weight: 500; }
+.data-row .val.pos { color: var(--green); }
+.data-row .val.neg { color: var(--red); }
+.data-row .val.gold { color: var(--gold); }
+
+/* Divider */
+.divider { height: 1px; background: var(--bg2); margin: 12px 0; }
+
+/* Simulação */
+.simulacao {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+.simulacao h4 {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--ink3);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.sim-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px dashed var(--bg3);
+}
+.sim-row:last-child { border-bottom: none; }
+.sim-row .sim-lbl { font-size: 12px; color: var(--ink2); }
+.sim-row .sim-val { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; }
+.sim-row .sim-ganho { color: var(--green); font-weight: 700; }
+
+/* Liquidez */
+.liquidez {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+}
+.liquidez.ok { background: var(--green-light); color: var(--green); }
+.liquidez.warn { background: var(--amber-light); color: var(--amber); }
+
+/* Suggestion Banner */
+.suggestion-banner {
+  background: linear-gradient(135deg, #F5F3EE, #E8F4FD);
+  border: 1px solid var(--blue-light);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+.suggestion-banner .ai-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--blue);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.suggestion-banner p { font-size: 13px; color: var(--ink); line-height: 1.5; }
+
+/* Allocated suggestion */
+.alloc-suggestion {
+  background: var(--gold-light);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--ink);
+  margin-top: 8px;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ─── AI Panel ─── */
+.ai-panel {
+  background: white;
+  border: 1px solid var(--bg3);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+}
+.ai-panel h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 19px;
+  font-weight: 400;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ai-panel .subtitle { font-size: 12px; color: var(--ink3); margin-bottom: 16px; }
+
+.ai-output {
+  background: var(--bg);
+  border: 1px solid var(--bg3);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink);
+  min-height: 80px;
+  white-space: pre-wrap;
+}
+.ai-output.loading { color: var(--ink3); font-style: italic; }
+
+/* Typewriter cursor */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: var(--gold);
+  font-weight: 300;
+}
+
+/* ─── Empty State ─── */
+.empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--ink3);
+}
+.empty .icon { font-size: 36px; margin-bottom: 12px; }
+.empty p { font-size: 14px; }
+
+/* ─── Footer ─── */
+footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 11px;
+  color: var(--ink3);
+  border-top: 1px solid var(--bg3);
+  font-family: 'DM Mono', monospace;
+}
+
+/* ─── Toast ─── */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--ink);
+  color: white;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all .3s;
+  z-index: 1000;
+  max-width: 320px;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* ─── Responsive ─── */
+@media (max-width: 600px) {
+  .container { padding: 16px; }
+  .header { padding: 16px; }
+  .ops-grid { grid-template-columns: 1fr; }
+  .config-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-brand">
+    <h1>📈 Operações de Taxa</h1>
+    <span class="tagline">Scanner de Oportunidades</span>
+  </div>
+  <span class="header-time" id="clock">—</span>
+</header>
+
+<div class="container">
+
+  <!-- CONFIG CARD -->
+  <div class="config-card">
+    <h2>⚙️ Configuração de Caixa</h2>
+    <div class="config-grid">
+      <div class="field">
+        <label>Caixa Disponível (R$)</label>
+        <input type="number" id="caixa" value="50000" min="0" step="1000" oninput="recalcAlloc()"/>
+      </div>
+      <div class="field">
+        <label>% Alocação para Taxa</label>
+        <input type="number" id="pct_taxa" value="40" min="1" max="100" step="5" oninput="recalcAlloc()"/>
+      </div>
+      <div class="field">
+        <label>% Alocação por Ativo (max)</label>
+        <input type="number" id="pct_ativo" value="20" min="5" max="100" step="5" oninput="recalcAlloc()"/>
+      </div>
+      <div class="field">
+        <label>Anthropic API Key</label>
+        <input type="text" id="api_key" placeholder="sk-ant-..." autocomplete="off"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALLOCATION BAR -->
+  <div class="allocation-card" id="alloc-card" style="display:none">
+    <div class="allocation-header">
+      <h3>💰 Distribuição de Caixa</h3>
+      <div class="allocation-numbers" id="alloc-numbers"></div>
+    </div>
+    <div class="bar-track"><div class="bar-fill" id="alloc-bar" style="width:0%"></div></div>
+  </div>
+
+  <!-- INDICATORS ROW -->
+  <div class="indicators-row" id="indicators-row" style="display:none"></div>
+
+  <!-- DATA INPUT -->
+  <div class="data-input-card" id="data-input-card">
+    <h2>📋 Dados do Workflow (n8n JSON)</h2>
+    <textarea id="json-input" placeholder='Cole aqui o JSON gerado pelo n8n (campo "resultados" com puras e collars)...'></textarea>
+    <p class="data-hint">Aceita o JSON bruto do node <b>Agregar resultados</b> ou do <b>Formatar relatório</b>.</p>
+    <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="loadJSON()">▶ Carregar Dados</button>
+      <button class="btn btn-outline" onclick="loadDemo()">🧪 Demo com dados fictícios</button>
+    </div>
+  </div>
+
+  <!-- AI PANEL -->
+  <div class="ai-panel" id="ai-panel" style="display:none">
+    <h2>🤖 Análise Inteligente de Oportunidades</h2>
+    <p class="subtitle">IA analisa volatilidade histórica, liquidez e custo-benefício para recomendar a melhor estratégia para cada ativo.</p>
+    <div class="ai-output loading" id="ai-output">Aguardando análise…</div>
+    <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="btn btn-ai" id="btn-ai" onclick="runAI()">✨ Analisar com IA</button>
+      <button class="btn btn-outline" onclick="clearAI()">✕ Limpar</button>
+    </div>
+  </div>
+
+  <!-- PURAS -->
+  <div class="section" id="section-puras" style="display:none">
+    <div class="section-header">
+      <span class="section-title">💰 Calls Puras <span class="section-count" id="count-puras">0</span></span>
+    </div>
+    <div class="ops-grid" id="grid-puras"></div>
+  </div>
+
+  <!-- COLLARS -->
+  <div class="section" id="section-collars" style="display:none">
+    <div class="section-header">
+      <span class="section-title">🛡 Collar (com Proteção) <span class="section-count" id="count-collars">0</span></span>
+    </div>
+    <div class="ops-grid" id="grid-collars"></div>
+  </div>
+
+</div>
+
+<footer>
+  Análise informativa. Não constitui recomendação de investimento. &nbsp;|&nbsp; Dados via n8n + Oplab + BCB
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── STATE ───────────────────────────────────────────
+let DATA = null;          // dados carregados
+let CDI_DIA  = 0.054;     // fallback
+let CDI_MES  = 1.15;
+let IPCA_ANO = 4.14;
+let AI_SCORES = {};       // {ticker: {score, reason, estrategia}}
+
+// ─── CLOCK ───────────────────────────────────────────
+function updateClock() {
+  const now = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo', hour:'2-digit', minute:'2-digit', second:'2-digit', day:'2-digit', month:'2-digit', year:'numeric' });
+  document.getElementById('clock').textContent = now;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// ─── ALLOC RECALC ────────────────────────────────────
+function recalcAlloc() {
+  const caixa    = parseFloat(document.getElementById('caixa').value) || 0;
+  const pct      = parseFloat(document.getElementById('pct_taxa').value) || 40;
+  const pctAtivo = parseFloat(document.getElementById('pct_ativo').value) || 20;
+  const alocado  = caixa * pct / 100;
+  const reserva  = caixa - alocado;
+  const porAtivo = alocado * pctAtivo / 100;
+
+  if (DATA) {
+    document.getElementById('alloc-card').style.display = 'block';
+    document.getElementById('alloc-numbers').innerHTML = `
+      <div class="alloc-num"><div class="val">${fmtMoeda(caixa)}</div><div class="lbl">Caixa Total</div></div>
+      <div class="alloc-num"><div class="val">${fmtMoeda(alocado)}</div><div class="lbl">Para Operações (${pct}%)</div></div>
+      <div class="alloc-num"><div class="val">${fmtMoeda(porAtivo)}</div><div class="lbl">Máx por Ativo (${pctAtivo}%)</div></div>
+      <div class="alloc-num"><div class="val">${fmtMoeda(reserva)}</div><div class="lbl">Reserva</div></div>
+    `;
+    document.getElementById('alloc-bar').style.width = pct + '%';
+    renderOps();  // re-render cards with new allocation
+  }
+}
+
+// ─── FORMAT HELPERS ──────────────────────────────────
+function fmt(n, d=2) { return (n||0).toLocaleString('pt-BR', {minimumFractionDigits:d, maximumFractionDigits:d}); }
+function fmt4(n)      { return (n||0).toLocaleString('pt-BR', {minimumFractionDigits:3, maximumFractionDigits:3}); }
+function fmtMoeda(n)  { return 'R$ ' + fmt(n); }
+function fmtInt(n)    { return Math.round(n||0).toLocaleString('pt-BR'); }
+
+// ─── LOAD JSON ────────────────────────────────────────
+function loadJSON() {
+  const raw = document.getElementById('json-input').value.trim();
+  if (!raw) { toast('Cole o JSON antes.', 'warn'); return; }
+  try {
+    let parsed = JSON.parse(raw);
+    // aceita array ou objeto
+    if (Array.isArray(parsed)) parsed = parsed[0];
+    // nível resultados
+    if (parsed.resultados) parsed = { resultados: parsed.resultados };
+    processData(parsed);
+  } catch(e) {
+    toast('JSON inválido: ' + e.message, 'err');
+  }
+}
+
+function processData(parsed) {
+  const resultados = parsed.resultados || (Array.isArray(parsed) ? parsed : [parsed]);
+  let puras = [], collars = [];
+  for (const r of resultados) {
+    if (!r) continue;
+    if (r.puras)   puras   = puras.concat(r.puras);
+    if (r.collars) collars = collars.concat(r.collars);
+    if (!CDI_DIA && r.cdi_dia)  CDI_DIA  = r.cdi_dia;
+    if (!CDI_MES && r.cdi_mes)  CDI_MES  = r.cdi_mes;
+    if (!IPCA_ANO && r.ipca_ano) IPCA_ANO = r.ipca_ano;
+  }
+  puras.sort((a,b) => b.Taxa_Mes - a.Taxa_Mes);
+  collars.sort((a,b) => b.Taxa_Mes - a.Taxa_Mes);
+  DATA = { puras, collars };
+  toast(`✅ ${puras.length} calls + ${collars.length} collars carregados`);
+  renderIndicators();
+  recalcAlloc();
+  document.getElementById('alloc-card').style.display = 'block';
+  document.getElementById('ai-panel').style.display = 'block';
+  document.getElementById('data-input-card').style.display = 'none';
+  renderOps();
+}
+
+// ─── INDICATORS ──────────────────────────────────────
+function renderIndicators() {
+  const row = document.getElementById('indicators-row');
+  row.style.display = 'flex';
+  row.innerHTML = `
+    <div class="indicator-pill"><span class="label">CDI/dia</span><span class="value">${fmt4(CDI_DIA)}%</span></div>
+    <div class="indicator-pill"><span class="label">CDI/mês</span><span class="value">${fmt(CDI_MES)}%</span></div>
+    <div class="indicator-pill"><span class="label">IPCA 12m</span><span class="value">${fmt(IPCA_ANO)}%</span></div>
+  `;
+}
+
+// ─── RENDER OPS ──────────────────────────────────────
+function renderOps() {
+  if (!DATA) return;
+  const caixa    = parseFloat(document.getElementById('caixa').value) || 0;
+  const pct      = parseFloat(document.getElementById('pct_taxa').value) || 40;
+  const pctAtivo = parseFloat(document.getElementById('pct_ativo').value) || 20;
+  const alocado  = caixa * pct / 100;
+  const porAtivo = alocado * pctAtivo / 100;
+
+  // PURAS
+  const gridP = document.getElementById('grid-puras');
+  document.getElementById('section-puras').style.display = DATA.puras.length ? 'block' : 'none';
+  document.getElementById('count-puras').textContent = DATA.puras.length;
+  gridP.innerHTML = DATA.puras.length ? DATA.puras.map((op, i) => cardPura(op, i, porAtivo)).join('') : emptyState();
+
+  // COLLARS
+  const gridC = document.getElementById('grid-collars');
+  document.getElementById('section-collars').style.display = DATA.collars.length ? 'block' : 'none';
+  document.getElementById('count-collars').textContent = DATA.collars.length;
+  gridC.innerHTML = DATA.collars.length ? DATA.collars.map((op, i) => cardCollar(op, i, porAtivo)).join('') : emptyState();
+}
+
+function emptyState() {
+  return `<div class="empty"><div class="icon">🔍</div><p>Nenhuma oportunidade qualificada no momento.</p></div>`;
+}
+
+// ─── CARD PURA ───────────────────────────────────────
+function cardPura(op, rank, porAtivo) {
+  const venc = op.Venc ? op.Venc.substring(5).split('-').reverse().join('/') : '?';
+  const taxa_bruta = ((op.Premio_Bruto / op.Preco_Atual) * 100);
+  const posClass = {OTM:'badge-otm', ITM:'badge-itm', ATM:'badge-atm'}[op.Posicao] || '';
+  const isAmerican = op.Estilo === 'AMERICAN';
+  const ganho_cdi = CDI_DIA > 0 ? (op.Taxa_Dia / CDI_DIA).toFixed(1) : '—';
+
+  // Simulação: quantas ações o caixa alocado compra?
+  const qtd_sugerida = op.Preco_Atual > 0 ? Math.floor(porAtivo / op.Preco_Atual / 100) * 100 : 0;
+  const ganho_sugerido = qtd_sugerida > 0 ? qtd_sugerida * op.Premio_Liquido : 0;
+
+  const aiScore = AI_SCORES[op.Acao];
+  const isSuggested = aiScore && aiScore.estrategia === 'PURA';
+
+  return `
+  <div class="op-card${isSuggested ? ' suggested' : ''}" data-ticker="${op.Acao}">
+    ${isSuggested ? `<div class="suggestion-banner"><div class="ai-label">✨ IA Recomenda</div><p>${aiScore.reason}</p></div>` : ''}
+    <div class="card-header">
+      <div>
+        <div class="card-ticker">${op.Acao}</div>
+        <div class="card-option">${op.Ticker_Opcao}${isAmerican ? ' ⚠️' : ''}</div>
+      </div>
+      <div class="card-taxa-mes">
+        <div class="val">${fmt(op.Taxa_Mes)}%</div>
+        <div class="lbl">ao mês</div>
+      </div>
+    </div>
+
+    <div class="badges">
+      <span class="badge badge-${op.CDI === 'SUPERA' ? 'supera' : 'nao'}">CDI: ${op.CDI === 'SUPERA' ? '✓ supera' : '✗ não supera'}</span>
+      <span class="badge badge-${op.IPCA === 'SUPERA' ? 'supera' : 'nao'}">IPCA: ${op.IPCA === 'SUPERA' ? '✓ supera' : '✗ não supera'}</span>
+      <span class="badge ${posClass}">${op.Posicao}</span>
+      ${isAmerican ? `<span class="badge badge-american">⚠ Americana</span>` : ''}
+      ${op.Sem_Oferta ? `<span class="badge badge-sem-oferta">⚠ Sem book</span>` : ''}
+    </div>
+
+    <div class="data-grid">
+      <div class="data-row"><span class="key">Preço Atual</span><span class="val gold">${fmtMoeda(op.Preco_Atual)}</span></div>
+      <div class="data-row"><span class="key">Strike</span><span class="val">${fmtMoeda(op.Strike)} (${op.Dist_Strike})</span></div>
+      <div class="data-row"><span class="key">Vencimento</span><span class="val">${venc} (${op.Dias_ate_Venc}d)</span></div>
+      <div class="data-row"><span class="key">Volume</span><span class="val">${fmtInt(op.Volume)}</span></div>
+      <div class="data-row"><span class="key">Prêmio Bruto</span><span class="val">${fmtMoeda(op.Premio_Bruto)} (${fmt(taxa_bruta)}%)</span></div>
+      <div class="data-row"><span class="key">IR (15%) + Corret.</span><span class="val neg">− ${fmtMoeda(op.IR + op.Corretagem)}</span></div>
+      <div class="data-row"><span class="key">Prêmio Líquido</span><span class="val pos">${fmtMoeda(op.Premio_Liquido)}</span></div>
+      <div class="data-row"><span class="key">Taxa / dia</span><span class="val">${fmt4(op.Taxa_Dia)}% (${ganho_cdi}× CDI)</span></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="simulacao">
+      <h4>📊 Simulação de Ganho</h4>
+      <div class="sim-row">
+        <span class="sim-lbl">100 opções → caixa ${fmtMoeda(op.Preco_Atual * 100)}</span>
+        <span class="sim-val sim-ganho">+${fmtMoeda(op.Premio_Liquido * 100)}</span>
+      </div>
+      <div class="sim-row">
+        <span class="sim-lbl">1.000 opções → caixa ${fmtMoeda(op.Preco_Atual * 1000)}</span>
+        <span class="sim-val sim-ganho">+${fmtMoeda(op.Premio_Liquido * 1000)}</span>
+      </div>
+      ${qtd_sugerida > 0 ? `
+      <div class="sim-row" style="background:var(--gold-light);border-radius:6px;padding:4px 8px;margin-top:4px;">
+        <span class="sim-lbl" style="font-weight:600;color:var(--ink);">💼 Seu caixa: ${fmtInt(qtd_sugerida)} opções</span>
+        <span class="sim-val sim-ganho" style="font-size:13px;">+${fmtMoeda(ganho_sugerido)}</span>
+      </div>` : ''}
+    </div>
+
+    <div class="liquidez ${op.Sem_Oferta ? 'warn' : 'ok'}">
+      ${op.Sem_Oferta
+        ? `⚠️ Sem contraparte no book — verifique antes de operar`
+        : `✅ Book: ${fmtInt(op.Bid_Volume)} contratos disponíveis`}
+    </div>
+  </div>`;
+}
+
+// ─── CARD COLLAR ─────────────────────────────────────
+function cardCollar(op, rank, porAtivo) {
+  const venc = op.Venc ? op.Venc.substring(5).split('-').reverse().join('/') : '?';
+  const taxa_bruta = ((op.Premio_Bruto / op.Preco_Atual) * 100);
+  const isAmerican = op.Estilo === 'AMERICAN';
+  const ganho_cdi = CDI_DIA > 0 ? (op.Taxa_Dia / CDI_DIA).toFixed(1) : '—';
+
+  const qtd_sugerida = op.Preco_Atual > 0 ? Math.floor(porAtivo / op.Preco_Atual / 100) * 100 : 0;
+  const ganho_sugerido = qtd_sugerida > 0 ? qtd_sugerida * op.Premio_Liquido : 0;
+
+  const aiScore = AI_SCORES[op.Acao];
+  const isSuggested = aiScore && aiScore.estrategia === 'COLLAR';
+
+  return `
+  <div class="op-card collar${isSuggested ? ' suggested' : ''}" data-ticker="${op.Acao}">
+    ${isSuggested ? `<div class="suggestion-banner"><div class="ai-label">✨ IA Recomenda</div><p>${aiScore.reason}</p></div>` : ''}
+    <div class="card-header">
+      <div>
+        <div class="card-ticker">${op.Acao}</div>
+        <div class="card-option">${op.Ticker_Call} + ${op.Ticker_Put}${isAmerican ? ' ⚠️' : ''}</div>
+      </div>
+      <div class="card-taxa-mes">
+        <div class="val">${fmt(op.Taxa_Mes)}%</div>
+        <div class="lbl">ao mês</div>
+      </div>
+    </div>
+
+    <div class="badges">
+      <span class="badge badge-collar">🛡 Collar</span>
+      <span class="badge badge-${op.CDI === 'SUPERA' ? 'supera' : 'nao'}">CDI: ${op.CDI === 'SUPERA' ? '✓ supera' : '✗ não supera'}</span>
+      <span class="badge badge-${op.IPCA === 'SUPERA' ? 'supera' : 'nao'}">IPCA: ${op.IPCA === 'SUPERA' ? '✓ supera' : '✗ não supera'}</span>
+      ${isAmerican ? `<span class="badge badge-american">⚠ Americana</span>` : ''}
+      ${op.Sem_Oferta_Call ? `<span class="badge badge-sem-oferta">⚠ Sem book</span>` : ''}
+    </div>
+
+    <div class="data-grid">
+      <div class="data-row"><span class="key">Preço Atual</span><span class="val gold">${fmtMoeda(op.Preco_Atual)}</span></div>
+      <div class="data-row"><span class="key">Vencimento</span><span class="val">${venc} (${op.Dias_ate_Venc}d)</span></div>
+      <div class="data-row"><span class="key">Strike Call</span><span class="val">${fmtMoeda(op.Strike_Call)} (${op.Dist_Strike})</span></div>
+      <div class="data-row"><span class="key">Strike Put</span><span class="val neg">${fmtMoeda(op.Strike_Put)} (${op.Dist_Put})</span></div>
+      <div class="data-row"><span class="key">Prêmio Bruto</span><span class="val">${fmtMoeda(op.Premio_Bruto)}</span></div>
+      <div class="data-row"><span class="key">Custo Put</span><span class="val neg">− ${fmtMoeda(op.Custo_Put)}</span></div>
+      <div class="data-row"><span class="key">IR + Corretagem</span><span class="val neg">− ${fmtMoeda(op.IR + op.Corretagem)}</span></div>
+      <div class="data-row"><span class="key">Prêmio Líquido</span><span class="val pos">${fmtMoeda(op.Premio_Liquido)}</span></div>
+      <div class="data-row"><span class="key">Taxa / dia</span><span class="val">${fmt4(op.Taxa_Dia)}% (${ganho_cdi}× CDI)</span></div>
+      <div class="data-row"><span class="key">Perda Máxima</span><span class="val neg">${fmt(op.Perda_Maxima)}%</span></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="simulacao">
+      <h4>📊 Simulação de Ganho (Collar)</h4>
+      <div class="sim-row">
+        <span class="sim-lbl">100 opções → caixa ${fmtMoeda(op.Preco_Atual * 100)}</span>
+        <span class="sim-val sim-ganho">+${fmtMoeda(op.Premio_Liquido * 100)}</span>
+      </div>
+      <div class="sim-row">
+        <span class="sim-lbl">1.000 opções → caixa ${fmtMoeda(op.Preco_Atual * 1000)}</span>
+        <span class="sim-val sim-ganho">+${fmtMoeda(op.Premio_Liquido * 1000)}</span>
+      </div>
+      ${qtd_sugerida > 0 ? `
+      <div class="sim-row" style="background:var(--gold-light);border-radius:6px;padding:4px 8px;margin-top:4px;">
+        <span class="sim-lbl" style="font-weight:600;color:var(--ink);">💼 Seu caixa: ${fmtInt(qtd_sugerida)} opções</span>
+        <span class="sim-val sim-ganho" style="font-size:13px;">+${fmtMoeda(ganho_sugerido)}</span>
+      </div>` : ''}
+    </div>
+
+    <div class="liquidez ${op.Sem_Oferta_Call ? 'warn' : 'ok'}">
+      ${op.Sem_Oferta_Call
+        ? `⚠️ Sem contraparte na CALL — verifique antes de operar`
+        : `✅ Book CALL: ${fmtInt(op.Bid_Volume_Call)} contratos | PUT ask: ${fmtInt(op.Ask_Volume_Put)}`}
+    </div>
+  </div>`;
+}
+
+// ─── AI ANALYSIS ──────────────────────────────────────
+async function runAI() {
+  if (!DATA) { toast('Carregue os dados primeiro.', 'warn'); return; }
+  const apiKey = document.getElementById('api_key').value.trim();
+  if (!apiKey) { toast('Informe sua Anthropic API Key nas configurações.', 'warn'); return; }
+
+  const btn = document.getElementById('btn-ai');
+  btn.disabled = true;
+  btn.textContent = '⏳ Analisando…';
+
+  const output = document.getElementById('ai-output');
+  output.classList.add('loading');
+  output.textContent = 'Consultando IA…';
+
+  // Build summary for AI
+  const puras_summary = DATA.puras.slice(0, 10).map(op => ({
+    acao: op.Acao,
+    ticker_opcao: op.Ticker_Opcao,
+    tipo: 'CALL_PURA',
+    preco_acao: op.Preco_Atual,
+    strike: op.Strike,
+    dist_strike: op.Dist_Strike,
+    venc: op.Venc,
+    dias: op.Dias_ate_Venc,
+    posicao: op.Posicao,
+    premio_liq: op.Premio_Liquido,
+    taxa_mes: op.Taxa_Mes,
+    volume: op.Volume,
+    sem_oferta: op.Sem_Oferta,
+    cdi_supera: op.CDI,
+    ipca_supera: op.IPCA,
+    estilo: op.Estilo
+  }));
+
+  const collars_summary = DATA.collars.slice(0, 10).map(op => ({
+    acao: op.Acao,
+    tipo: 'COLLAR',
+    preco_acao: op.Preco_Atual,
+    strike_call: op.Strike_Call,
+    strike_put: op.Strike_Put,
+    dist_strike: op.Dist_Strike,
+    dist_put: op.Dist_Put,
+    venc: op.Venc,
+    dias: op.Dias_ate_Venc,
+    premio_liq: op.Premio_Liquido,
+    taxa_mes: op.Taxa_Mes,
+    perda_maxima: op.Perda_Maxima,
+    volume_call: op.Volume_Call,
+    sem_oferta: op.Sem_Oferta_Call,
+    cdi_supera: op.CDI,
+    ipca_supera: op.IPCA
+  }));
+
+  const caixa = parseFloat(document.getElementById('caixa').value) || 0;
+  const pct   = parseFloat(document.getElementById('pct_taxa').value) || 40;
+  const alocado = caixa * pct / 100;
+
+  const prompt = `Você é um analista especialista em mercado de opções da B3, com foco em operações de taxa (venda coberta de CALL e estratégia Collar). Analise as oportunidades abaixo e faça recomendações claras em português.
+
+CONTEXTO DO INVESTIDOR:
+- Caixa disponível para operações: R$ ${fmtMoeda(alocado)} (${pct}% de R$ ${fmtMoeda(caixa)})
+- CDI mensal: ${CDI_MES}%
+- IPCA 12m: ${IPCA_ANO}%
+- Data de análise: ${new Date().toLocaleDateString('pt-BR')}
+
+OPORTUNIDADES DE CALL PURA (venda coberta):
+${JSON.stringify(puras_summary, null, 2)}
+
+OPORTUNIDADES DE COLLAR (CALL + PUT de proteção):
+${JSON.stringify(collars_summary, null, 2)}
+
+SUA TAREFA:
+1. Para cada ativo com oportunidade, avalie se a estratégia ideal é CALL PURA ou COLLAR, baseado em:
+   - Taxa líquida vs CDI
+   - Volatilidade implícita (dist_strike como proxy)
+   - Liquidez (volume e book)
+   - Risco de exercício antecipado (opções americanas)
+   - Relação risco/retorno entre call pura e collar
+
+2. Liste as TOP 3 melhores operações com justificativa concisa.
+
+3. Para cada uma indique: estratégia recomendada (PURA ou COLLAR), quantidade estimada com o caixa disponível e racional de 2-3 linhas.
+
+4. Alerte sobre riscos específicos encontrados (americanas sem proteção, baixa liquidez, etc).
+
+Responda de forma direta, objetiva e em português. Formate bem com emojis e bullet points.`;
+
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1500,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    if (!resp.ok) {
+      const err = await resp.json();
+      throw new Error(err.error?.message || resp.statusText);
+    }
+
+    const data = await resp.json();
+    const text = data.content?.[0]?.text || '(sem resposta)';
+
+    output.classList.remove('loading');
+    output.classList.add('cursor');
+    output.textContent = '';
+
+    // Typewriter effect
+    let i = 0;
+    const interval = setInterval(() => {
+      output.textContent = text.slice(0, i);
+      i += 4;
+      if (i > text.length) {
+        output.textContent = text;
+        output.classList.remove('cursor');
+        clearInterval(interval);
+        // Parse suggestions and highlight cards
+        parseAISuggestions(text);
+      }
+    }, 12);
+
+  } catch(e) {
+    output.classList.remove('loading');
+    output.textContent = '❌ Erro: ' + e.message;
+    toast('Erro na API: ' + e.message, 'err');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '✨ Analisar com IA';
+  }
+}
+
+function parseAISuggestions(text) {
+  // Simple heuristic: look for ticker mentions near "PURA" or "COLLAR"
+  if (!DATA) return;
+  const allTickers = [...new Set([
+    ...DATA.puras.map(o => o.Acao),
+    ...DATA.collars.map(o => o.Acao)
+  ])];
+  AI_SCORES = {};
+  for (const ticker of allTickers) {
+    const re = new RegExp(ticker + '[\\s\\S]{0,200}?(PURA|COLLAR)', 'i');
+    const m = text.match(re);
+    if (m) {
+      const estrategia = m[1].toUpperCase();
+      // Extract a short reason sentence around the match
+      const idx = text.indexOf(ticker);
+      const snippet = text.slice(idx, idx + 200).split('\n')[0];
+      AI_SCORES[ticker] = { estrategia, reason: snippet };
+    }
+  }
+  renderOps();
+}
+
+function clearAI() {
+  AI_SCORES = {};
+  document.getElementById('ai-output').textContent = 'Aguardando análise…';
+  document.getElementById('ai-output').classList.add('loading');
+  renderOps();
+}
+
+// ─── DEMO DATA ────────────────────────────────────────
+function loadDemo() {
+  CDI_DIA = 0.054266; CDI_MES = 1.15; IPCA_ANO = 4.14;
+  const demo = {
+    resultados: [
+      {
+        cdi_dia: 0.054266, cdi_mes: 1.15, ipca_ano: 4.14,
+        puras: [
+          { Acao:'PETR4', Ticker_Opcao:'PETRD234', Estilo:'EUROPEAN', Venc:'2025-06-20', Dias_ate_Venc:41, Strike:42.00, Preco_Atual:38.50, Posicao:'OTM', Dist_Strike:'+9.1%', Premio_Bruto:0.58, IR:0.087, Corretagem:0.042, Premio_Liquido:0.451, Taxa:1.1714, Taxa_Dia:0.0286, Taxa_Mes:2.28, Volume:18420, Bid_Volume:3200, Sem_Oferta:false, CDI:'SUPERA', IPCA:'SUPERA' },
+          { Acao:'VALE3', Ticker_Opcao:'VALED234', Estilo:'EUROPEAN', Venc:'2025-06-20', Dias_ate_Venc:41, Strike:68.00, Preco_Atual:62.30, Posicao:'OTM', Dist_Strike:'+9.1%', Premio_Bruto:0.72, IR:0.108, Corretagem:0.068, Premio_Liquido:0.544, Taxa:0.8731, Taxa_Dia:0.0213, Taxa_Mes:1.70, Volume:9800, Bid_Volume:1500, Sem_Oferta:false, CDI:'SUPERA', IPCA:'NAO_SUPERA' },
+          { Acao:'BBAS3', Ticker_Opcao:'BBASD234', Estilo:'AMERICAN', Venc:'2025-06-20', Dias_ate_Venc:41, Strike:28.00, Preco_Atual:25.60, Posicao:'OTM', Dist_Strike:'+9.4%', Premio_Bruto:0.42, IR:0.063, Corretagem:0.028, Premio_Liquido:0.329, Taxa:1.285, Taxa_Dia:0.0313, Taxa_Mes:2.50, Volume:5200, Bid_Volume:0, Sem_Oferta:true, CDI:'SUPERA', IPCA:'SUPERA' },
+          { Acao:'WEGE3', Ticker_Opcao:'WEGED234', Estilo:'EUROPEAN', Venc:'2025-06-20', Dias_ate_Venc:41, Strike:52.00, Preco_Atual:47.80, Posicao:'OTM', Dist_Strike:'+8.8%', Premio_Bruto:0.65, IR:0.0975, Corretagem:0.052, Premio_Liquido:0.5005, Taxa:1.047, Taxa_Dia:0.0255, Taxa_Mes:2.04, Volume:3100, Bid_Volume:820, Sem_Oferta:false, CDI:'SUPERA', IPCA:'NAO_SUPERA' },
+          { Acao:'ITUB4', Ticker_Opcao:'ITUBD234', Estilo:'EUROPEAN', Venc:'2025-06-20', Dias_ate_Venc:41, Strike:34.00, Preco_Atual:31.20, Posicao:'OTM', Dist_Strike:'+9.0%', Premio_Bruto:0.48, IR:0.072, Corretagem:0.034, Premio_Liquido:0.374, Taxa:1.199, Taxa_Dia:0.0292, Taxa_Mes:2.34, Volume:7600, Bid_Volume:2100, Sem_Oferta:false, CDI:'SUPERA', IPCA:'SUPERA' },
+        ],
+        collars: [
+          { Acao:'PETR4', Ticker_Call:'PETRD234', Ticker_Put:'PETRP223', Estilo:'EUROPEAN', Venc:'2025-06-20', Dias_ate_Venc:41, Strike_Call:42.00, Posicao:'OTM', Dist_Strike:'+9.1%', Strike_Put:36.00, Dist_Put:'-6.5%', Preco_Atual:38.50, Premio_Bruto:0.58, Custo_Put:0.18, IR:0.087, Corretagem:0.042, Premio_Liquido:0.271, Taxa:0.7039, Taxa_Dia:0.0172, Taxa_Mes:1.37, Perda_Maxima:-6.5, Volume_Call:18420, Bid_Volume_Call:3200, Ask_Volume_Put:1800, Sem_Oferta_Call:false, CDI:'SUPERA', IPCA:'NAO_SUPERA' },
+          { Acao:'VALE3', Ticker_Call:'VALED234', Ticker_Put:'VALEP223', Estilo:'EUROPEAN', Venc:'2025-06-20', Dias_ate_Venc:41, Strike_Call:68.00, Posicao:'OTM', Dist_Strike:'+9.1%', Strike_Put:58.50, Dist_Put:'-6.1%', Preco_Atual:62.30, Premio_Bruto:0.72, Custo_Put:0.22, IR:0.108, Corretagem:0.068, Premio_Liquido:0.324, Taxa:0.52, Taxa_Dia:0.0127, Taxa_Mes:1.01, Perda_Maxima:-6.1, Volume_Call:9800, Bid_Volume_Call:1500, Ask_Volume_Put:950, Sem_Oferta_Call:false, CDI:'NAO_SUPERA', IPCA:'NAO_SUPERA' },
+        ]
+      }
+    ]
+  };
+  document.getElementById('json-input').value = JSON.stringify(demo);
+  processData(demo);
+  toast('🧪 Dados demo carregados com sucesso!');
+}
+
+// ─── TOAST ───────────────────────────────────────────
+function toast(msg, type='ok') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.style.background = type === 'err' ? 'var(--red)' : type === 'warn' ? 'var(--amber)' : 'var(--ink)';
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3500);
+}
+</script>
+</body>
+</html>
