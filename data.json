@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-05-12T08:30:49.877Z",
+  "updated_at": "2026-05-12T09:00:49.775Z",
   "cdi_dia": 0.0534,
   "cdi_mes": 1.1274,
   "ipca_ano": 4.14,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_CALL_SEQUENCIAL",
-    "resumo": "O cenário atual de IV está favorável para venda de opções, com várias oportunidades superando o CDI e IPCA. É um bom momento para estratégias de venda coberta.",
+    "resumo": "A volatilidade implícita está em níveis favoráveis para a venda de opções, com várias opções superando o CDI e IPCA. É um bom momento para estratégias de venda coberta.",
     "top3": [
       {
         "rank": 1,
@@ -21,15 +21,15 @@
         "beta": 0,
         "delta": 0.14975,
         "theta_mes": -0.8817,
-        "volatilidade_classificacao": "MEDIA",
-        "premium_vs_fair": "JUSTO",
+        "volatilidade_classificacao": "null",
+        "premium_vs_fair": "null",
         "cobertura": {
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "null",
           "recomendacao": "null"
         },
-        "justificativa": "A opção BBAS é europeia e possui um delta baixo, o que reduz o risco de exercício antecipado. A taxa mensal supera o CDI, e o theta é relativamente baixo, indicando um bom prêmio pelo risco.",
+        "justificativa": "A opção BBAS é europeia, com um delta baixo de 0.14975, indicando menor sensibilidade ao preço do ativo subjacente. A taxa mensal de 7.94% supera significativamente o CDI e o IPCA, tornando-a uma escolha atrativa.",
         "riscos": "null",
         "score": 10
       },
@@ -47,15 +47,15 @@
         "beta": 0,
         "delta": 0.267354,
         "theta_mes": -0.2564,
-        "volatilidade_classificacao": "ALTA",
-        "premium_vs_fair": "JUSTO",
+        "volatilidade_classificacao": "null",
+        "premium_vs_fair": "null",
         "cobertura": {
           "perda_maxima_pct": -8.3,
           "custo_put_em_meses": 0.28,
           "avaliacao": "BARATA",
-          "recomendacao": "A proteção é barata e cobre quedas significativas, justificando o uso do collar."
+          "recomendacao": "A proteção da PUT é barata e cobre quedas de até 8.3%, justificando o uso do COLLAR."
         },
-        "justificativa": "A estratégia collar para CMIN é justificada pela proteção barata e cobertura adequada de quedas. O delta é moderado, e a taxa mensal é atrativa.",
+        "justificativa": "A opção CMIN é americana, com um delta de 0.267354, oferecendo uma boa taxa mensal de 7.51%. A PUT é barata, cobrindo quedas de até 8.3%, o que é adequado para o risco do ativo.",
         "riscos": "null",
         "score": 8.5
       },
@@ -73,21 +73,21 @@
         "beta": 0,
         "delta": 0.086131,
         "theta_mes": -1.9424,
-        "volatilidade_classificacao": "MEDIA",
-        "premium_vs_fair": "JUSTO",
+        "volatilidade_classificacao": "null",
+        "premium_vs_fair": "null",
         "cobertura": {
           "perda_maxima_pct": -14.8,
           "custo_put_em_meses": 0.02,
           "avaliacao": "BARATA",
-          "recomendacao": "A proteção é barata e cobre quedas significativas, justificando o uso do collar."
+          "recomendacao": "A PUT oferece proteção barata para quedas de até 14.8%, tornando o COLLAR uma estratégia adequada."
         },
-        "justificativa": "A estratégia collar para VALE é atrativa devido à proteção barata e cobertura de quedas significativas. O delta é baixo, reduzindo o risco de exercício antecipado.",
+        "justificativa": "A opção VALE é americana, com um delta baixo de 0.086131 e uma taxa mensal de 6.34%. A PUT é extremamente barata, cobrindo quedas de até 14.8%, o que é excelente para proteção.",
         "riscos": "null",
         "score": 8.5
       }
     ],
     "alertas": [
-      "Nenhuma opção com volume zero foi encontrada."
+      "Nenhum alerta específico identificado."
     ],
     "gerado_em": "2026-05-12T00:00:00Z"
   },
