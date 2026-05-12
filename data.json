@@ -1,96 +1,9 @@
 {
-  "updated_at": "2026-05-12T03:41:24.812Z",
+  "updated_at": null,
   "cdi_dia": 0,
   "cdi_mes": 0,
   "ipca_ano": 0,
-  "ia_analise": {
-    "estrategia_geral": "COMPRAR_ACAO_COLLAR",
-    "resumo": "O cenário atual apresenta oportunidades interessantes para estratégias de Collar, especialmente devido à proteção barata oferecida pelas PUTs. A volatilidade implícita não foi fornecida, mas a proteção barata e a sensibilidade ao índice sugerem que o Collar é a melhor estratégia.",
-    "top3": [
-      {
-        "rank": 1,
-        "acao": "BOVA",
-        "estrategia": "COLLAR",
-        "ticker_opcao": "BOVAE180",
-        "ticker_put": "BOVAQ161",
-        "taxa_mes": 3.53,
-        "prazo_ideal_dias": 4,
-        "iv_rank": 0,
-        "iv_atual": 0,
-        "beta": 0,
-        "delta": 0.409366,
-        "theta_mes": -7.2627,
-        "fair_value": 0,
-        "premium_vs_fair": "JUSTO",
-        "volatilidade_classificacao": "MEDIA",
-        "cobertura": {
-          "perda_maxima_pct": -9.9,
-          "custo_put_em_meses": 0.06,
-          "avaliacao": "BARATA",
-          "recomendacao": "Proteção vale a pena devido ao baixo custo."
-        },
-        "justificativa": "A opção BOVA apresenta um delta de 0.409366, indicando um risco moderado de exercício. A proteção é barata, cobrindo quedas de até 9.9% com um custo de apenas 0.06 meses de prêmio líquido.",
-        "riscos": "Risco de exercício moderado devido ao delta acima de 0.35.",
-        "score": 9
-      },
-      {
-        "rank": 2,
-        "acao": "ITSA",
-        "estrategia": "COLLAR",
-        "ticker_opcao": "ITSAE135",
-        "ticker_put": "ITSAQ123",
-        "taxa_mes": 3.42,
-        "prazo_ideal_dias": 4,
-        "iv_rank": 0,
-        "iv_atual": 0,
-        "beta": 0,
-        "delta": 0.269766,
-        "theta_mes": -0.5658,
-        "fair_value": 0,
-        "premium_vs_fair": "JUSTO",
-        "volatilidade_classificacao": "MEDIA",
-        "cobertura": {
-          "perda_maxima_pct": -9,
-          "custo_put_em_meses": 0.16,
-          "avaliacao": "BARATA",
-          "recomendacao": "Proteção é vantajosa devido ao baixo custo."
-        },
-        "justificativa": "A opção ITSA tem um delta de 0.269766, baixo risco de exercício. A proteção é barata, cobrindo quedas de até 9% com um custo de 0.16 meses de prêmio líquido.",
-        "riscos": "Risco de exercício é baixo devido ao delta abaixo de 0.35.",
-        "score": 8.8
-      },
-      {
-        "rank": 3,
-        "acao": "VALE",
-        "estrategia": "COLLAR",
-        "ticker_opcao": "VALEE854",
-        "ticker_put": "VALEQ734",
-        "taxa_mes": 3.11,
-        "prazo_ideal_dias": 4,
-        "iv_rank": 0,
-        "iv_atual": 0,
-        "beta": 0,
-        "delta": 0.090255,
-        "theta_mes": -1.7595,
-        "fair_value": 0,
-        "premium_vs_fair": "JUSTO",
-        "volatilidade_classificacao": "MEDIA",
-        "cobertura": {
-          "perda_maxima_pct": -9.9,
-          "custo_put_em_meses": 0.03,
-          "avaliacao": "BARATA",
-          "recomendacao": "Proteção extremamente barata, vale a pena."
-        },
-        "justificativa": "A opção VALE tem um delta de 0.090255, indicando baixo risco de exercício. A proteção é extremamente barata, cobrindo quedas de até 9.9% com um custo de apenas 0.03 meses de prêmio líquido.",
-        "riscos": "Risco de exercício é muito baixo devido ao delta baixo.",
-        "score": 8.7
-      }
-    ],
-    "alertas": [
-      "Opções ITSAE135W5 e ITSAE135W4 estão sem oferta, o que pode limitar a liquidez."
-    ],
-    "gerado_em": "2026-05-12T00:00:00Z"
-  },
+  "ia_analise": {},
   "resultados": [
     {
       "cdi_dia": 0,
