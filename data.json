@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-05-12T07:01:15.776Z",
+  "updated_at": "2026-05-12T07:31:16.317Z",
   "cdi_dia": 0.0534,
   "cdi_mes": 1.1274,
   "ipca_ano": 4.14,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_CALL_SEQUENCIAL",
-    "resumo": "O cenário atual de IV está favorável para a venda de opções, com taxas mensais superando o CDI e o IPCA. É um bom momento para estratégias de venda coberta.",
+    "resumo": "O cenário atual de IV está favorável para a venda de opções, com várias oportunidades superando o CDI e IPCA. As opções europeias são preferíveis devido à menor complexidade e risco.",
     "top3": [
       {
         "rank": 1,
@@ -15,7 +15,7 @@
         "taxa_mes": 7.94,
         "score_quantitativo": 10,
         "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": "null",
+        "motivo_ajuste": null,
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -26,11 +26,11 @@
         "cobertura": {
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
-          "avaliacao": "null",
-          "recomendacao": "null"
+          "avaliacao": "BARATA",
+          "recomendacao": "A opção é europeia e está bem posicionada para capturar o prêmio com risco controlado."
         },
-        "justificativa": "A opção BBASE228 apresenta um delta baixo e um theta negativo moderado, indicando uma boa oportunidade de venda coberta com risco controlado. A taxa mensal de 7.94% supera o CDI, confirmando o score máximo.",
-        "riscos": "null",
+        "justificativa": "A opção BBASE228 é europeia, com delta baixo e theta razoável, o que a torna uma boa escolha para venda coberta. O prêmio supera o CDI e IPCA, confirmando o ranking.",
+        "riscos": "Nenhum risco específico identificado.",
         "score": 10
       },
       {
@@ -41,7 +41,7 @@
         "taxa_mes": 7.51,
         "score_quantitativo": 8.5,
         "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": "null",
+        "motivo_ajuste": null,
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -53,10 +53,10 @@
           "perda_maxima_pct": -8.3,
           "custo_put_em_meses": 0.28,
           "avaliacao": "BARATA",
-          "recomendacao": "A proteção é adequada, cobrindo quedas de até 8.3% com um custo razoável."
+          "recomendacao": "A proteção é barata e cobre uma queda significativa, justificando o uso do collar."
         },
-        "justificativa": "A estratégia COLLAR para CMIN é adequada devido à alta volatilidade e ao delta relativamente alto. A PUT cobre uma queda significativa com um custo de proteção razoável.",
-        "riscos": "null",
+        "justificativa": "A opção CMIN é americana, mas o collar oferece proteção barata e cobre uma queda de 8.3%, o que é adequado dado o delta e a volatilidade.",
+        "riscos": "Volatilidade alta pode impactar o prêmio, mas a proteção do collar mitiga esse risco.",
         "score": 8.5
       },
       {
@@ -67,7 +67,7 @@
         "taxa_mes": 6.34,
         "score_quantitativo": 8.5,
         "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": "null",
+        "motivo_ajuste": null,
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -79,14 +79,16 @@
           "perda_maxima_pct": -14.8,
           "custo_put_em_meses": 0.02,
           "avaliacao": "BARATA",
-          "recomendacao": "A proteção é excelente, cobrindo quedas de até 14.8% com custo muito baixo."
+          "recomendacao": "A proteção é extremamente barata e cobre uma queda significativa, tornando o collar uma escolha prudente."
         },
-        "justificativa": "A estratégia COLLAR para VALE é confirmada devido ao baixo custo de proteção e à cobertura significativa contra quedas, tornando-a uma escolha sólida.",
-        "riscos": "null",
+        "justificativa": "A opção VALEE849 é americana, mas o collar oferece uma proteção barata que cobre uma queda de 14.8%, justificando o uso do collar.",
+        "riscos": "Nenhum risco específico identificado.",
         "score": 8.5
       }
     ],
-    "alertas": [],
+    "alertas": [
+      "Nenhum alerta específico identificado."
+    ],
     "gerado_em": "2026-05-12T00:00:00Z"
   },
   "resultados": [
