@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-05-12T04:18:10.294Z",
+  "updated_at": "2026-05-12T04:18:53.218Z",
   "cdi_dia": 0,
   "cdi_mes": 0,
   "ipca_ano": 0,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_COLLAR",
-    "resumo": "O cenário atual apresenta oportunidades interessantes para estratégias de Collar, especialmente devido ao baixo custo das PUTs, que oferecem proteção barata. A volatilidade implícita não foi fornecida, mas a proteção barata e o risco de mercado justificam a escolha do Collar.",
+    "resumo": "O cenário atual apresenta oportunidades de proteção barata com Collars, especialmente em ativos com alta volatilidade e risco. A estratégia geral recomendada é a compra de ações com Collar, aproveitando a proteção barata oferecida pelas PUTs.",
     "top3": [
       {
         "rank": 1,
@@ -27,40 +27,14 @@
           "perda_maxima_pct": -9.9,
           "custo_put_em_meses": 0.06,
           "avaliacao": "BARATA",
-          "recomendacao": "Proteção barata, vale a pena"
+          "recomendacao": "Proteção barata, vale a pena."
         },
-        "justificativa": "Delta de 0.409366 indica risco moderado de exercício, mas a proteção barata com PUT justifica a estratégia de Collar. Theta alto sugere bom ganho temporal.",
-        "riscos": "Risco de exercício moderado devido ao delta acima de 0.35, mas mitigado pela proteção da PUT.",
+        "justificativa": "Delta de 0.409366 indica risco moderado de exercício, enquanto o theta_mes de -7.2627 sugere bom ganho temporal. A proteção é barata, cobrindo quedas significativas.",
+        "riscos": "Volume baixo de bid pode indicar menor liquidez imediata.",
         "score": 8.5
       },
       {
         "rank": 2,
-        "acao": "VALE",
-        "estrategia": "COLLAR",
-        "ticker_opcao": "VALEE854",
-        "ticker_put": "VALEQ734",
-        "taxa_mes": 3.11,
-        "prazo_ideal_dias": 4,
-        "iv_rank": 0,
-        "iv_atual": 0,
-        "beta": 0,
-        "delta": 0.090255,
-        "theta_mes": -1.7595,
-        "fair_value": 0,
-        "premium_vs_fair": "JUSTO",
-        "volatilidade_classificacao": "MEDIA",
-        "cobertura": {
-          "perda_maxima_pct": -9.9,
-          "custo_put_em_meses": 0.03,
-          "avaliacao": "BARATA",
-          "recomendacao": "Proteção barata, vale a pena"
-        },
-        "justificativa": "Delta baixo de 0.090255 reduz o risco de exercício. A PUT oferece proteção barata, tornando o Collar atrativo.",
-        "riscos": "Risco de exercício baixo, mas a proteção da PUT é eficiente.",
-        "score": 8.2
-      },
-      {
-        "rank": 3,
         "acao": "ITSA",
         "estrategia": "COLLAR",
         "ticker_opcao": "ITSAE135",
@@ -79,16 +53,42 @@
           "perda_maxima_pct": -9,
           "custo_put_em_meses": 0.16,
           "avaliacao": "BARATA",
-          "recomendacao": "Proteção barata, vale a pena"
+          "recomendacao": "Proteção barata, vale a pena."
         },
-        "justificativa": "Delta de 0.269766 é aceitável, e a proteção barata da PUT justifica a estratégia de Collar.",
-        "riscos": "Risco de exercício moderado, mas mitigado pela proteção da PUT.",
+        "justificativa": "Delta de 0.269766 oferece menor risco de exercício, com proteção barata cobrindo quedas de até 9%.",
+        "riscos": "Estilo americano pode aumentar o risco de exercício antecipado.",
+        "score": 8.2
+      },
+      {
+        "rank": 3,
+        "acao": "VALE",
+        "estrategia": "COLLAR",
+        "ticker_opcao": "VALEE854",
+        "ticker_put": "VALEQ734",
+        "taxa_mes": 3.11,
+        "prazo_ideal_dias": 4,
+        "iv_rank": 0,
+        "iv_atual": 0,
+        "beta": 0,
+        "delta": 0.090255,
+        "theta_mes": -1.7595,
+        "fair_value": 0,
+        "premium_vs_fair": "JUSTO",
+        "volatilidade_classificacao": "MEDIA",
+        "cobertura": {
+          "perda_maxima_pct": -9.9,
+          "custo_put_em_meses": 0.03,
+          "avaliacao": "BARATA",
+          "recomendacao": "Proteção barata, vale a pena."
+        },
+        "justificativa": "Delta baixo de 0.090255 reduz o risco de exercício, enquanto a proteção é extremamente barata.",
+        "riscos": "Volume de bid pode ser insuficiente para grandes operações.",
         "score": 8
       }
     ],
     "alertas": [
-      "Volume baixo em algumas opções pode indicar menor liquidez.",
-      "Sem oferta em algumas opções pode dificultar a execução da estratégia."
+      "Opções com estilo americano podem ter risco de exercício antecipado.",
+      "Volume baixo em algumas opções pode indicar menor liquidez."
     ],
     "gerado_em": "2026-05-12T00:00:00Z"
   },
