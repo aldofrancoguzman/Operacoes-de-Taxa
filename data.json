@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-05-12T10:30:50.387Z",
+  "updated_at": "2026-05-12T11:00:54.263Z",
   "cdi_dia": 0.0534,
   "cdi_mes": 1.1274,
   "ipca_ano": 4.14,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_CALL_SEQUENCIAL",
-    "resumo": "O cenário atual de IV é favorável para venda de opções, com várias oportunidades superando o CDI e IPCA. A volatilidade implícita está em níveis que permitem uma boa remuneração para calls puras.",
+    "resumo": "A volatilidade implícita está em níveis favoráveis para a venda de opções, com várias oportunidades superando o CDI e IPCA. É um bom momento para estratégias de venda coberta.",
     "top3": [
       {
         "rank": 1,
@@ -15,7 +15,7 @@
         "taxa_mes": 8.03,
         "score_quantitativo": 10,
         "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": null,
+        "motivo_ajuste": "null",
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -29,8 +29,8 @@
           "avaliacao": "JUSTA",
           "recomendacao": "A estratégia pura é adequada devido ao delta baixo e estilo europeu."
         },
-        "justificativa": "A opção BBAS tem um delta baixo, indicando menor risco de exercício, e um theta razoável, o que é positivo para a estratégia de venda coberta. O score quantitativo reflete bem o risco e retorno.",
-        "riscos": "Nenhum risco específico identificado.",
+        "justificativa": "A ação BBAS apresenta um delta baixo, o que reduz o risco de exercício. A taxa mensal de 8.03% supera o CDI e o IPCA, tornando a venda coberta atrativa. O estilo europeu da opção reduz riscos adicionais.",
+        "riscos": "Nenhum risco qualitativo adicional identificado.",
         "score": 10
       },
       {
@@ -41,7 +41,7 @@
         "taxa_mes": 6.71,
         "score_quantitativo": 10,
         "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": null,
+        "motivo_ajuste": "null",
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -55,8 +55,8 @@
           "avaliacao": "JUSTA",
           "recomendacao": "A estratégia pura é adequada devido ao delta moderado e estilo europeu."
         },
-        "justificativa": "A opção B3SA tem um delta moderado, o que ainda é aceitável para uma estratégia de venda coberta. O theta é mais negativo, mas a taxa mensal ainda supera o CDI.",
-        "riscos": "Nenhum risco específico identificado.",
+        "justificativa": "A ação B3SA possui um delta moderado, o que ainda é aceitável para uma estratégia pura. A taxa mensal de 6.71% é competitiva, superando o CDI e IPCA.",
+        "riscos": "Nenhum risco qualitativo adicional identificado.",
         "score": 10
       },
       {
@@ -67,7 +67,7 @@
         "taxa_mes": 9,
         "score_quantitativo": 8.8,
         "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": null,
+        "motivo_ajuste": "null",
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -79,10 +79,10 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "JUSTA",
-          "recomendacao": "A estratégia pura é adequada devido ao delta no limite superior, mas ainda aceitável."
+          "recomendacao": "A estratégia pura é adequada devido ao delta próximo do limite e estilo europeu."
         },
-        "justificativa": "A opção WEGE tem um delta no limite superior para uma estratégia pura, mas a taxa mensal é atrativa. O theta é bastante negativo, mas a remuneração compensa.",
-        "riscos": "Nenhum risco específico identificado.",
+        "justificativa": "A ação WEGE apresenta um delta próximo do limite para uma estratégia pura, mas ainda aceitável. A taxa mensal de 9% é bastante atrativa.",
+        "riscos": "Nenhum risco qualitativo adicional identificado.",
         "score": 8.8
       }
     ],
