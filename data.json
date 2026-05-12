@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-05-12T12:00:50.649Z",
+  "updated_at": "2026-05-12T12:30:51.511Z",
   "cdi_dia": 0.0534,
   "cdi_mes": 1.1274,
   "ipca_ano": 4.14,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_CALL_SEQUENCIAL",
-    "resumo": "A volatilidade implícita está em níveis favoráveis para a venda de opções, com taxas mensais superando o CDI e IPCA. É um bom momento para estratégias de venda coberta.",
+    "resumo": "O cenário atual de IV está favorável para venda de opções, com a maioria das opções superando o CDI e IPCA. É um bom momento para estratégias de venda coberta.",
     "top3": [
       {
         "rank": 1,
@@ -15,7 +15,7 @@
         "taxa_mes": 8.03,
         "score_quantitativo": 10,
         "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": "null",
+        "motivo_ajuste": null,
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -27,10 +27,10 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "JUSTA",
-          "recomendacao": "Venda coberta de CALL é adequada, sem necessidade de PUT."
+          "recomendacao": "A opção está bem posicionada com um delta baixo e theta razoável, ideal para venda coberta."
         },
-        "justificativa": "A ação BBAS apresenta um delta baixo, indicando menor risco de exercício, e um theta negativo moderado, o que é favorável para a estratégia de venda coberta. O score quantitativo é alto, refletindo a boa relação risco/retorno.",
-        "riscos": "null",
+        "justificativa": "A BBAS apresenta um delta baixo e uma taxa mensal que supera o CDI, tornando-a uma excelente escolha para venda coberta. O theta é aceitável, e a posição OTM oferece um bom equilíbrio entre risco e retorno.",
+        "riscos": "Nenhum risco específico identificado.",
         "score": 10
       },
       {
@@ -41,7 +41,7 @@
         "taxa_mes": 6.71,
         "score_quantitativo": 10,
         "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": "null",
+        "motivo_ajuste": null,
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -53,10 +53,10 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "JUSTA",
-          "recomendacao": "Venda coberta de CALL é adequada, sem necessidade de PUT."
+          "recomendacao": "A opção B3SA é uma boa escolha para venda coberta devido ao delta moderado e theta aceitável."
         },
-        "justificativa": "B3SA tem um delta moderado, o que implica em um risco controlado de exercício. O theta negativo é mais acentuado, mas ainda dentro de níveis aceitáveis para a estratégia. O score é excelente, justificando a posição no ranking.",
-        "riscos": "null",
+        "justificativa": "B3SA tem um delta moderado e uma taxa mensal que supera o CDI, o que a torna uma boa opção para venda coberta. O theta é um pouco mais alto, mas ainda dentro de um intervalo aceitável.",
+        "riscos": "Nenhum risco específico identificado.",
         "score": 10
       },
       {
@@ -67,7 +67,7 @@
         "taxa_mes": 9,
         "score_quantitativo": 8.8,
         "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": "null",
+        "motivo_ajuste": null,
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -79,14 +79,16 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "JUSTA",
-          "recomendacao": "Venda coberta de CALL é adequada, sem necessidade de PUT."
+          "recomendacao": "A WEGE é uma opção interessante para venda coberta, com um delta mais alto, mas compensado por uma boa taxa mensal."
         },
-        "justificativa": "WEGE apresenta um delta próximo do limite superior para estratégias puras, mas ainda aceitável. O theta é mais negativo, indicando uma maior perda de valor temporal, mas o score ainda é alto, justificando a posição.",
-        "riscos": "null",
+        "justificativa": "WEGE apresenta um delta mais alto, mas a taxa mensal elevada e a superação do CDI tornam-na uma opção viável para venda coberta. O theta é mais agressivo, mas ainda aceitável.",
+        "riscos": "Nenhum risco específico identificado.",
         "score": 8.8
       }
     ],
-    "alertas": [],
+    "alertas": [
+      "Nenhum alerta específico identificado."
+    ],
     "gerado_em": "2026-05-12T00:00:00Z"
   },
   "resultados": [
