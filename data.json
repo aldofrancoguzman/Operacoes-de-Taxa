@@ -1,94 +1,93 @@
 {
-  "updated_at": "2026-05-12T03:40:24.466Z",
+  "updated_at": "2026-05-12T03:41:24.812Z",
   "cdi_dia": 0,
   "cdi_mes": 0,
   "ipca_ano": 0,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_COLLAR",
-    "resumo": "O cenário atual apresenta oportunidades de proteção com custos baixos para Collars, especialmente em ativos com alta volatilidade e risco de queda. A estratégia geral recomendada é o uso de Collars devido à proteção barata e volatilidade elevada em alguns ativos.",
+    "resumo": "O cenário atual apresenta oportunidades interessantes para estratégias de Collar, especialmente devido à proteção barata oferecida pelas PUTs. A volatilidade implícita não foi fornecida, mas a proteção barata e a sensibilidade ao índice sugerem que o Collar é a melhor estratégia.",
     "top3": [
       {
         "rank": 1,
-        "acao": "CMIN",
+        "acao": "BOVA",
         "estrategia": "COLLAR",
-        "ticker_opcao": "CMINE49",
-        "ticker_put": "CMINQ500",
-        "taxa_mes": 5.63,
+        "ticker_opcao": "BOVAE180",
+        "ticker_put": "BOVAQ161",
+        "taxa_mes": 3.53,
         "prazo_ideal_dias": 4,
-        "iv_rank": null,
-        "iv_atual": null,
-        "beta": null,
-        "delta": 0.302681,
-        "theta_mes": -0.2402,
-        "fair_value": null,
+        "iv_rank": 0,
+        "iv_atual": 0,
+        "beta": 0,
+        "delta": 0.409366,
+        "theta_mes": -7.2627,
+        "fair_value": 0,
         "premium_vs_fair": "JUSTO",
         "volatilidade_classificacao": "MEDIA",
         "cobertura": {
-          "perda_maxima_pct": -8.3,
-          "custo_put_em_meses": 0.28,
+          "perda_maxima_pct": -9.9,
+          "custo_put_em_meses": 0.06,
           "avaliacao": "BARATA",
-          "recomendacao": "Proteção barata e eficaz contra quedas significativas."
+          "recomendacao": "Proteção vale a pena devido ao baixo custo."
         },
-        "justificativa": "Delta de 0.302681 indica risco moderado de exercício, enquanto o theta_mes de -0.2402 é aceitável. O custo da PUT é baixo, tornando a proteção barata.",
-        "riscos": "Risco de exercício moderado devido ao delta, mas compensado pela proteção barata da PUT.",
-        "score": 8.5
+        "justificativa": "A opção BOVA apresenta um delta de 0.409366, indicando um risco moderado de exercício. A proteção é barata, cobrindo quedas de até 9.9% com um custo de apenas 0.06 meses de prêmio líquido.",
+        "riscos": "Risco de exercício moderado devido ao delta acima de 0.35.",
+        "score": 9
       },
       {
         "rank": 2,
+        "acao": "ITSA",
+        "estrategia": "COLLAR",
+        "ticker_opcao": "ITSAE135",
+        "ticker_put": "ITSAQ123",
+        "taxa_mes": 3.42,
+        "prazo_ideal_dias": 4,
+        "iv_rank": 0,
+        "iv_atual": 0,
+        "beta": 0,
+        "delta": 0.269766,
+        "theta_mes": -0.5658,
+        "fair_value": 0,
+        "premium_vs_fair": "JUSTO",
+        "volatilidade_classificacao": "MEDIA",
+        "cobertura": {
+          "perda_maxima_pct": -9,
+          "custo_put_em_meses": 0.16,
+          "avaliacao": "BARATA",
+          "recomendacao": "Proteção é vantajosa devido ao baixo custo."
+        },
+        "justificativa": "A opção ITSA tem um delta de 0.269766, baixo risco de exercício. A proteção é barata, cobrindo quedas de até 9% com um custo de 0.16 meses de prêmio líquido.",
+        "riscos": "Risco de exercício é baixo devido ao delta abaixo de 0.35.",
+        "score": 8.8
+      },
+      {
+        "rank": 3,
         "acao": "VALE",
         "estrategia": "COLLAR",
         "ticker_opcao": "VALEE854",
         "ticker_put": "VALEQ734",
         "taxa_mes": 3.11,
         "prazo_ideal_dias": 4,
-        "iv_rank": null,
-        "iv_atual": null,
-        "beta": null,
+        "iv_rank": 0,
+        "iv_atual": 0,
+        "beta": 0,
         "delta": 0.090255,
         "theta_mes": -1.7595,
-        "fair_value": null,
+        "fair_value": 0,
         "premium_vs_fair": "JUSTO",
         "volatilidade_classificacao": "MEDIA",
         "cobertura": {
           "perda_maxima_pct": -9.9,
           "custo_put_em_meses": 0.03,
           "avaliacao": "BARATA",
-          "recomendacao": "Proteção extremamente barata, ideal para ativos voláteis."
+          "recomendacao": "Proteção extremamente barata, vale a pena."
         },
-        "justificativa": "Delta baixo de 0.090255 reduz o risco de exercício, e a PUT oferece proteção quase gratuita.",
-        "riscos": "Theta negativo alto, mas compensado pela proteção barata e delta baixo.",
-        "score": 8.2
-      },
-      {
-        "rank": 3,
-        "acao": "B3SA",
-        "estrategia": "COLLAR",
-        "ticker_opcao": "B3SAE180",
-        "ticker_put": "B3SAQ162",
-        "taxa_mes": 3.26,
-        "prazo_ideal_dias": 4,
-        "iv_rank": null,
-        "iv_atual": null,
-        "beta": null,
-        "delta": 0.509316,
-        "theta_mes": -1.334,
-        "fair_value": null,
-        "premium_vs_fair": "JUSTO",
-        "volatilidade_classificacao": "MEDIA",
-        "cobertura": {
-          "perda_maxima_pct": -9.5,
-          "custo_put_em_meses": 0.51,
-          "avaliacao": "BARATA",
-          "recomendacao": "Proteção barata com cobertura significativa contra quedas."
-        },
-        "justificativa": "Delta acima de 0.5 indica maior risco de exercício, mas a proteção barata da PUT compensa.",
-        "riscos": "Maior risco de exercício devido ao delta, mas mitigado pela proteção barata.",
-        "score": 7.9
+        "justificativa": "A opção VALE tem um delta de 0.090255, indicando baixo risco de exercício. A proteção é extremamente barata, cobrindo quedas de até 9.9% com um custo de apenas 0.03 meses de prêmio líquido.",
+        "riscos": "Risco de exercício é muito baixo devido ao delta baixo.",
+        "score": 8.7
       }
     ],
     "alertas": [
-      "CYRE e VAMO apresentam sem oferta, evitando operações.",
-      "Opções com delta acima de 0.35 apresentam maior risco de exercício."
+      "Opções ITSAE135W5 e ITSAE135W4 estão sem oferta, o que pode limitar a liquidez."
     ],
     "gerado_em": "2026-05-12T00:00:00Z"
   },
