@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-05-12T11:30:48.199Z",
+  "updated_at": "2026-05-12T12:00:50.649Z",
   "cdi_dia": 0.0534,
   "cdi_mes": 1.1274,
   "ipca_ano": 4.14,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_CALL_SEQUENCIAL",
-    "resumo": "A volatilidade implícita está em níveis favoráveis para a venda de opções, com várias oportunidades superando o CDI e IPCA. É um bom momento para estratégias de venda coberta.",
+    "resumo": "A volatilidade implícita está em níveis favoráveis para a venda de opções, com taxas mensais superando o CDI e IPCA. É um bom momento para estratégias de venda coberta.",
     "top3": [
       {
         "rank": 1,
@@ -26,10 +26,10 @@
         "cobertura": {
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
-          "avaliacao": "null",
-          "recomendacao": "null"
+          "avaliacao": "JUSTA",
+          "recomendacao": "Venda coberta de CALL é adequada, sem necessidade de PUT."
         },
-        "justificativa": "A ação BBAS apresenta um delta baixo e um theta negativo moderado, indicando uma boa oportunidade de venda coberta. A taxa mensal supera significativamente o CDI, justificando a manutenção do ranking.",
+        "justificativa": "A ação BBAS apresenta um delta baixo, indicando menor risco de exercício, e um theta negativo moderado, o que é favorável para a estratégia de venda coberta. O score quantitativo é alto, refletindo a boa relação risco/retorno.",
         "riscos": "null",
         "score": 10
       },
@@ -52,10 +52,10 @@
         "cobertura": {
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
-          "avaliacao": "null",
-          "recomendacao": "null"
+          "avaliacao": "JUSTA",
+          "recomendacao": "Venda coberta de CALL é adequada, sem necessidade de PUT."
         },
-        "justificativa": "B3SA tem um delta moderado e um theta negativo mais acentuado, mas ainda assim oferece uma taxa mensal que supera o CDI, confirmando sua posição no ranking.",
+        "justificativa": "B3SA tem um delta moderado, o que implica em um risco controlado de exercício. O theta negativo é mais acentuado, mas ainda dentro de níveis aceitáveis para a estratégia. O score é excelente, justificando a posição no ranking.",
         "riscos": "null",
         "score": 10
       },
@@ -78,10 +78,10 @@
         "cobertura": {
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
-          "avaliacao": "null",
-          "recomendacao": "null"
+          "avaliacao": "JUSTA",
+          "recomendacao": "Venda coberta de CALL é adequada, sem necessidade de PUT."
         },
-        "justificativa": "WEGE apresenta um delta próximo ao limite para estratégias puras, mas a taxa mensal atrativa e a superação do CDI justificam sua posição no ranking.",
+        "justificativa": "WEGE apresenta um delta próximo do limite superior para estratégias puras, mas ainda aceitável. O theta é mais negativo, indicando uma maior perda de valor temporal, mas o score ainda é alto, justificando a posição.",
         "riscos": "null",
         "score": 8.8
       }
