@@ -1,9 +1,97 @@
 {
-  "updated_at": null,
+  "updated_at": "2026-05-12T04:17:18.533Z",
   "cdi_dia": 0,
   "cdi_mes": 0,
   "ipca_ano": 0,
-  "ia_analise": {},
+  "ia_analise": {
+    "estrategia_geral": "COMPRAR_ACAO_COLLAR",
+    "resumo": "O cenário atual apresenta volatilidade elevada e opções com prêmios caros, tornando o momento propício para vender opções. A estratégia geral recomendada é o uso de Collar, especialmente para ativos com alta sensibilidade ao índice e comportamento imprevisível.",
+    "top3": [
+      {
+        "rank": 1,
+        "acao": "CMIN",
+        "estrategia": "COLLAR",
+        "ticker_opcao": "CMINE49",
+        "ticker_put": "CMINQ500",
+        "taxa_mes": 5.63,
+        "prazo_ideal_dias": 4,
+        "iv_rank": 0,
+        "iv_atual": 0,
+        "beta": 0,
+        "delta": 0.302681,
+        "theta_mes": -0.2402,
+        "fair_value": 0,
+        "premium_vs_fair": "JUSTO",
+        "volatilidade_classificacao": "MEDIA",
+        "cobertura": {
+          "perda_maxima_pct": -8.3,
+          "custo_put_em_meses": 0.28,
+          "avaliacao": "BARATA",
+          "recomendacao": "Proteção barata, vale a pena para mitigar riscos."
+        },
+        "justificativa": "Delta de 0.302681 indica risco moderado de exercício, enquanto o theta_mes de -0.2402 é eficiente. A proteção é barata, cobrindo quedas significativas.",
+        "riscos": "Risco de exercício moderado devido ao delta, mas mitigado pela proteção barata da PUT.",
+        "score": 8.5
+      },
+      {
+        "rank": 2,
+        "acao": "VALE",
+        "estrategia": "COLLAR",
+        "ticker_opcao": "VALEE854",
+        "ticker_put": "VALEQ734",
+        "taxa_mes": 3.11,
+        "prazo_ideal_dias": 4,
+        "iv_rank": 0,
+        "iv_atual": 0,
+        "beta": 0,
+        "delta": 0.090255,
+        "theta_mes": -1.7595,
+        "fair_value": 0,
+        "premium_vs_fair": "JUSTO",
+        "volatilidade_classificacao": "MEDIA",
+        "cobertura": {
+          "perda_maxima_pct": -9.9,
+          "custo_put_em_meses": 0.03,
+          "avaliacao": "BARATA",
+          "recomendacao": "Proteção extremamente barata, altamente recomendada."
+        },
+        "justificativa": "Delta baixo de 0.090255 reduz risco de exercício, e a proteção é extremamente barata, cobrindo quedas significativas.",
+        "riscos": "Risco de exercício muito baixo, proteção barata cobre quedas significativas.",
+        "score": 8
+      },
+      {
+        "rank": 3,
+        "acao": "B3SA",
+        "estrategia": "COLLAR",
+        "ticker_opcao": "B3SAE180",
+        "ticker_put": "B3SAQ162",
+        "taxa_mes": 3.26,
+        "prazo_ideal_dias": 4,
+        "iv_rank": 0,
+        "iv_atual": 0,
+        "beta": 0,
+        "delta": 0.509316,
+        "theta_mes": -1.334,
+        "fair_value": 0,
+        "premium_vs_fair": "JUSTO",
+        "volatilidade_classificacao": "MEDIA",
+        "cobertura": {
+          "perda_maxima_pct": -9.5,
+          "custo_put_em_meses": 0.51,
+          "avaliacao": "BARATA",
+          "recomendacao": "Proteção barata, vale a pena para mitigar riscos."
+        },
+        "justificativa": "Delta de 0.509316 sugere risco de exercício, mas a proteção é barata e cobre quedas significativas.",
+        "riscos": "Risco de exercício devido ao delta alto, mas mitigado pela proteção barata da PUT.",
+        "score": 7.5
+      }
+    ],
+    "alertas": [
+      "CYRE e VAMO apresentam sem_oferta=true, evitando operações.",
+      "Opções com volume < 1000 devem ser evitadas devido à baixa liquidez."
+    ],
+    "gerado_em": "2026-05-12T00:00:00Z"
+  },
   "resultados": [
     {
       "cdi_dia": 0,
