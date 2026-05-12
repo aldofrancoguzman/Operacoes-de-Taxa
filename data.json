@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-05-12T09:00:49.775Z",
+  "updated_at": "2026-05-12T09:30:59.131Z",
   "cdi_dia": 0.0534,
   "cdi_mes": 1.1274,
   "ipca_ano": 4.14,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_CALL_SEQUENCIAL",
-    "resumo": "A volatilidade implícita está em níveis favoráveis para a venda de opções, com várias opções superando o CDI e IPCA. É um bom momento para estratégias de venda coberta.",
+    "resumo": "O cenário atual de IV está favorável para venda de opções, com taxas mensais superando o CDI. As opções europeias são preferíveis devido ao menor risco de exercício antecipado.",
     "top3": [
       {
         "rank": 1,
@@ -21,16 +21,16 @@
         "beta": 0,
         "delta": 0.14975,
         "theta_mes": -0.8817,
-        "volatilidade_classificacao": "null",
-        "premium_vs_fair": "null",
+        "volatilidade_classificacao": "MEDIA",
+        "premium_vs_fair": "JUSTO",
         "cobertura": {
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
-          "avaliacao": "null",
-          "recomendacao": "null"
+          "avaliacao": "JUSTA",
+          "recomendacao": "Venda coberta de CALL é adequada, pois a taxa mensal supera o CDI e a opção é europeia."
         },
-        "justificativa": "A opção BBAS é europeia, com um delta baixo de 0.14975, indicando menor sensibilidade ao preço do ativo subjacente. A taxa mensal de 7.94% supera significativamente o CDI e o IPCA, tornando-a uma escolha atrativa.",
-        "riscos": "null",
+        "justificativa": "A opção BBASE228 apresenta um delta baixo e um theta razoável, com um score de risco/retorno excelente. A estratégia PURA é confirmada devido ao estilo europeu e à taxa mensal atrativa.",
+        "riscos": "Risco de mercado geral, mas mitigado pela natureza europeia da opção.",
         "score": 10
       },
       {
@@ -47,16 +47,16 @@
         "beta": 0,
         "delta": 0.267354,
         "theta_mes": -0.2564,
-        "volatilidade_classificacao": "null",
-        "premium_vs_fair": "null",
+        "volatilidade_classificacao": "ALTA",
+        "premium_vs_fair": "JUSTO",
         "cobertura": {
           "perda_maxima_pct": -8.3,
           "custo_put_em_meses": 0.28,
           "avaliacao": "BARATA",
-          "recomendacao": "A proteção da PUT é barata e cobre quedas de até 8.3%, justificando o uso do COLLAR."
+          "recomendacao": "A proteção é barata e cobre adequadamente o risco, justificando o uso do COLLAR."
         },
-        "justificativa": "A opção CMIN é americana, com um delta de 0.267354, oferecendo uma boa taxa mensal de 7.51%. A PUT é barata, cobrindo quedas de até 8.3%, o que é adequado para o risco do ativo.",
-        "riscos": "null",
+        "justificativa": "A opção CMIN apresenta um delta moderado e uma proteção barata com a PUT, cobrindo 8.3% de queda. A estratégia COLLAR é adequada devido ao estilo americano e à volatilidade alta.",
+        "riscos": "Volatilidade alta pode impactar o preço da ação, mas a PUT oferece proteção adequada.",
         "score": 8.5
       },
       {
@@ -73,21 +73,21 @@
         "beta": 0,
         "delta": 0.086131,
         "theta_mes": -1.9424,
-        "volatilidade_classificacao": "null",
-        "premium_vs_fair": "null",
+        "volatilidade_classificacao": "MEDIA",
+        "premium_vs_fair": "JUSTO",
         "cobertura": {
           "perda_maxima_pct": -14.8,
           "custo_put_em_meses": 0.02,
           "avaliacao": "BARATA",
-          "recomendacao": "A PUT oferece proteção barata para quedas de até 14.8%, tornando o COLLAR uma estratégia adequada."
+          "recomendacao": "A PUT é extremamente barata e cobre quedas significativas, tornando o COLLAR uma escolha prudente."
         },
-        "justificativa": "A opção VALE é americana, com um delta baixo de 0.086131 e uma taxa mensal de 6.34%. A PUT é extremamente barata, cobrindo quedas de até 14.8%, o que é excelente para proteção.",
-        "riscos": "null",
+        "justificativa": "A opção VALEE849 tem um delta muito baixo, e a PUT oferece uma proteção barata e abrangente. A estratégia COLLAR é confirmada devido ao estilo americano e à proteção robusta.",
+        "riscos": "Risco de mercado e volatilidade, mas mitigados pela proteção da PUT.",
         "score": 8.5
       }
     ],
     "alertas": [
-      "Nenhum alerta específico identificado."
+      "Nenhum alerta específico para os ativos analisados."
     ],
     "gerado_em": "2026-05-12T00:00:00Z"
   },
