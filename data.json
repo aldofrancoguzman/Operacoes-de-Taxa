@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-12T11:00:54.263Z",
+  "updated_at": "2026-05-12T11:30:48.199Z",
   "cdi_dia": 0.0534,
   "cdi_mes": 1.1274,
   "ipca_ano": 4.14,
@@ -26,11 +26,11 @@
         "cobertura": {
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
-          "avaliacao": "JUSTA",
-          "recomendacao": "A estratégia pura é adequada devido ao delta baixo e estilo europeu."
+          "avaliacao": "null",
+          "recomendacao": "null"
         },
-        "justificativa": "A ação BBAS apresenta um delta baixo, o que reduz o risco de exercício. A taxa mensal de 8.03% supera o CDI e o IPCA, tornando a venda coberta atrativa. O estilo europeu da opção reduz riscos adicionais.",
-        "riscos": "Nenhum risco qualitativo adicional identificado.",
+        "justificativa": "A ação BBAS apresenta um delta baixo e um theta negativo moderado, indicando uma boa oportunidade de venda coberta. A taxa mensal supera significativamente o CDI, justificando a manutenção do ranking.",
+        "riscos": "null",
         "score": 10
       },
       {
@@ -52,11 +52,11 @@
         "cobertura": {
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
-          "avaliacao": "JUSTA",
-          "recomendacao": "A estratégia pura é adequada devido ao delta moderado e estilo europeu."
+          "avaliacao": "null",
+          "recomendacao": "null"
         },
-        "justificativa": "A ação B3SA possui um delta moderado, o que ainda é aceitável para uma estratégia pura. A taxa mensal de 6.71% é competitiva, superando o CDI e IPCA.",
-        "riscos": "Nenhum risco qualitativo adicional identificado.",
+        "justificativa": "B3SA tem um delta moderado e um theta negativo mais acentuado, mas ainda assim oferece uma taxa mensal que supera o CDI, confirmando sua posição no ranking.",
+        "riscos": "null",
         "score": 10
       },
       {
@@ -78,17 +78,15 @@
         "cobertura": {
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
-          "avaliacao": "JUSTA",
-          "recomendacao": "A estratégia pura é adequada devido ao delta próximo do limite e estilo europeu."
+          "avaliacao": "null",
+          "recomendacao": "null"
         },
-        "justificativa": "A ação WEGE apresenta um delta próximo do limite para uma estratégia pura, mas ainda aceitável. A taxa mensal de 9% é bastante atrativa.",
-        "riscos": "Nenhum risco qualitativo adicional identificado.",
+        "justificativa": "WEGE apresenta um delta próximo ao limite para estratégias puras, mas a taxa mensal atrativa e a superação do CDI justificam sua posição no ranking.",
+        "riscos": "null",
         "score": 8.8
       }
     ],
-    "alertas": [
-      "Nenhum alerta específico identificado."
-    ],
+    "alertas": [],
     "gerado_em": "2026-05-12T00:00:00Z"
   },
   "resultados": [
