@@ -7,1322 +7,769 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-/* ─── CSS Variables ─── */
-:root {
-  --bg:          #F5F3EE;        /* papel creme */
-  --bg2:         #EDEAE3;        /* card levemente mais escuro */
-  --bg3:         #E2DED5;        /* borda/divisor */
-  --ink:         #1A1714;        /* texto principal */
-  --ink2:        #5A5550;        /* texto secundário */
-  --ink3:        #9A9590;        /* texto sutil */
-  --gold:        #B8860B;        /* acento dourado */
-  --gold-light:  #F5E6B4;        /* fundo tag dourada */
-  --green:       #2D6A4F;        /* supera CDI */
-  --green-light: #D8F3DC;
-  --red:         #9B2226;        /* perda/risco */
-  --red-light:   #FFE8E8;
-  --blue:        #1D3557;        /* collar / proteção */
-  --blue-light:  #D6EAF8;
-  --amber:       #C77B2A;        /* aviso americano */
-  --amber-light: #FEF3CD;
-  --shadow:      0 2px 12px rgba(26,23,20,0.08);
-  --shadow-lg:   0 8px 32px rgba(26,23,20,0.12);
-  --radius:      12px;
-  --radius-sm:   8px;
+:root{
+  --bg:#F5F3EE;--bg2:#EDEAE3;--bg3:#E2DED5;
+  --ink:#1A1714;--ink2:#5A5550;--ink3:#9A9590;
+  --gold:#B8860B;--gold-light:#F5E6B4;
+  --green:#2D6A4F;--green-light:#D8F3DC;
+  --red:#9B2226;--red-light:#FFE8E8;
+  --blue:#1D3557;--blue-light:#D6EAF8;
+  --amber:#C77B2A;--amber-light:#FEF3CD;
+  --shadow:0 2px 12px rgba(26,23,20,.08);
+  --shadow-lg:0 8px 32px rgba(26,23,20,.12);
+  --radius:12px;--radius-sm:8px;
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;font-size:14px;line-height:1.6}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── Header ── */
+.header{background:var(--ink);color:#F5F3EE;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hbrand{display:flex;align-items:baseline;gap:10px}
+.hbrand h1{font-family:'DM Serif Display',serif;font-size:19px;font-weight:400}
+.hbrand .tag{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px}
+.hstatus{font-family:'DM Mono',monospace;font-size:11px;color:#9A9590}
+.hstatus.ok{color:#6FCF97}.hstatus.warn{color:var(--amber)}
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-  min-height: 100vh;
-  font-size: 14px;
-  line-height: 1.6;
-}
+/* ── Container ── */
+.wrap{max-width:1400px;margin:0 auto;padding:16px 18px}
 
-/* ─── Header ─── */
-.header {
-  background: var(--ink);
-  color: #F5F3EE;
-  padding: 20px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.header-brand { display: flex; align-items: baseline; gap: 12px; }
-.header-brand h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 22px;
-  font-weight: 400;
-  letter-spacing: -0.3px;
-}
-.header-brand .tagline {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-}
-.header-time {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  color: #9A9590;
-  letter-spacing: 0.5px;
-}
+/* ── Top controls row ── */
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:stretch}
+.card-sm{background:white;border:1px solid var(--bg3);border-radius:var(--radius);padding:10px 16px;box-shadow:var(--shadow)}
+.caixa-block{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.fi{display:flex;align-items:center;gap:5px}
+.fi label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3);white-space:nowrap}
+.fi input[type="number"]{width:80px;padding:5px 8px;border:1.5px solid var(--bg3);border-radius:var(--radius-sm);font-family:'DM Mono',monospace;font-size:13px;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s}
+.fi input:focus{border-color:var(--gold)}
+.dvv{width:1px;height:22px;background:var(--bg3)}
 
-/* ─── Layout ─── */
-.container { max-width: 1280px; margin: 0 auto; padding: 28px 24px; }
+/* Alloc strip */
+.alloc-block{display:flex;align-items:center;gap:12px;flex:1;flex-wrap:wrap}
+.ap{display:flex;flex-direction:column;align-items:center;min-width:64px}
+.ap .v{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--gold)}
+.ap .l{font-size:9px;text-transform:uppercase;letter-spacing:.6px;color:var(--ink3)}
+.bar-wrap{flex:1;min-width:80px}
+.bar-track{background:var(--bg2);border-radius:99px;height:7px;overflow:hidden}
+.bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--amber));transition:width .6s cubic-bezier(.34,1.56,.64,1)}
 
-/* ─── Config Card ─── */
-.config-card {
-  background: white;
-  border: 1px solid var(--bg3);
-  border-radius: var(--radius);
-  padding: 24px 28px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow);
-}
-.config-card h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 17px;
-  font-weight: 400;
-  margin-bottom: 18px;
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.config-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
-  align-items: end;
-}
-.field label {
-  display: block;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  color: var(--ink2);
-  margin-bottom: 6px;
-}
-.field input[type="number"],
-.field input[type="text"] {
-  width: 100%;
-  padding: 10px 14px;
-  border: 1.5px solid var(--bg3);
-  border-radius: var(--radius-sm);
-  background: var(--bg);
-  font-family: 'DM Mono', monospace;
-  font-size: 14px;
-  color: var(--ink);
-  outline: none;
-  transition: border-color .2s;
-}
-.field input:focus { border-color: var(--gold); }
+/* Filters */
+.filter-block{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.filter-block label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3)}
+.filter-block select,.filter-block input[type="text"]{padding:5px 8px;border:1.5px solid var(--bg3);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:12px;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s;cursor:pointer}
+.filter-block select:focus,.filter-block input:focus{border-color:var(--gold)}
+.btn-clear{padding:4px 10px;border:1.5px solid var(--bg3);border-radius:var(--radius-sm);font-size:11px;font-weight:600;background:transparent;color:var(--ink2);cursor:pointer;transition:all .15s}
+.btn-clear:hover{border-color:var(--ink2);color:var(--ink)}
 
-.indicator-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--bg2);
-  border: 1px solid var(--bg3);
-  border-radius: 99px;
-  padding: 6px 14px;
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  font-weight: 500;
-}
-.indicator-pill .label { color: var(--ink3); font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; }
-.indicator-pill .value { color: var(--ink); }
+/* Indicators */
+.indrow{display:none;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.ipill{display:inline-flex;align-items:center;gap:5px;background:white;border:1px solid var(--bg3);border-radius:99px;padding:4px 12px;font-family:'DM Mono',monospace;font-size:12px}
+.ipill .il{color:var(--ink3);font-size:10px;text-transform:uppercase;letter-spacing:.5px}
 
-/* ─── Data Input ─── */
-.data-input-card {
-  background: white;
-  border: 1.5px dashed var(--bg3);
-  border-radius: var(--radius);
-  padding: 24px 28px;
-  margin-bottom: 24px;
-  transition: border-color .2s;
-}
-.data-input-card:hover { border-color: var(--gold); }
-.data-input-card h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 17px;
-  font-weight: 400;
-  margin-bottom: 14px;
-}
-.data-input-card textarea {
-  width: 100%;
-  height: 100px;
-  padding: 12px;
-  border: 1px solid var(--bg3);
-  border-radius: var(--radius-sm);
-  background: var(--bg);
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  color: var(--ink);
-  resize: vertical;
-  outline: none;
-}
-.data-input-card textarea:focus { border-color: var(--gold); }
-.data-input-hint { font-size: 12px; color: var(--ink3); margin-top: 8px; }
+/* IA Panel */
+.ia-panel{background:white;border:1px solid var(--bg3);border-radius:var(--radius);margin-bottom:16px;box-shadow:var(--shadow);display:none;overflow:hidden}
+.ia-hd{padding:13px 18px;border-bottom:1px solid var(--bg3);display:flex;align-items:baseline;gap:8px}
+.ia-hd h2{font-family:'DM Serif Display',serif;font-size:15px;font-weight:400}
+.ia-hd span{font-size:11px;color:var(--ink3)}
+.ia-out{padding:14px 18px;font-size:12.5px;line-height:1.8;color:var(--ink);white-space:pre-wrap;overflow-y:auto;max-height:380px}
+.ia-out.loading{color:var(--ink3);font-style:italic}
 
-/* ─── Buttons ─── */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: var(--radius-sm);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all .18s;
-  white-space: nowrap;
-}
-.btn-primary { background: var(--ink); color: white; }
-.btn-primary:hover { background: #2D2926; transform: translateY(-1px); box-shadow: var(--shadow); }
-.btn-gold { background: var(--gold); color: white; }
-.btn-gold:hover { background: #9A7009; transform: translateY(-1px); box-shadow: var(--shadow); }
-.btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--bg3); }
-.btn-outline:hover { border-color: var(--ink2); }
-.btn-ai { background: linear-gradient(135deg, #1D3557, #2D6A4F); color: white; }
-.btn-ai:hover { opacity: .9; transform: translateY(-1px); box-shadow: var(--shadow-lg); }
-.btn:disabled { opacity: .45; cursor: not-allowed; transform: none !important; }
+/* Data Input fallback */
+.data-fb{background:white;border:1.5px dashed var(--bg3);border-radius:var(--radius);padding:13px 16px;margin-bottom:16px}
+.data-fb h2{font-family:'DM Serif Display',serif;font-size:14px;font-weight:400;margin-bottom:8px}
+.data-fb textarea{width:100%;height:70px;padding:8px;border:1px solid var(--bg3);border-radius:var(--radius-sm);background:var(--bg);font-family:'DM Mono',monospace;font-size:11px;color:var(--ink);resize:vertical;outline:none}
+.data-fb textarea:focus{border-color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border:none;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .18s}
+.btn-p{background:var(--ink);color:white}.btn-p:hover{background:#2D2926}
+.btn-o{background:transparent;color:var(--ink);border:1.5px solid var(--bg3)}.btn-o:hover{border-color:var(--ink2)}
 
-/* ─── Indicators Row ─── */
-.indicators-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 24px;
-}
+/* Section */
+.section{margin-bottom:24px}
+.sec-hd{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.sec-title{font-family:'DM Serif Display',serif;font-size:18px;font-weight:400}
+.sec-count{font-family:'DM Mono',monospace;font-size:11px;background:var(--bg2);border:1px solid var(--bg3);padding:2px 9px;border-radius:99px;color:var(--ink2)}
 
-/* ─── Allocation Bar ─── */
-.allocation-card {
-  background: white;
-  border: 1px solid var(--bg3);
-  border-radius: var(--radius);
-  padding: 20px 28px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow);
-}
-.allocation-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 14px;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.allocation-header h3 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 16px;
-  font-weight: 400;
-}
-.allocation-numbers { display: flex; gap: 24px; flex-wrap: wrap; }
-.alloc-num { text-align: center; }
-.alloc-num .val {
-  font-family: 'DM Mono', monospace;
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--gold);
-}
-.alloc-num .lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--ink3); }
-.bar-track {
-  background: var(--bg2);
-  border-radius: 99px;
-  height: 10px;
-  overflow: hidden;
-  margin-top: 8px;
-}
-.bar-fill {
-  height: 100%;
-  border-radius: 99px;
-  background: linear-gradient(90deg, var(--gold), var(--amber));
-  transition: width .6s cubic-bezier(.34,1.56,.64,1);
-}
+/* ── CARDS GRID — 3-4 por linha ── */
+.ops-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
 
-/* ─── Section ─── */
-.section { margin-bottom: 32px; }
-.section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.section-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 20px;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.section-count {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  background: var(--bg2);
-  border: 1px solid var(--bg3);
-  padding: 3px 10px;
-  border-radius: 99px;
-  color: var(--ink2);
-}
+/* ── Op Card ── */
+.op-card{background:white;border:1px solid var(--bg3);border-radius:var(--radius);padding:0;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.op-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.op-card .card-stripe{height:4px;background:linear-gradient(90deg,var(--gold),var(--amber));flex-shrink:0}
+.op-card.collar .card-stripe{background:linear-gradient(90deg,var(--blue),#2D6A4F)}
+.op-card.suggested{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold-light),var(--shadow-lg)}
+.card-body{padding:16px;flex:1;display:flex;flex-direction:column;gap:0}
 
-/* ─── Op Cards ─── */
-.ops-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 16px;
-}
+/* CDI comparison bar at top */
+.cdi-bar{background:var(--bg);border-radius:var(--radius-sm);padding:8px 12px;margin-bottom:11px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.cdi-bar-inner{flex:1;display:flex;flex-direction:column;gap:3px}
+.cdi-bar-label{font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3);font-weight:700}
+.cdi-bar-track{background:var(--bg3);border-radius:99px;height:6px;overflow:hidden;position:relative}
+.cdi-bar-fill{height:100%;border-radius:99px;background:var(--green);transition:width .5s}
+.cdi-bar-fill.bad{background:var(--red)}
+.cdi-ratio{font-family:'DM Mono',monospace;font-size:14px;font-weight:600;color:var(--green);white-space:nowrap}
+.cdi-ratio.bad{color:var(--red)}
 
-.op-card {
-  background: white;
-  border: 1px solid var(--bg3);
-  border-radius: var(--radius);
-  padding: 20px;
-  box-shadow: var(--shadow);
-  transition: transform .18s, box-shadow .18s;
-  position: relative;
-  overflow: hidden;
-}
-.op-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-.op-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--gold), var(--amber));
-}
-.op-card.collar::before {
-  background: linear-gradient(90deg, var(--blue), #2D6A4F);
-}
-.op-card.suggested {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 2px var(--gold-light), var(--shadow-lg);
-}
-
-/* Card Header */
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 14px;
-}
-.card-ticker { font-family: 'DM Serif Display', serif; font-size: 20px; font-weight: 400; }
-.card-option { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--ink2); margin-top: 1px; }
-.card-taxa-mes {
-  text-align: right;
-}
-.card-taxa-mes .val {
-  font-family: 'DM Mono', monospace;
-  font-size: 22px;
-  font-weight: 500;
-  color: var(--green);
-}
-.card-taxa-mes .lbl { font-size: 10px; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.6px; }
+/* Card header */
+.card-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.card-ticker{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;line-height:1}
+.card-sub{display:flex;align-items:center;gap:5px;margin-top:3px}
+.card-option{font-family:'DM Mono',monospace;font-size:10px;color:var(--ink2)}
+.flag{font-size:13px}
+.card-taxa-mes .val{font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--green);text-align:right}
+.card-taxa-mes .lbl{font-size:9px;color:var(--ink3);text-align:right;text-transform:uppercase;letter-spacing:.5px}
 
 /* Badges */
-.badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 3px 9px;
-  border-radius: 99px;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-}
-.badge-supera  { background: var(--green-light); color: var(--green); }
-.badge-nao    { background: var(--red-light); color: var(--red); }
-.badge-otm    { background: var(--blue-light); color: var(--blue); }
-.badge-itm    { background: var(--red-light); color: var(--red); }
-.badge-atm    { background: var(--amber-light); color: var(--amber); }
-.badge-american { background: var(--amber-light); color: var(--amber); }
-.badge-sem-oferta { background: var(--red-light); color: var(--red); }
-.badge-collar { background: var(--blue-light); color: var(--blue); }
-.badge-ai     { background: linear-gradient(135deg, #D6EAF8, #D8F3DC); color: var(--blue); }
+.badges{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px}
+.badge{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:99px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+.bg-s{background:var(--green-light);color:var(--green)}
+.bg-n{background:var(--red-light);color:var(--red)}
+.bg-otm{background:var(--blue-light);color:var(--blue)}
+.bg-itm{background:var(--red-light);color:var(--red)}
+.bg-atm{background:var(--amber-light);color:var(--amber)}
+.bg-am{background:var(--amber-light);color:var(--amber)}
+.bg-sb{background:var(--red-light);color:var(--red)}
+.bg-col{background:var(--blue-light);color:var(--blue)}
 
-/* Data Grid */
-.data-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px 12px;
-  margin-bottom: 14px;
-}
-.data-row { display: flex; flex-direction: column; }
-.data-row .key { font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--ink3); font-weight: 600; }
-.data-row .val { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--ink); font-weight: 500; }
-.data-row .val.pos { color: var(--green); }
-.data-row .val.neg { color: var(--red); }
-.data-row .val.gold { color: var(--gold); }
+/* Premio breakdown */
+.premio-box{background:var(--bg);border-radius:var(--radius-sm);padding:9px 12px;margin-bottom:10px}
+.premio-title{font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink3);font-weight:700;margin-bottom:6px}
+.premio-calc{display:flex;align-items:center;gap:5px;font-family:'DM Mono',monospace;font-size:12px;flex-wrap:wrap}
+.premio-val{font-weight:600;color:var(--ink)}
+.premio-op{color:var(--ink3);font-size:11px}
+.premio-sub{color:var(--red)}
+.premio-eq{color:var(--ink3);font-size:11px}
+.premio-liq{font-weight:700;color:var(--green);font-size:13px}
 
-/* Divider */
-.divider { height: 1px; background: var(--bg2); margin: 12px 0; }
+/* Data grid */
+.dg{display:grid;grid-template-columns:1fr 1fr;gap:5px 10px;margin-bottom:10px}
+.dr{display:flex;flex-direction:column}
+.dr .k{font-size:9px;text-transform:uppercase;letter-spacing:.4px;color:var(--ink3);font-weight:700}
+.dr .v{font-family:'DM Mono',monospace;font-size:12px;color:var(--ink);font-weight:500}
+.dr .v.pos{color:var(--green)}.dr .v.neg{color:var(--red)}.dr .v.gold{color:var(--gold)}
 
-/* Simulação */
-.simulacao {
-  background: var(--bg);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  margin-bottom: 12px;
-}
-.simulacao h4 {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  color: var(--ink3);
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.sim-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 4px 0;
-  border-bottom: 1px dashed var(--bg3);
-}
-.sim-row:last-child { border-bottom: none; }
-.sim-row .sim-lbl { font-size: 12px; color: var(--ink2); }
-.sim-row .sim-val { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; }
-.sim-row .sim-ganho { color: var(--green); font-weight: 700; }
+.div{height:1px;background:var(--bg2);margin:9px 0}
+
+/* Simulacao */
+.sim{background:var(--bg);border-radius:var(--radius-sm);padding:9px 11px;margin-bottom:9px}
+.sim h4{font-size:9px;text-transform:uppercase;letter-spacing:.6px;color:var(--ink3);font-weight:700;margin-bottom:5px}
+.sim-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px dashed var(--bg3)}
+.sim-row:last-child{border-bottom:none}
+.sim-lbl{font-size:11px;color:var(--ink2)}
+.sim-g{font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--green)}
+.sim-hl{background:var(--gold-light);border-radius:5px;padding:3px 6px;margin-top:3px}
 
 /* Liquidez */
-.liquidez {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  padding: 6px 10px;
-  border-radius: var(--radius-sm);
-}
-.liquidez.ok { background: var(--green-light); color: var(--green); }
-.liquidez.warn { background: var(--amber-light); color: var(--amber); }
+.liq{display:flex;align-items:center;gap:5px;font-size:11px;padding:5px 8px;border-radius:var(--radius-sm);margin-top:auto}
+.liq.ok{background:var(--green-light);color:var(--green)}
+.liq.warn{background:var(--amber-light);color:var(--amber)}
 
-/* Suggestion Banner */
-.suggestion-banner {
-  background: linear-gradient(135deg, #F5F3EE, #E8F4FD);
-  border: 1px solid var(--blue-light);
-  border-radius: var(--radius);
-  padding: 16px 20px;
-  margin-bottom: 12px;
-}
-.suggestion-banner .ai-label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  color: var(--blue);
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-.suggestion-banner p { font-size: 13px; color: var(--ink); line-height: 1.5; }
+/* IA suggestion in card */
+.ia-sug{background:linear-gradient(135deg,#F5F3EE,#E8F4FD);border:1px solid var(--blue-light);border-radius:var(--radius-sm);padding:7px 10px;margin-bottom:9px}
+.ia-sug .al{font-size:9px;text-transform:uppercase;letter-spacing:.6px;color:var(--blue);font-weight:700;margin-bottom:2px}
+.ia-sug p{font-size:11px;color:var(--ink);line-height:1.4}
 
-/* Allocated suggestion */
-.alloc-suggestion {
-  background: var(--gold-light);
-  border: 1px solid var(--gold);
-  border-radius: var(--radius-sm);
-  padding: 8px 12px;
-  font-size: 12px;
-  color: var(--ink);
-  margin-top: 8px;
-  font-family: 'DM Mono', monospace;
-}
+/* Login */
+#lscreen{position:fixed;inset:0;background:var(--ink);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .4s}
+#lscreen.fade{opacity:0;pointer-events:none}
+.lbox{background:white;border-radius:16px;padding:38px 30px;width:100%;max-width:330px;box-shadow:0 24px 64px rgba(0,0,0,.4);text-align:center}
+.lbox .icon{font-size:28px;margin-bottom:7px}
+.lbox h2{font-family:'DM Serif Display',serif;font-size:18px;font-weight:400;margin-bottom:3px}
+.lbox p{font-size:11px;color:var(--ink3);margin-bottom:18px}
+.lbox input[type="password"]{width:100%;padding:10px 12px;border:1.5px solid var(--bg3);border-radius:var(--radius-sm);font-family:'DM Mono',monospace;font-size:15px;letter-spacing:4px;text-align:center;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s;margin-bottom:10px}
+.lbox input:focus{border-color:var(--gold)}
+.lbox input.err{border-color:var(--red);animation:shk .3s}
+.lbtn{width:100%;padding:11px;font-size:13px;border-radius:var(--radius-sm);background:var(--ink);color:white;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;transition:background .18s}
+.lbtn:hover{background:var(--gold)}
+.lerr{font-size:11px;color:var(--red);margin-top:6px;min-height:14px}
 
-/* ─── AI Panel ─── */
-.ai-panel {
-  background: white;
-  border: 1px solid var(--bg3);
-  border-radius: var(--radius);
-  padding: 24px 28px;
-  margin-bottom: 28px;
-  box-shadow: var(--shadow);
-}
-.ai-panel h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 19px;
-  font-weight: 400;
-  margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.ai-panel .subtitle { font-size: 12px; color: var(--ink3); margin-bottom: 16px; }
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
 
-.ai-output {
-  background: var(--bg);
-  border: 1px solid var(--bg3);
-  border-radius: var(--radius-sm);
-  padding: 16px;
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--ink);
-  min-height: 80px;
-  white-space: pre-wrap;
-}
-.ai-output.loading { color: var(--ink3); font-style: italic; }
+.toast{position:fixed;bottom:16px;right:16px;background:var(--ink);color:white;padding:9px 15px;border-radius:var(--radius-sm);font-size:13px;opacity:0;transform:translateY(8px);transition:all .3s;z-index:1000;max-width:280px}
+.toast.show{opacity:1;transform:translateY(0)}
 
-/* Typewriter cursor */
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-.cursor::after {
-  content: '|';
-  animation: blink 1s step-end infinite;
-  color: var(--gold);
-  font-weight: 300;
-}
+footer{text-align:center;padding:16px;font-size:11px;color:var(--ink3);border-top:1px solid var(--bg3);font-family:'DM Mono',monospace}
 
-/* ─── Empty State ─── */
-.empty {
-  text-align: center;
-  padding: 48px 24px;
-  color: var(--ink3);
-}
-.empty .icon { font-size: 36px; margin-bottom: 12px; }
-.empty p { font-size: 14px; }
-
-/* ─── Footer ─── */
-footer {
-  text-align: center;
-  padding: 24px;
-  font-size: 11px;
-  color: var(--ink3);
-  border-top: 1px solid var(--bg3);
-  font-family: 'DM Mono', monospace;
-}
-
-/* ─── Toast ─── */
-.toast {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  background: var(--ink);
-  color: white;
-  padding: 12px 20px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: all .3s;
-  z-index: 1000;
-  max-width: 320px;
-}
-.toast.show { opacity: 1; transform: translateY(0); }
-
-/* ─── Responsive ─── */
-@media (max-width: 600px) {
-  .container { padding: 16px; }
-  .header { padding: 16px; }
-  .ops-grid { grid-template-columns: 1fr; }
-  .config-grid { grid-template-columns: 1fr 1fr; }
-}
-
-/* ─── Login Screen ─── */
-#login-screen {
-  position: fixed;
-  inset: 0;
-  background: var(--ink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity .4s ease;
-}
-#login-screen.fade-out { opacity: 0; pointer-events: none; }
-
-.login-box {
-  background: white;
-  border-radius: 16px;
-  padding: 48px 40px;
-  width: 100%;
-  max-width: 380px;
-  box-shadow: 0 24px 64px rgba(0,0,0,.4);
-  text-align: center;
-}
-.login-box .login-icon { font-size: 36px; margin-bottom: 12px; }
-.login-box h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 22px;
-  font-weight: 400;
-  margin-bottom: 4px;
-  color: var(--ink);
-}
-.login-box p {
-  font-size: 12px;
-  color: var(--ink3);
-  margin-bottom: 28px;
-}
-.login-box input[type="password"] {
-  width: 100%;
-  padding: 12px 16px;
-  border: 1.5px solid var(--bg3);
-  border-radius: var(--radius-sm);
-  font-family: 'DM Mono', monospace;
-  font-size: 16px;
-  letter-spacing: 4px;
-  text-align: center;
-  color: var(--ink);
-  background: var(--bg);
-  outline: none;
-  transition: border-color .2s;
-  margin-bottom: 14px;
-}
-.login-box input[type="password"]:focus { border-color: var(--gold); }
-.login-box input[type="password"].error { border-color: var(--red); animation: shake .3s; }
-.login-box .btn-login {
-  width: 100%;
-  justify-content: center;
-  padding: 13px;
-  font-size: 14px;
-  border-radius: var(--radius-sm);
-  background: var(--ink);
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 600;
-  transition: background .18s;
-}
-.login-box .btn-login:hover { background: var(--gold); }
-.login-error {
-  font-size: 12px;
-  color: var(--red);
-  margin-top: 10px;
-  min-height: 18px;
-}
-
-@keyframes shake {
-  0%,100% { transform: translateX(0); }
-  25%      { transform: translateX(-6px); }
-  75%      { transform: translateX(6px); }
-}
+@media(max-width:700px){.wrap{padding:10px}.ops-grid{grid-template-columns:1fr}.controls{flex-direction:column}}
 </style>
 </head>
 <body>
 
-<!-- LOGIN SCREEN -->
-<div id="login-screen">
-  <div class="login-box">
-    <div class="login-icon">🔐</div>
+<!-- LOGIN -->
+<div id="lscreen">
+  <div class="lbox">
+    <div class="icon">🔐</div>
     <h2>Operações de Taxa</h2>
-    <p>Digite a senha para acessar o scanner</p>
-    <input type="password" id="senha" placeholder="••••••••" onkeydown="if(event.key==='Enter') checkSenha()"/>
-    <button class="btn-login" onclick="checkSenha()">Entrar →</button>
-    <div class="login-error" id="login-error"></div>
+    <p>Digite a senha para acessar</p>
+    <input type="password" id="senha" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkSenha()"/>
+    <button class="lbtn" onclick="checkSenha()">Entrar →</button>
+    <div class="lerr" id="lerr"></div>
   </div>
 </div>
 
 <!-- HEADER -->
 <header class="header">
-  <div class="header-brand">
+  <div class="hbrand">
     <h1>📈 Operações de Taxa</h1>
-    <span class="tagline">Scanner de Oportunidades</span>
+    <span class="tag">Scanner</span>
   </div>
-  <span class="header-time" id="clock">—</span>
+  <span class="hstatus" id="hstatus">Aguardando dados…</span>
 </header>
 
-<div class="container">
+<div class="wrap">
 
-  <!-- CONFIG CARD -->
-  <div class="config-card">
-    <h2>⚙️ Configuração de Caixa</h2>
-    <div class="config-grid">
-      <div class="field">
-        <label>Caixa Disponível (R$)</label>
-        <input type="number" id="caixa" value="50000" min="0" step="1000" oninput="recalcAlloc()"/>
-      </div>
-      <div class="field">
-        <label>% Alocação para Taxa</label>
-        <input type="number" id="pct_taxa" value="40" min="1" max="100" step="5" oninput="recalcAlloc()"/>
-      </div>
-      <div class="field">
-        <label>% Alocação por Ativo (max)</label>
-        <input type="number" id="pct_ativo" value="20" min="5" max="100" step="5" oninput="recalcAlloc()"/>
-      </div>
-      <div class="field">
-        <label>OpenAI API Key</label>
-        <input type="text" id="api_key" placeholder="sk-..." autocomplete="off"/>
+  <!-- CONTROLS ROW -->
+  <div class="controls">
+
+    <!-- Caixa + Alocação -->
+    <div class="card-sm" style="flex:2;min-width:320px">
+      <div class="caixa-block">
+        <div class="fi"><label>R$ Caixa</label><input type="number" id="caixa" value="50000" min="0" step="1000" oninput="recalc()"/></div>
+        <div class="dvv"></div>
+        <div class="fi"><label>% Taxa</label><input type="number" id="pct_taxa" value="40" min="1" max="100" step="5" oninput="recalc()"/></div>
+        <div class="fi"><label>% Ativo</label><input type="number" id="pct_ativo" value="20" min="5" max="100" step="5" oninput="recalc()"/></div>
+        <div class="dvv"></div>
+        <div class="alloc-block" id="alloc-block" style="display:none">
+          <div class="ap"><div class="v" id="v-taxa">—</div><div class="l">Para Taxa</div></div>
+          <div class="ap"><div class="v" id="v-ativo">—</div><div class="l">Máx/Ativo</div></div>
+          <div class="ap"><div class="v" id="v-reserva">—</div><div class="l">Reserva</div></div>
+          <div class="bar-wrap"><div class="bar-track"><div class="bar-fill" id="bar-fill" style="width:0%"></div></div></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- ALLOCATION BAR -->
-  <div class="allocation-card" id="alloc-card" style="display:none">
-    <div class="allocation-header">
-      <h3>💰 Distribuição de Caixa</h3>
-      <div class="allocation-numbers" id="alloc-numbers"></div>
-    </div>
-    <div class="bar-track"><div class="bar-fill" id="alloc-bar" style="width:0%"></div></div>
-  </div>
-
-  <!-- INDICATORS ROW -->
-  <div class="indicators-row" id="indicators-row" style="display:none"></div>
-
-  <!-- DATA INPUT — auto-load + fallback manual -->
-  <div class="data-input-card" id="data-input-card">
-    <h2>📡 Fonte de Dados</h2>
-    <p id="autoload-status" style="font-size:13px;margin-bottom:12px;color:var(--ink3);">⏳ Buscando dados publicados pelo n8n…</p>
-
-    <!-- Seção manual — visível apenas se data.json não existir -->
-    <div id="manual-input-section" style="display:none">
-      <textarea id="json-input" placeholder='Cole aqui o JSON gerado pelo n8n (campo "resultados" com puras e collars)...'></textarea>
-      <p class="data-hint">Aceita o JSON bruto do node <b>Agregar resultados</b>.</p>
-      <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;">
-        <button class="btn btn-primary" onclick="loadJSON()">▶ Carregar Dados</button>
-        <button class="btn btn-outline" onclick="loadDemo()">🧪 Demo com dados fictícios</button>
+    <!-- Filtros -->
+    <div class="card-sm" style="flex:3;min-width:300px">
+      <div class="filter-block">
+        <label>🔍 Filtrar</label>
+        <select id="f-empresa" onchange="applyFilters()">
+          <option value="">Todas empresas</option>
+        </select>
+        <select id="f-venc" onchange="applyFilters()">
+          <option value="">Todos venc.</option>
+        </select>
+        <select id="f-tipo" onchange="applyFilters()">
+          <option value="">Call Pura + Collar</option>
+          <option value="pura">Só Call Pura</option>
+          <option value="collar">Só Collar</option>
+        </select>
+        <button class="btn-clear" onclick="clearFilters()">✕ Limpar</button>
       </div>
     </div>
+
   </div>
 
-  <!-- AI PANEL -->
-  <div class="ai-panel" id="ai-panel" style="display:none">
-    <h2>🤖 Análise Inteligente de Oportunidades</h2>
-    <p class="subtitle">IA analisa volatilidade histórica, liquidez e custo-benefício para recomendar a melhor estratégia para cada ativo.</p>
-    <div class="ai-output loading" id="ai-output">Aguardando análise…</div>
-    <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
-      <button class="btn btn-ai" id="btn-ai" onclick="runAI()">✨ Analisar com IA</button>
-      <button class="btn btn-outline" onclick="clearAI()">✕ Limpar</button>
+  <!-- INDICATORS -->
+  <div class="indrow" id="indrow"></div>
+
+  <!-- IA PANEL -->
+  <div class="ia-panel" id="ia-panel">
+    <div class="ia-hd">
+      <h2>🤖 Análise da IA</h2>
+      <span>Gerada automaticamente pelo workflow</span>
+    </div>
+    <div class="ia-out loading" id="ia-out">Aguardando análise…</div>
+  </div>
+
+  <!-- DATA FALLBACK -->
+  <div class="data-fb" id="data-fb" style="display:none">
+    <h2>📋 Dados do Workflow (n8n JSON)</h2>
+    <textarea id="json-input" placeholder="Cole aqui o JSON gerado pelo n8n…"></textarea>
+    <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+      <button class="btn btn-p" onclick="loadJSON()">▶ Carregar</button>
+      <button class="btn btn-o" onclick="loadDemo()">🧪 Demo</button>
     </div>
   </div>
 
   <!-- PURAS -->
-  <div class="section" id="section-puras" style="display:none">
-    <div class="section-header">
-      <span class="section-title">💰 Calls Puras <span class="section-count" id="count-puras">0</span></span>
+  <div class="section" id="sec-puras" style="display:none">
+    <div class="sec-hd">
+      <span class="sec-title">💰 Calls Puras</span>
+      <span class="sec-count" id="ct-puras">0</span>
     </div>
     <div class="ops-grid" id="grid-puras"></div>
   </div>
 
   <!-- COLLARS -->
-  <div class="section" id="section-collars" style="display:none">
-    <div class="section-header">
-      <span class="section-title">🛡 Collar (com Proteção) <span class="section-count" id="count-collars">0</span></span>
+  <div class="section" id="sec-collars" style="display:none">
+    <div class="sec-hd">
+      <span class="sec-title">🛡 Collar</span>
+      <span class="sec-count" id="ct-collars">0</span>
     </div>
     <div class="ops-grid" id="grid-collars"></div>
   </div>
 
 </div>
 
-<footer>
-  Análise informativa. Não constitui recomendação de investimento. &nbsp;|&nbsp; Dados via n8n + Oplab + BCB
-</footer>
-
+<footer>Análise informativa. Não constitui recomendação de investimento. &nbsp;|&nbsp; n8n + Oplab + BCB</footer>
 <div class="toast" id="toast"></div>
 
 <script>
-// ─── STATE ───────────────────────────────────────────
-let DATA = null;          // dados carregados
-let CDI_DIA  = 0.054;     // fallback
-let CDI_MES  = 1.15;
-let IPCA_ANO = 4.14;
-let AI_SCORES = {};       // {ticker: {score, reason, estrategia}}
+var DATA = null, CDI_DIA = 0, CDI_MES = 0, IPCA_ANO = 0, AI_SCORES = {};
+var F_EMP = '', F_VENC = '', F_TIPO = '';
 
-// ─── CLOCK ───────────────────────────────────────────
-function updateClock() {
-  const now = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo', hour:'2-digit', minute:'2-digit', second:'2-digit', day:'2-digit', month:'2-digit', year:'numeric' });
-  document.getElementById('clock').textContent = now;
-}
-setInterval(updateClock, 1000);
-updateClock();
+// ── helpers ──
+function fmt(n,d){ d=d===undefined?2:d; return (n||0).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d}); }
+function fmt4(n){ return (n||0).toLocaleString('pt-BR',{minimumFractionDigits:3,maximumFractionDigits:3}); }
+function fmtM(n){ return 'R$\u00a0'+fmt(n); }
+function fmtI(n){ return Math.round(n||0).toLocaleString('pt-BR'); }
 
-// ─── ALLOC RECALC ────────────────────────────────────
-function recalcAlloc() {
-  const caixa    = parseFloat(document.getElementById('caixa').value) || 0;
-  const pct      = parseFloat(document.getElementById('pct_taxa').value) || 40;
-  const pctAtivo = parseFloat(document.getElementById('pct_ativo').value) || 20;
-  const alocado  = caixa * pct / 100;
-  const reserva  = caixa - alocado;
-  const porAtivo = alocado * pctAtivo / 100;
-
-  if (DATA) {
-    document.getElementById('alloc-card').style.display = 'block';
-    document.getElementById('alloc-numbers').innerHTML = `
-      <div class="alloc-num"><div class="val">${fmtMoeda(caixa)}</div><div class="lbl">Caixa Total</div></div>
-      <div class="alloc-num"><div class="val">${fmtMoeda(alocado)}</div><div class="lbl">Para Operações (${pct}%)</div></div>
-      <div class="alloc-num"><div class="val">${fmtMoeda(porAtivo)}</div><div class="lbl">Máx por Ativo (${pctAtivo}%)</div></div>
-      <div class="alloc-num"><div class="val">${fmtMoeda(reserva)}</div><div class="lbl">Reserva</div></div>
-    `;
-    document.getElementById('alloc-bar').style.width = pct + '%';
-    renderOps();  // re-render cards with new allocation
-  }
+function toast(msg,type){
+  var el=document.getElementById('toast');
+  el.textContent=msg;
+  el.style.background=type==='err'?'var(--red)':type==='warn'?'var(--amber)':'var(--ink)';
+  el.classList.add('show');
+  setTimeout(function(){el.classList.remove('show');},3500);
 }
 
-// ─── FORMAT HELPERS ──────────────────────────────────
-function fmt(n, d=2) { return (n||0).toLocaleString('pt-BR', {minimumFractionDigits:d, maximumFractionDigits:d}); }
-function fmt4(n)      { return (n||0).toLocaleString('pt-BR', {minimumFractionDigits:3, maximumFractionDigits:3}); }
-function fmtMoeda(n)  { return 'R$ ' + fmt(n); }
-function fmtInt(n)    { return Math.round(n||0).toLocaleString('pt-BR'); }
-
-// ─── AUTO-LOAD data.json (publicado pelo n8n via GitHub API) ─────
-async function autoLoadData() {
-  const statusEl = document.getElementById('autoload-status');
-  try {
-    const resp = await fetch('data.json?_=' + Date.now());
-    if (!resp.ok) throw new Error('status ' + resp.status);
-    const parsed = await resp.json();
-    processData(parsed);
-    if (statusEl) {
-      const ts = parsed.updated_at || null;
-      statusEl.innerHTML = '✅ Dados carregados automaticamente' + (ts ? ' — ' + new Date(ts).toLocaleString('pt-BR', {timeZone:'America/Sao_Paulo'}) : '');
-      statusEl.style.color = 'var(--green)';
-    }
-    document.getElementById('manual-input-section').style.display = 'none';
-  } catch(e) {
-    if (statusEl) {
-      statusEl.innerHTML = '⚠️ Nenhum dado publicado ainda — cole o JSON manualmente abaixo.';
-      statusEl.style.color = 'var(--amber)';
-    }
-    document.getElementById('manual-input-section').style.display = 'block';
-  }
-}
-
-// ─── LOAD JSON (manual fallback) ──────────────────────
-function loadJSON() {
-  const raw = document.getElementById('json-input').value.trim();
-  if (!raw) { toast('Cole o JSON antes.', 'warn'); return; }
-  try {
-    let parsed = JSON.parse(raw);
-    if (Array.isArray(parsed)) parsed = parsed[0];
-    if (parsed.resultados) parsed = { resultados: parsed.resultados };
-    processData(parsed);
-  } catch(e) {
-    toast('JSON inválido: ' + e.message, 'err');
-  }
-}
-
-function processData(parsed) {
-  // Lê indicadores do nível raiz (formato novo do data.json)
-  // e também de dentro de resultados (formato legado)
-  if (parsed.cdi_dia)  CDI_DIA  = parsed.cdi_dia;
-  if (parsed.cdi_mes)  CDI_MES  = parsed.cdi_mes;
-  if (parsed.ipca_ano) IPCA_ANO = parsed.ipca_ano;
-
-  const resultados = parsed.resultados || (Array.isArray(parsed) ? parsed : [parsed]);
-  let puras = [], collars = [];
-
-  for (const r of resultados) {
-    if (!r) continue;
-    if (r.puras)   puras   = puras.concat(r.puras);
-    if (r.collars) collars = collars.concat(r.collars);
-    // fallback: lê do nível de resultados se não veio na raiz
-    if (!CDI_DIA  && r.cdi_dia)  CDI_DIA  = r.cdi_dia;
-    if (!CDI_MES  && r.cdi_mes)  CDI_MES  = r.cdi_mes;
-    if (!IPCA_ANO && r.ipca_ano) IPCA_ANO = r.ipca_ano;
-  }
-
-  // Atualiza status de data/hora
-  const statusEl = document.getElementById('autoload-status');
-  if (statusEl && parsed.updated_at) {
-    statusEl.innerHTML = '✅ Atualizado em ' + new Date(parsed.updated_at).toLocaleString('pt-BR', {timeZone:'America/Sao_Paulo'});
-    statusEl.style.color = 'var(--green)';
-  }
-
-  // Renderiza análise da IA se vier no JSON
-  if (parsed.ia_analise && Object.keys(parsed.ia_analise).length) {
-    renderIAFromJSON(parsed.ia_analise);
-  }
-
-  puras.sort((a,b)   => b.Taxa_Mes - a.Taxa_Mes);
-  collars.sort((a,b) => b.Taxa_Mes - a.Taxa_Mes);
-  DATA = { puras, collars };
-
-  // Mostra seções, esconde input manual
-  document.getElementById('alloc-card').style.display = 'block';
-  document.getElementById('ai-panel').style.display   = 'block';
-  document.getElementById('data-input-card').style.display = 'block'; // mantém visível (só esconde o textarea interno)
-  document.getElementById('manual-input-section').style.display = 'none';
-
-  toast('✅ ' + puras.length + ' calls + ' + collars.length + ' collars carregados');
-  renderIndicators();
-  recalcAlloc();
-  renderOps();
-}
-
-// ─── INDICATORS ──────────────────────────────────────
-function renderIndicators() {
-  const row = document.getElementById('indicators-row');
-  row.style.display = 'flex';
-  row.innerHTML = `
-    <div class="indicator-pill"><span class="label">CDI/dia</span><span class="value">${fmt4(CDI_DIA)}%</span></div>
-    <div class="indicator-pill"><span class="label">CDI/mês</span><span class="value">${fmt(CDI_MES)}%</span></div>
-    <div class="indicator-pill"><span class="label">IPCA 12m</span><span class="value">${fmt(IPCA_ANO)}%</span></div>
-  `;
-}
-
-// ─── RENDER OPS ──────────────────────────────────────
-function renderOps() {
-  if (!DATA) return;
-  const caixa    = parseFloat(document.getElementById('caixa').value) || 0;
-  const pct      = parseFloat(document.getElementById('pct_taxa').value) || 40;
-  const pctAtivo = parseFloat(document.getElementById('pct_ativo').value) || 20;
-  const alocado  = caixa * pct / 100;
-  const porAtivo = alocado * pctAtivo / 100;
-
-  // PURAS
-  const gridP = document.getElementById('grid-puras');
-  document.getElementById('section-puras').style.display = DATA.puras.length ? 'block' : 'none';
-  document.getElementById('count-puras').textContent = DATA.puras.length;
-  gridP.innerHTML = DATA.puras.length ? DATA.puras.map((op, i) => cardPura(op, i, porAtivo)).join('') : emptyState();
-
-  // COLLARS
-  const gridC = document.getElementById('grid-collars');
-  document.getElementById('section-collars').style.display = DATA.collars.length ? 'block' : 'none';
-  document.getElementById('count-collars').textContent = DATA.collars.length;
-  gridC.innerHTML = DATA.collars.length ? DATA.collars.map((op, i) => cardCollar(op, i, porAtivo)).join('') : emptyState();
-}
-
-function emptyState() {
-  return `<div class="empty"><div class="icon">🔍</div><p>Nenhuma oportunidade qualificada no momento.</p></div>`;
-}
-
-// ─── CARD PURA ───────────────────────────────────────
-function cardPura(op, rank, porAtivo) {
-  const venc = op.Venc ? op.Venc.substring(5).split('-').reverse().join('/') : '?';
-  const taxa_bruta = ((op.Premio_Bruto / op.Preco_Atual) * 100);
-  const posClass = {OTM:'badge-otm', ITM:'badge-itm', ATM:'badge-atm'}[op.Posicao] || '';
-  const isAmerican = op.Estilo === 'AMERICAN';
-  const ganho_cdi = CDI_DIA > 0 ? (op.Taxa_Dia / CDI_DIA).toFixed(1) : '—';
-
-  // Simulação: quantas ações o caixa alocado compra?
-  const qtd_sugerida = op.Preco_Atual > 0 ? Math.floor(porAtivo / op.Preco_Atual / 100) * 100 : 0;
-  const ganho_sugerido = qtd_sugerida > 0 ? qtd_sugerida * op.Premio_Liquido : 0;
-
-  const aiScore = AI_SCORES[op.Acao];
-  const isSuggested = aiScore && aiScore.estrategia === 'PURA';
-
-  return `
-  <div class="op-card${isSuggested ? ' suggested' : ''}" data-ticker="${op.Acao}">
-    ${isSuggested ? `<div class="suggestion-banner"><div class="ai-label">✨ IA Recomenda</div><p>${aiScore.reason}</p></div>` : ''}
-    <div class="card-header">
-      <div>
-        <div class="card-ticker">${op.Acao}</div>
-        <div class="card-option">${op.Ticker_Opcao}${isAmerican ? ' ⚠️' : ''}</div>
-      </div>
-      <div class="card-taxa-mes">
-        <div class="val">${fmt(op.Taxa_Mes)}%</div>
-        <div class="lbl">ao mês</div>
-      </div>
-    </div>
-
-    <div class="badges">
-      <span class="badge badge-${op.CDI === 'SUPERA' ? 'supera' : 'nao'}">CDI: ${op.CDI === 'SUPERA' ? '✓ supera' : '✗ não supera'}</span>
-      <span class="badge badge-${op.IPCA === 'SUPERA' ? 'supera' : 'nao'}">IPCA: ${op.IPCA === 'SUPERA' ? '✓ supera' : '✗ não supera'}</span>
-      <span class="badge ${posClass}">${op.Posicao}</span>
-      ${isAmerican ? `<span class="badge badge-american">⚠ Americana</span>` : ''}
-      ${op.Sem_Oferta ? `<span class="badge badge-sem-oferta">⚠ Sem book</span>` : ''}
-    </div>
-
-    <div class="data-grid">
-      <div class="data-row"><span class="key">Preço Atual</span><span class="val gold">${fmtMoeda(op.Preco_Atual)}</span></div>
-      <div class="data-row"><span class="key">Strike</span><span class="val">${fmtMoeda(op.Strike)} (${op.Dist_Strike})</span></div>
-      <div class="data-row"><span class="key">Vencimento</span><span class="val">${venc} (${op.Dias_ate_Venc}d)</span></div>
-      <div class="data-row"><span class="key">Volume</span><span class="val">${fmtInt(op.Volume)}</span></div>
-      <div class="data-row"><span class="key">Prêmio Bruto</span><span class="val">${fmtMoeda(op.Premio_Bruto)} (${fmt(taxa_bruta)}%)</span></div>
-      <div class="data-row"><span class="key">IR (15%) + Corret.</span><span class="val neg">− ${fmtMoeda(op.IR + op.Corretagem)}</span></div>
-      <div class="data-row"><span class="key">Prêmio Líquido</span><span class="val pos">${fmtMoeda(op.Premio_Liquido)}</span></div>
-      <div class="data-row"><span class="key">Taxa / dia</span><span class="val">${fmt4(op.Taxa_Dia)}% (${ganho_cdi}× CDI)</span></div>
-    </div>
-
-    <div class="divider"></div>
-    <div class="simulacao">
-      <h4>📊 Simulação de Ganho</h4>
-      <div class="sim-row">
-        <span class="sim-lbl">100 opções → caixa ${fmtMoeda(op.Preco_Atual * 100)}</span>
-        <span class="sim-val sim-ganho">+${fmtMoeda(op.Premio_Liquido * 100)}</span>
-      </div>
-      <div class="sim-row">
-        <span class="sim-lbl">1.000 opções → caixa ${fmtMoeda(op.Preco_Atual * 1000)}</span>
-        <span class="sim-val sim-ganho">+${fmtMoeda(op.Premio_Liquido * 1000)}</span>
-      </div>
-      ${qtd_sugerida > 0 ? `
-      <div class="sim-row" style="background:var(--gold-light);border-radius:6px;padding:4px 8px;margin-top:4px;">
-        <span class="sim-lbl" style="font-weight:600;color:var(--ink);">💼 Seu caixa: ${fmtInt(qtd_sugerida)} opções</span>
-        <span class="sim-val sim-ganho" style="font-size:13px;">+${fmtMoeda(ganho_sugerido)}</span>
-      </div>` : ''}
-    </div>
-
-    <div class="liquidez ${op.Sem_Oferta ? 'warn' : 'ok'}">
-      ${op.Sem_Oferta
-        ? `⚠️ Sem contraparte no book — verifique antes de operar`
-        : `✅ Book: ${fmtInt(op.Bid_Volume)} contratos disponíveis`}
-    </div>
-  </div>`;
-}
-
-// ─── CARD COLLAR ─────────────────────────────────────
-function cardCollar(op, rank, porAtivo) {
-  const venc = op.Venc ? op.Venc.substring(5).split('-').reverse().join('/') : '?';
-  const taxa_bruta = ((op.Premio_Bruto / op.Preco_Atual) * 100);
-  const isAmerican = op.Estilo === 'AMERICAN';
-  const ganho_cdi = CDI_DIA > 0 ? (op.Taxa_Dia / CDI_DIA).toFixed(1) : '—';
-
-  const qtd_sugerida = op.Preco_Atual > 0 ? Math.floor(porAtivo / op.Preco_Atual / 100) * 100 : 0;
-  const ganho_sugerido = qtd_sugerida > 0 ? qtd_sugerida * op.Premio_Liquido : 0;
-
-  const aiScore = AI_SCORES[op.Acao];
-  const isSuggested = aiScore && aiScore.estrategia === 'COLLAR';
-
-  return `
-  <div class="op-card collar${isSuggested ? ' suggested' : ''}" data-ticker="${op.Acao}">
-    ${isSuggested ? `<div class="suggestion-banner"><div class="ai-label">✨ IA Recomenda</div><p>${aiScore.reason}</p></div>` : ''}
-    <div class="card-header">
-      <div>
-        <div class="card-ticker">${op.Acao}</div>
-        <div class="card-option">${op.Ticker_Call} + ${op.Ticker_Put}${isAmerican ? ' ⚠️' : ''}</div>
-      </div>
-      <div class="card-taxa-mes">
-        <div class="val">${fmt(op.Taxa_Mes)}%</div>
-        <div class="lbl">ao mês</div>
-      </div>
-    </div>
-
-    <div class="badges">
-      <span class="badge badge-collar">🛡 Collar</span>
-      <span class="badge badge-${op.CDI === 'SUPERA' ? 'supera' : 'nao'}">CDI: ${op.CDI === 'SUPERA' ? '✓ supera' : '✗ não supera'}</span>
-      <span class="badge badge-${op.IPCA === 'SUPERA' ? 'supera' : 'nao'}">IPCA: ${op.IPCA === 'SUPERA' ? '✓ supera' : '✗ não supera'}</span>
-      ${isAmerican ? `<span class="badge badge-american">⚠ Americana</span>` : ''}
-      ${op.Sem_Oferta_Call ? `<span class="badge badge-sem-oferta">⚠ Sem book</span>` : ''}
-    </div>
-
-    <div class="data-grid">
-      <div class="data-row"><span class="key">Preço Atual</span><span class="val gold">${fmtMoeda(op.Preco_Atual)}</span></div>
-      <div class="data-row"><span class="key">Vencimento</span><span class="val">${venc} (${op.Dias_ate_Venc}d)</span></div>
-      <div class="data-row"><span class="key">Strike Call</span><span class="val">${fmtMoeda(op.Strike_Call)} (${op.Dist_Strike})</span></div>
-      <div class="data-row"><span class="key">Strike Put</span><span class="val neg">${fmtMoeda(op.Strike_Put)} (${op.Dist_Put})</span></div>
-      <div class="data-row"><span class="key">Prêmio Bruto</span><span class="val">${fmtMoeda(op.Premio_Bruto)}</span></div>
-      <div class="data-row"><span class="key">Custo Put</span><span class="val neg">− ${fmtMoeda(op.Custo_Put)}</span></div>
-      <div class="data-row"><span class="key">IR + Corretagem</span><span class="val neg">− ${fmtMoeda(op.IR + op.Corretagem)}</span></div>
-      <div class="data-row"><span class="key">Prêmio Líquido</span><span class="val pos">${fmtMoeda(op.Premio_Liquido)}</span></div>
-      <div class="data-row"><span class="key">Taxa / dia</span><span class="val">${fmt4(op.Taxa_Dia)}% (${ganho_cdi}× CDI)</span></div>
-      <div class="data-row"><span class="key">Perda Máxima</span><span class="val neg">${fmt(op.Perda_Maxima)}%</span></div>
-    </div>
-
-    <div class="divider"></div>
-    <div class="simulacao">
-      <h4>📊 Simulação de Ganho (Collar)</h4>
-      <div class="sim-row">
-        <span class="sim-lbl">100 opções → caixa ${fmtMoeda(op.Preco_Atual * 100)}</span>
-        <span class="sim-val sim-ganho">+${fmtMoeda(op.Premio_Liquido * 100)}</span>
-      </div>
-      <div class="sim-row">
-        <span class="sim-lbl">1.000 opções → caixa ${fmtMoeda(op.Preco_Atual * 1000)}</span>
-        <span class="sim-val sim-ganho">+${fmtMoeda(op.Premio_Liquido * 1000)}</span>
-      </div>
-      ${qtd_sugerida > 0 ? `
-      <div class="sim-row" style="background:var(--gold-light);border-radius:6px;padding:4px 8px;margin-top:4px;">
-        <span class="sim-lbl" style="font-weight:600;color:var(--ink);">💼 Seu caixa: ${fmtInt(qtd_sugerida)} opções</span>
-        <span class="sim-val sim-ganho" style="font-size:13px;">+${fmtMoeda(ganho_sugerido)}</span>
-      </div>` : ''}
-    </div>
-
-    <div class="liquidez ${op.Sem_Oferta_Call ? 'warn' : 'ok'}">
-      ${op.Sem_Oferta_Call
-        ? `⚠️ Sem contraparte na CALL — verifique antes de operar`
-        : `✅ Book CALL: ${fmtInt(op.Bid_Volume_Call)} contratos | PUT ask: ${fmtInt(op.Ask_Volume_Put)}`}
-    </div>
-  </div>`;
-}
-
-// ─── AI ANALYSIS ──────────────────────────────────────
-async function runAI() {
-  if (!DATA) { toast('Carregue os dados primeiro.', 'warn'); return; }
-  const apiKey = document.getElementById('api_key').value.trim();
-  if (!apiKey) { toast('Informe sua Anthropic API Key nas configurações.', 'warn'); return; }
-
-  const btn = document.getElementById('btn-ai');
-  btn.disabled = true;
-  btn.textContent = '⏳ Analisando…';
-
-  const output = document.getElementById('ai-output');
-  output.classList.add('loading');
-  output.textContent = 'Consultando IA…';
-
-  // Build summary for AI
-  const puras_summary = DATA.puras.slice(0, 10).map(op => ({
-    acao: op.Acao,
-    ticker_opcao: op.Ticker_Opcao,
-    tipo: 'CALL_PURA',
-    preco_acao: op.Preco_Atual,
-    strike: op.Strike,
-    dist_strike: op.Dist_Strike,
-    venc: op.Venc,
-    dias: op.Dias_ate_Venc,
-    posicao: op.Posicao,
-    premio_liq: op.Premio_Liquido,
-    taxa_mes: op.Taxa_Mes,
-    volume: op.Volume,
-    sem_oferta: op.Sem_Oferta,
-    cdi_supera: op.CDI,
-    ipca_supera: op.IPCA,
-    estilo: op.Estilo
-  }));
-
-  const collars_summary = DATA.collars.slice(0, 10).map(op => ({
-    acao: op.Acao,
-    tipo: 'COLLAR',
-    preco_acao: op.Preco_Atual,
-    strike_call: op.Strike_Call,
-    strike_put: op.Strike_Put,
-    dist_strike: op.Dist_Strike,
-    dist_put: op.Dist_Put,
-    venc: op.Venc,
-    dias: op.Dias_ate_Venc,
-    premio_liq: op.Premio_Liquido,
-    taxa_mes: op.Taxa_Mes,
-    perda_maxima: op.Perda_Maxima,
-    volume_call: op.Volume_Call,
-    sem_oferta: op.Sem_Oferta_Call,
-    cdi_supera: op.CDI,
-    ipca_supera: op.IPCA
-  }));
-
-  const caixa = parseFloat(document.getElementById('caixa').value) || 0;
-  const pct   = parseFloat(document.getElementById('pct_taxa').value) || 40;
-  const alocado = caixa * pct / 100;
-
-  const prompt = `Você é um analista especialista em mercado de opções da B3, com foco em operações de taxa (venda coberta de CALL e estratégia Collar). Analise as oportunidades abaixo e faça recomendações claras em português.
-
-CONTEXTO DO INVESTIDOR:
-- Caixa disponível para operações: R$ ${fmtMoeda(alocado)} (${pct}% de R$ ${fmtMoeda(caixa)})
-- CDI mensal: ${CDI_MES}%
-- IPCA 12m: ${IPCA_ANO}%
-- Data de análise: ${new Date().toLocaleDateString('pt-BR')}
-
-OPORTUNIDADES DE CALL PURA (venda coberta):
-${JSON.stringify(puras_summary, null, 2)}
-
-OPORTUNIDADES DE COLLAR (CALL + PUT de proteção):
-${JSON.stringify(collars_summary, null, 2)}
-
-SUA TAREFA:
-1. Para cada ativo com oportunidade, avalie se a estratégia ideal é CALL PURA ou COLLAR, baseado em:
-   - Taxa líquida vs CDI
-   - Volatilidade implícita (dist_strike como proxy)
-   - Liquidez (volume e book)
-   - Risco de exercício antecipado (opções americanas)
-   - Relação risco/retorno entre call pura e collar
-
-2. Liste as TOP 3 melhores operações com justificativa concisa.
-
-3. Para cada uma indique: estratégia recomendada (PURA ou COLLAR), quantidade estimada com o caixa disponível e racional de 2-3 linhas.
-
-4. Alerte sobre riscos específicos encontrados (americanas sem proteção, baixa liquidez, etc).
-
-Responda de forma direta, objetiva e em português. Formate bem com emojis e bullet points.`;
-
-  try {
-    const resp = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-      body: JSON.stringify({
-        model: 'gpt-4o',
-        max_tokens: 1500,
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
-
-    if (!resp.ok) {
-      const err = await resp.json();
-      throw new Error(err.error?.message || resp.statusText);
-    }
-
-    const data = await resp.json();
-    const text = data.choices?.[0]?.message?.content || '(sem resposta)';
-
-    output.classList.remove('loading');
-    output.classList.add('cursor');
-    output.textContent = '';
-
-    // Typewriter effect
-    let i = 0;
-    const interval = setInterval(() => {
-      output.textContent = text.slice(0, i);
-      i += 4;
-      if (i > text.length) {
-        output.textContent = text;
-        output.classList.remove('cursor');
-        clearInterval(interval);
-        // Parse suggestions and highlight cards
-        parseAISuggestions(text);
-      }
-    }, 12);
-
-  } catch(e) {
-    output.classList.remove('loading');
-    output.textContent = '❌ Erro: ' + e.message;
-    toast('Erro na API: ' + e.message, 'err');
-  } finally {
-    btn.disabled = false;
-    btn.textContent = '✨ Analisar com IA';
-  }
-}
-
-function parseAISuggestions(text) {
-  // Simple heuristic: look for ticker mentions near "PURA" or "COLLAR"
-  if (!DATA) return;
-  const allTickers = [...new Set([
-    ...DATA.puras.map(o => o.Acao),
-    ...DATA.collars.map(o => o.Acao)
-  ])];
-  AI_SCORES = {};
-  for (const ticker of allTickers) {
-    const re = new RegExp(ticker + '[\\s\\S]{0,200}?(PURA|COLLAR)', 'i');
-    const m = text.match(re);
-    if (m) {
-      const estrategia = m[1].toUpperCase();
-      // Extract a short reason sentence around the match
-      const idx = text.indexOf(ticker);
-      const snippet = text.slice(idx, idx + 200).split('\n')[0];
-      AI_SCORES[ticker] = { estrategia, reason: snippet };
-    }
-  }
-  renderOps();
-}
-
-function renderIAFromJSON(analise) {
-  const output = document.getElementById('ai-output');
-  if (!output) return;
-  output.classList.remove('loading', 'cursor');
-
-  const linhas = [];
-  if (analise.estrategia_geral) linhas.push('📌 Estratégia: ' + analise.estrategia_geral);
-  if (analise.resumo) linhas.push('', analise.resumo);
-
-  if (analise.top3 && analise.top3.length) {
-    linhas.push('', '🏆 TOP RECOMENDAÇÕES');
-    for (const op of analise.top3) {
-      linhas.push('');
-      linhas.push(op.rank + '. ' + op.acao + ' — ' + op.estrategia + ' (Score: ' + op.score + ')');
-      linhas.push('   Opção: ' + (op.ticker_opcao || '—') + ' | Taxa: ' + ((op.taxa_mes||0).toFixed(2)) + '%/mês | Delta: ' + (op.delta||'—') + ' | IV Rank: ' + (op.iv_rank||'—'));
-      if (op.volatilidade_classificacao) linhas.push('   Volatilidade: ' + op.volatilidade_classificacao);
-      if (op.premium_vs_fair) linhas.push('   Prêmio vs Fair Value: ' + op.premium_vs_fair);
-      if (op.cobertura && op.cobertura.perda_maxima_pct) {
-        linhas.push('   🛡 Cobertura: ' + op.cobertura.perda_maxima_pct + '% | Custo: ' + op.cobertura.custo_put_em_meses + ' meses | ' + op.cobertura.avaliacao);
-      }
-      if (op.justificativa) linhas.push('   ' + op.justificativa);
-      if (op.riscos) linhas.push('   ⚠️ ' + op.riscos);
-    }
-  }
-
-  if (analise.alertas && analise.alertas.length) {
-    linhas.push('', '⚠️ ALERTAS');
-    for (const a of analise.alertas) linhas.push('• ' + a);
-  }
-
-  if (analise.gerado_em) {
-    linhas.push('', '🤖 Gerado em ' + new Date(analise.gerado_em).toLocaleString('pt-BR', {timeZone:'America/Sao_Paulo'}));
-  }
-
-  output.textContent = linhas.join('\n');
-
-  if (analise.top3) {
-    for (const op of analise.top3) {
-      if (op.acao) {
-        AI_SCORES[op.acao] = {
-          estrategia: op.estrategia,
-          reason: op.justificativa,
-          score: op.score
-        };
-      }
-    }
+// ── alloc ──
+function recalc(){
+  var caixa=parseFloat(document.getElementById('caixa').value)||0;
+  var pct=parseFloat(document.getElementById('pct_taxa').value)||40;
+  var pctA=parseFloat(document.getElementById('pct_ativo').value)||20;
+  var aloc=caixa*pct/100;
+  var porAt=aloc*pctA/100;
+  if(DATA){
+    document.getElementById('alloc-block').style.display='flex';
+    document.getElementById('v-taxa').textContent=fmtM(aloc);
+    document.getElementById('v-ativo').textContent=fmtM(porAt);
+    document.getElementById('v-reserva').textContent=fmtM(caixa-aloc);
+    document.getElementById('bar-fill').style.width=pct+'%';
     renderOps();
   }
-
-  document.getElementById('ai-panel').style.display = 'block';
 }
 
-function clearAI() {
-  AI_SCORES = {};
-  document.getElementById('ai-output').textContent = 'Aguardando análise…';
-  document.getElementById('ai-output').classList.add('loading');
-  renderOps();
-}
-
-// ─── DEMO DATA ────────────────────────────────────────
-function loadDemo() {
-  CDI_DIA = 0.054266; CDI_MES = 1.15; IPCA_ANO = 4.14;
-  const demo = {
-    resultados: [
-      {
-        cdi_dia: 0.054266, cdi_mes: 1.15, ipca_ano: 4.14,
-        puras: [
-          { Acao:'PETR4', Ticker_Opcao:'PETRD234', Estilo:'EUROPEAN', Venc:'2025-06-20', Dias_ate_Venc:41, Strike:42.00, Preco_Atual:38.50, Posicao:'OTM', Dist_Strike:'+9.1%', Premio_Bruto:0.58, IR:0.087, Corretagem:0.042, Premio_Liquido:0.451, Taxa:1.1714, Taxa_Dia:0.0286, Taxa_Mes:2.28, Volume:18420, Bid_Volume:3200, Sem_Oferta:false, CDI:'SUPERA', IPCA:'SUPERA' },
-          { Acao:'VALE3', Ticker_Opcao:'VALED234', Estilo:'EUROPEAN', Venc:'2025-06-20', Dias_ate_Venc:41, Strike:68.00, Preco_Atual:62.30, Posicao:'OTM', Dist_Strike:'+9.1%', Premio_Bruto:0.72, IR:0.108, Corretagem:0.068, Premio_Liquido:0.544, Taxa:0.8731, Taxa_Dia:0.0213, Taxa_Mes:1.70, Volume:9800, Bid_Volume:1500, Sem_Oferta:false, CDI:'SUPERA', IPCA:'NAO_SUPERA' },
-          { Acao:'BBAS3', Ticker_Opcao:'BBASD234', Estilo:'AMERICAN', Venc:'2025-06-20', Dias_ate_Venc:41, Strike:28.00, Preco_Atual:25.60, Posicao:'OTM', Dist_Strike:'+9.4%', Premio_Bruto:0.42, IR:0.063, Corretagem:0.028, Premio_Liquido:0.329, Taxa:1.285, Taxa_Dia:0.0313, Taxa_Mes:2.50, Volume:5200, Bid_Volume:0, Sem_Oferta:true, CDI:'SUPERA', IPCA:'SUPERA' },
-          { Acao:'WEGE3', Ticker_Opcao:'WEGED234', Estilo:'EUROPEAN', Venc:'2025-06-20', Dias_ate_Venc:41, Strike:52.00, Preco_Atual:47.80, Posicao:'OTM', Dist_Strike:'+8.8%', Premio_Bruto:0.65, IR:0.0975, Corretagem:0.052, Premio_Liquido:0.5005, Taxa:1.047, Taxa_Dia:0.0255, Taxa_Mes:2.04, Volume:3100, Bid_Volume:820, Sem_Oferta:false, CDI:'SUPERA', IPCA:'NAO_SUPERA' },
-          { Acao:'ITUB4', Ticker_Opcao:'ITUBD234', Estilo:'EUROPEAN', Venc:'2025-06-20', Dias_ate_Venc:41, Strike:34.00, Preco_Atual:31.20, Posicao:'OTM', Dist_Strike:'+9.0%', Premio_Bruto:0.48, IR:0.072, Corretagem:0.034, Premio_Liquido:0.374, Taxa:1.199, Taxa_Dia:0.0292, Taxa_Mes:2.34, Volume:7600, Bid_Volume:2100, Sem_Oferta:false, CDI:'SUPERA', IPCA:'SUPERA' },
-        ],
-        collars: [
-          { Acao:'PETR4', Ticker_Call:'PETRD234', Ticker_Put:'PETRP223', Estilo:'EUROPEAN', Venc:'2025-06-20', Dias_ate_Venc:41, Strike_Call:42.00, Posicao:'OTM', Dist_Strike:'+9.1%', Strike_Put:36.00, Dist_Put:'-6.5%', Preco_Atual:38.50, Premio_Bruto:0.58, Custo_Put:0.18, IR:0.087, Corretagem:0.042, Premio_Liquido:0.271, Taxa:0.7039, Taxa_Dia:0.0172, Taxa_Mes:1.37, Perda_Maxima:-6.5, Volume_Call:18420, Bid_Volume_Call:3200, Ask_Volume_Put:1800, Sem_Oferta_Call:false, CDI:'SUPERA', IPCA:'NAO_SUPERA' },
-          { Acao:'VALE3', Ticker_Call:'VALED234', Ticker_Put:'VALEP223', Estilo:'EUROPEAN', Venc:'2025-06-20', Dias_ate_Venc:41, Strike_Call:68.00, Posicao:'OTM', Dist_Strike:'+9.1%', Strike_Put:58.50, Dist_Put:'-6.1%', Preco_Atual:62.30, Premio_Bruto:0.72, Custo_Put:0.22, IR:0.108, Corretagem:0.068, Premio_Liquido:0.324, Taxa:0.52, Taxa_Dia:0.0127, Taxa_Mes:1.01, Perda_Maxima:-6.1, Volume_Call:9800, Bid_Volume_Call:1500, Ask_Volume_Put:950, Sem_Oferta_Call:false, CDI:'NAO_SUPERA', IPCA:'NAO_SUPERA' },
-        ]
-      }
-    ]
-  };
-  document.getElementById('json-input').value = JSON.stringify(demo);
-  processData(demo);
-  toast('🧪 Dados demo carregados com sucesso!');
-}
-
-// ─── TOAST ───────────────────────────────────────────
-function toast(msg, type='ok') {
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.style.background = type === 'err' ? 'var(--red)' : type === 'warn' ? 'var(--amber)' : 'var(--ink)';
-  el.classList.add('show');
-  setTimeout(() => el.classList.remove('show'), 3500);
-}
-
-// ─── LOGIN ──────────────────────────────────────────
-// Troque a senha aqui
-const SENHA_CORRETA = 'taxa2025';
-
-function checkSenha() {
-  const input = document.getElementById('senha');
-  const erro  = document.getElementById('login-error');
-  if (!input) return;
-  if (input.value === SENHA_CORRETA) {
-    sessionStorage.setItem('auth', '1');
-    const screen = document.getElementById('login-screen');
-    screen.classList.add('fade-out');
-    setTimeout(() => {
-      screen.style.display = 'none';
-      autoLoadData();
-    }, 400);
-  } else {
-    input.classList.add('error');
-    erro.textContent = 'Senha incorreta. Tente novamente.';
-    input.value = '';
-    setTimeout(() => input.classList.remove('error'), 400);
-    input.focus();
+// ── auto load ──
+async function autoLoad(){
+  var st=document.getElementById('hstatus');
+  if(st){st.textContent='⏳ Carregando…';st.className='hstatus';}
+  try{
+    var r=await fetch('data.json?_='+Date.now());
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    var p=await r.json();
+    processData(p);
+    if(st&&p.updated_at){
+      var ts=new Date(p.updated_at).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+      st.textContent='✅ '+ts;
+      st.className='hstatus ok';
+    }
+  }catch(e){
+    var is4=e.message.indexOf('404')>=0;
+    if(st){st.textContent=is4?'📭 Aguardando n8n…':'⚠️ Erro ao carregar';st.className='hstatus warn';}
+    document.getElementById('data-fb').style.display='block';
   }
 }
 
-// Inicialização — roda depois de todas as funções definidas
-window.addEventListener('DOMContentLoaded', () => {
-  if (sessionStorage.getItem('auth') === '1') {
-    // Já estava logado — esconde tela e carrega dados
-    const screen = document.getElementById('login-screen');
-    if (screen) screen.style.display = 'none';
-    autoLoadData();
-  } else {
-    // Foca no campo de senha
-    const s = document.getElementById('senha');
-    if (s) s.focus();
+// ── process ──
+function processData(p){
+  if(p.cdi_dia) CDI_DIA=p.cdi_dia;
+  if(p.cdi_mes) CDI_MES=p.cdi_mes;
+  if(p.ipca_ano) IPCA_ANO=p.ipca_ano;
+  var res=p.resultados||(Array.isArray(p)?p:[p]);
+  var puras=[],collars=[];
+  for(var i=0;i<res.length;i++){
+    var r=res[i]; if(!r) continue;
+    if(r.puras) puras=puras.concat(r.puras);
+    if(r.collars) collars=collars.concat(r.collars);
+    if(!CDI_DIA&&r.cdi_dia){CDI_DIA=r.cdi_dia;CDI_MES=r.cdi_mes;IPCA_ANO=r.ipca_ano;}
+  }
+  puras.sort(function(a,b){return b.Taxa_Mes-a.Taxa_Mes;});
+  collars.sort(function(a,b){return b.Taxa_Mes-a.Taxa_Mes;});
+  DATA={puras:puras,collars:collars};
+  if(p.ia_analise&&p.ia_analise.resumo) renderIA(p.ia_analise);
+  buildFilters();
+  renderIndicators();
+  document.getElementById('alloc-block').style.display='flex';
+  document.getElementById('data-fb').style.display='none';
+  recalc();
+  renderOps();
+  toast('✅ '+puras.length+' calls + '+collars.length+' collars');
+}
+
+// ── build filter options ──
+function buildFilters(){
+  if(!DATA) return;
+  var emps={}, vencs={};
+  var all=DATA.puras.concat(DATA.collars);
+  for(var i=0;i<all.length;i++){
+    var op=all[i];
+    if(op.Acao) emps[op.Acao]=1;
+    if(op.Venc) vencs[op.Venc]=1;
+  }
+  var se=document.getElementById('f-empresa');
+  var sv=document.getElementById('f-venc');
+  var curE=se.value, curV=sv.value;
+  se.innerHTML='<option value="">Todas empresas</option>';
+  var ea=Object.keys(emps).sort();
+  for(var j=0;j<ea.length;j++) se.innerHTML+='<option value="'+ea[j]+'">'+ea[j]+'</option>';
+  sv.innerHTML='<option value="">Todos venc.</option>';
+  var va=Object.keys(vencs).sort();
+  for(var k=0;k<va.length;k++){
+    var vd=va[k];
+    var vf=vd.substring(5).split('-').reverse().join('/');
+    sv.innerHTML+='<option value="'+vd+'">'+vf+'</option>';
+  }
+  se.value=curE; sv.value=curV;
+}
+
+// ── filters ──
+function applyFilters(){
+  F_EMP=document.getElementById('f-empresa').value;
+  F_VENC=document.getElementById('f-venc').value;
+  F_TIPO=document.getElementById('f-tipo').value;
+  renderOps();
+}
+function clearFilters(){
+  document.getElementById('f-empresa').value='';
+  document.getElementById('f-venc').value='';
+  document.getElementById('f-tipo').value='';
+  F_EMP=''; F_VENC=''; F_TIPO='';
+  renderOps();
+}
+function filterOp(op){
+  if(F_EMP&&op.Acao!==F_EMP) return false;
+  if(F_VENC&&op.Venc!==F_VENC) return false;
+  return true;
+}
+
+// ── indicators ──
+function renderIndicators(){
+  var row=document.getElementById('indrow');
+  row.style.display='flex';
+  row.innerHTML=
+    '<div class="ipill"><span class="il">CDI/dia</span><span>'+fmt4(CDI_DIA)+'%</span></div>'+
+    '<div class="ipill"><span class="il">CDI/mês</span><span>'+fmt(CDI_MES)+'%</span></div>'+
+    '<div class="ipill"><span class="il">IPCA 12m</span><span>'+fmt(IPCA_ANO)+'%</span></div>';
+}
+
+// ── render IA ──
+function renderIA(a){
+  var panel=document.getElementById('ia-panel');
+  var out=document.getElementById('ia-out');
+  if(!panel||!out) return;
+  panel.style.display='block';
+  out.classList.remove('loading');
+  var L=[];
+  if(a.estrategia_geral) L.push('📌 Estratégia: '+a.estrategia_geral);
+  if(a.resumo) L.push('',a.resumo);
+  if(a.top3&&a.top3.length){
+    L.push('','────────────────────────────────','🏆 TOP RECOMENDAÇÕES','');
+    for(var i=0;i<a.top3.length;i++){
+      var op=a.top3[i];
+      L.push(op.rank+'. '+op.acao+' — '+op.estrategia+'   Score: '+op.score);
+      L.push('   '+( op.ticker_opcao||'—')+'  |  '+fmt(op.taxa_mes||0)+'%/mês  |  Delta: '+(op.delta||'—')+'  |  IV Rank: '+(op.iv_rank||'—'));
+      if(op.volatilidade_classificacao) L.push('   Vol: '+op.volatilidade_classificacao+'  |  IV: '+fmt(op.iv_atual||0)+'%  |  Beta: '+(op.beta||'—'));
+      if(op.prazo_ideal_dias) L.push('   Prazo ideal: '+op.prazo_ideal_dias+' dias');
+      if(op.premium_vs_fair) L.push('   Prêmio vs Fair Value: '+op.premium_vs_fair);
+      if(op.cobertura&&op.cobertura.perda_maxima_pct){
+        L.push('   🛡 Cobertura: '+op.cobertura.perda_maxima_pct+'%  |  Custo: '+op.cobertura.custo_put_em_meses+' meses  |  '+op.cobertura.avaliacao);
+        if(op.cobertura.recomendacao) L.push('   '+op.cobertura.recomendacao);
+      }
+      if(op.justificativa) L.push('','   📊 '+op.justificativa);
+      if(op.riscos) L.push('   ⚠️  '+op.riscos);
+      L.push('');
+    }
+  }
+  if(a.alertas&&a.alertas.length){
+    L.push('────────────────────────────────','⚠️  ALERTAS');
+    for(var j=0;j<a.alertas.length;j++) L.push('   • '+a.alertas[j]);
+    L.push('');
+  }
+  if(a.gerado_em) L.push('────────────────────────────────','🤖 Gerado em '+new Date(a.gerado_em).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'}));
+  out.textContent=L.join('\n');
+  AI_SCORES={};
+  if(a.top3) for(var k=0;k<a.top3.length;k++){
+    var r=a.top3[k];
+    if(r.acao) AI_SCORES[r.acao]={estrategia:r.estrategia,reason:r.justificativa,score:r.score};
+  }
+}
+
+// ── render ops ──
+function renderOps(){
+  if(!DATA) return;
+  var caixa=parseFloat(document.getElementById('caixa').value)||0;
+  var pct=parseFloat(document.getElementById('pct_taxa').value)||40;
+  var pctA=parseFloat(document.getElementById('pct_ativo').value)||20;
+  var porAt=(caixa*pct/100)*(pctA/100);
+
+  var showP=(F_TIPO===''||F_TIPO==='pura');
+  var showC=(F_TIPO===''||F_TIPO==='collar');
+
+  var fp=DATA.puras.filter(filterOp);
+  var fc=DATA.collars.filter(filterOp);
+
+  var secP=document.getElementById('sec-puras');
+  secP.style.display=(showP&&fp.length)?'block':'none';
+  document.getElementById('ct-puras').textContent=fp.length;
+  var hp='';
+  if(showP) for(var i=0;i<fp.length;i++) hp+=cardPura(fp[i],porAt);
+  document.getElementById('grid-puras').innerHTML=hp;
+
+  var secC=document.getElementById('sec-collars');
+  secC.style.display=(showC&&fc.length)?'block':'none';
+  document.getElementById('ct-collars').textContent=fc.length;
+  var hc='';
+  if(showC) for(var j=0;j<fc.length;j++) hc+=cardCollar(fc[j],porAt);
+  document.getElementById('grid-collars').innerHTML=hc;
+}
+
+// ── cdi ratio bar ──
+function cdiBar(taxaMes){
+  if(!CDI_MES) return '';
+  var ratio=taxaMes/CDI_MES;
+  var pct=Math.min(ratio/5*100,100);
+  var good=ratio>=1;
+  var cls=good?'':'bad';
+  return '<div class="cdi-bar">'+
+    '<div class="cdi-bar-inner">'+
+      '<div class="cdi-bar-label">Taxa vs CDI/mês</div>'+
+      '<div class="cdi-bar-track"><div class="cdi-bar-fill '+cls+'" style="width:'+pct+'%"></div></div>'+
+    '</div>'+
+    '<div class="cdi-ratio '+cls+'">'+fmt(ratio,1)+'×</div>'+
+  '</div>';
+}
+
+// ── card pura ──
+function cardPura(op,porAt){
+  var venc=op.Venc?op.Venc.substring(5).split('-').reverse().join('/'):' ?';
+  var taxaBruta=op.Preco_Atual>0?((op.Premio_Bruto/op.Preco_Atual)*100):0;
+  var ganCDI=CDI_DIA>0?(op.Taxa_Dia/CDI_DIA).toFixed(1):'—';
+  var posC=op.Posicao==='OTM'?'bg-otm':op.Posicao==='ITM'?'bg-itm':'bg-atm';
+  var isAm=op.Estilo==='AMERICAN';
+  var flag=isAm?'🇺🇸':'🇪🇺';
+  var qtd=op.Preco_Atual>0?Math.floor(porAt/op.Preco_Atual/100)*100:0;
+  var ai=AI_SCORES[op.Acao];
+  var sug=ai&&ai.estrategia==='PURA';
+
+  return '<div class="op-card'+(sug?' suggested':'')+'">' +
+    '<div class="card-stripe"></div>' +
+    '<div class="card-body">' +
+    (sug?'<div class="ia-sug"><div class="al">✨ IA Recomenda</div><p>'+(ai.reason||'')+'</p></div>':'') +
+
+    // CDI comparison bar
+    cdiBar(op.Taxa_Mes) +
+
+    // Header
+    '<div class="card-hd">'+
+      '<div>'+
+        '<div class="card-ticker">'+op.Acao+'</div>'+
+        '<div class="card-sub">'+
+          '<span class="flag">'+flag+'</span>'+
+          '<span class="card-option">'+op.Ticker_Opcao+'</span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="card-taxa-mes">'+
+        '<div class="val">'+fmt(op.Taxa_Mes)+'%</div>'+
+        '<div class="lbl">ao mês</div>'+
+      '</div>'+
+    '</div>'+
+
+    // Badges: CDI | IPCA | posição+book | volume
+    '<div class="badges">'+
+      '<span class="badge bg-'+(op.CDI==='SUPERA'?'s':'n')+'">CDI '+(op.CDI==='SUPERA'?'✓':'✗')+(op.Bid_Volume>0?' · '+fmtI(op.Bid_Volume)+' ctr':'')+'</span>'+
+      '<span class="badge bg-'+(op.IPCA==='SUPERA'?'s':'n')+'">IPCA '+(op.IPCA==='SUPERA'?'✓':'✗')+'</span>'+
+      '<span class="badge '+posC+'">'+op.Posicao+' · '+fmtI(op.Bid_Volume)+' book</span>'+
+      (op.Sem_Oferta?'<span class="badge bg-sb">⚠ Sem book</span>':'')+
+      (isAm?'<span class="badge bg-am">🇺🇸 Exercício</span>':'')+
+    '</div>'+
+
+    // Premio breakdown
+    '<div class="premio-box">'+
+      '<div class="premio-title">Cálculo do Prêmio</div>'+
+      '<div class="premio-calc">'+
+        '<span class="premio-val">'+fmtM(op.Premio_Bruto)+'</span>'+
+        '<span class="premio-op">−</span>'+
+        '<span class="premio-sub">'+fmtM(op.IR)+'</span>'+
+        '<span class="premio-op">(IR)</span>'+
+        '<span class="premio-op">−</span>'+
+        '<span class="premio-sub">'+fmtM(op.Corretagem)+'</span>'+
+        '<span class="premio-op">(corr.)</span>'+
+        '<span class="premio-eq">=</span>'+
+        '<span class="premio-liq">'+fmtM(op.Premio_Liquido)+'</span>'+
+      '</div>'+
+    '</div>'+
+
+    // Data grid
+    '<div class="dg">'+
+      '<div class="dr"><span class="k">Preço</span><span class="v gold">'+fmtM(op.Preco_Atual)+'</span></div>'+
+      '<div class="dr"><span class="k">Strike</span><span class="v">'+fmtM(op.Strike)+' ('+op.Dist_Strike+')</span></div>'+
+      '<div class="dr"><span class="k">Venc</span><span class="v">'+venc+' ('+op.Dias_ate_Venc+'d)</span></div>'+
+      '<div class="dr"><span class="k">Volume ativo</span><span class="v">'+fmtI(op.Volume)+'</span></div>'+
+      '<div class="dr"><span class="k">Taxa bruta</span><span class="v">'+fmt(taxaBruta)+'%</span></div>'+
+      '<div class="dr"><span class="k">Taxa/dia</span><span class="v">'+fmt4(op.Taxa_Dia)+'% ('+ganCDI+'×CDI)</span></div>'+
+    '</div>'+
+
+    '<div class="div"></div>'+
+
+    // Simulação
+    '<div class="sim"><h4>📊 Simulação de Ganho</h4>'+
+      '<div class="sim-row"><span class="sim-lbl">100 opções — '+fmtM(op.Preco_Atual*100)+'</span><span class="sim-g">+'+fmtM(op.Premio_Liquido*100)+'</span></div>'+
+      '<div class="sim-row"><span class="sim-lbl">1.000 opções — '+fmtM(op.Preco_Atual*1000)+'</span><span class="sim-g">+'+fmtM(op.Premio_Liquido*1000)+'</span></div>'+
+      (qtd>0?'<div class="sim-row sim-hl"><span class="sim-lbl" style="font-weight:700">💼 Seu caixa: '+fmtI(qtd)+' opções</span><span class="sim-g">+'+fmtM(qtd*op.Premio_Liquido)+'</span></div>':'')+
+    '</div>'+
+
+    '<div class="liq '+(op.Sem_Oferta?'warn':'ok')+'">'+
+      (op.Sem_Oferta?'⚠️ Sem contraparte no book':'✅ Book: '+fmtI(op.Bid_Volume)+' contratos')+
+    '</div>'+
+    '</div></div>';
+}
+
+// ── card collar ──
+function cardCollar(op,porAt){
+  var venc=op.Venc?op.Venc.substring(5).split('-').reverse().join('/'):'?';
+  var taxaBruta=op.Preco_Atual>0?((op.Premio_Bruto/op.Preco_Atual)*100):0;
+  var ganCDI=CDI_DIA>0?(op.Taxa_Dia/CDI_DIA).toFixed(1):'—';
+  var isAm=op.Estilo==='AMERICAN';
+  var flag=isAm?'🇺🇸':'🇪🇺';
+  var qtd=op.Preco_Atual>0?Math.floor(porAt/op.Preco_Atual/100)*100:0;
+  var ai=AI_SCORES[op.Acao];
+  var sug=ai&&ai.estrategia==='COLLAR';
+
+  return '<div class="op-card collar'+(sug?' suggested':'')+'">' +
+    '<div class="card-stripe"></div>' +
+    '<div class="card-body">' +
+    (sug?'<div class="ia-sug"><div class="al">✨ IA Recomenda</div><p>'+(ai.reason||'')+'</p></div>':'') +
+
+    cdiBar(op.Taxa_Mes) +
+
+    '<div class="card-hd">'+
+      '<div>'+
+        '<div class="card-ticker">'+op.Acao+'</div>'+
+        '<div class="card-sub">'+
+          '<span class="flag">'+flag+'</span>'+
+          '<span class="card-option">'+op.Ticker_Call+' + '+op.Ticker_Put+'</span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="card-taxa-mes">'+
+        '<div class="val">'+fmt(op.Taxa_Mes)+'%</div>'+
+        '<div class="lbl">ao mês</div>'+
+      '</div>'+
+    '</div>'+
+
+    '<div class="badges">'+
+      '<span class="badge bg-col">🛡 Collar</span>'+
+      '<span class="badge bg-'+(op.CDI==='SUPERA'?'s':'n')+'">CDI '+(op.CDI==='SUPERA'?'✓':'✗')+(op.Bid_Volume_Call>0?' · '+fmtI(op.Bid_Volume_Call)+' ctr':'')+'</span>'+
+      '<span class="badge bg-'+(op.IPCA==='SUPERA'?'s':'n')+'">IPCA '+(op.IPCA==='SUPERA'?'✓':'✗')+'</span>'+
+      '<span class="badge bg-otm">'+op.Posicao+' · '+fmtI(op.Bid_Volume_Call)+' book</span>'+
+      (op.Sem_Oferta_Call?'<span class="badge bg-sb">⚠ Sem book</span>':'')+
+      (isAm?'<span class="badge bg-am">🇺🇸 Exercício</span>':'')+
+    '</div>'+
+
+    '<div class="premio-box">'+
+      '<div class="premio-title">Cálculo do Prêmio (Collar)</div>'+
+      '<div class="premio-calc">'+
+        '<span class="premio-val">'+fmtM(op.Premio_Bruto)+'</span>'+
+        '<span class="premio-op">−</span>'+
+        '<span class="premio-sub">'+fmtM(op.Custo_Put)+'</span>'+
+        '<span class="premio-op">(PUT)</span>'+
+        '<span class="premio-op">−</span>'+
+        '<span class="premio-sub">'+fmtM(op.IR)+'</span>'+
+        '<span class="premio-op">(IR)</span>'+
+        '<span class="premio-op">−</span>'+
+        '<span class="premio-sub">'+fmtM(op.Corretagem)+'</span>'+
+        '<span class="premio-op">(corr.)</span>'+
+        '<span class="premio-eq">=</span>'+
+        '<span class="premio-liq">'+fmtM(op.Premio_Liquido)+'</span>'+
+      '</div>'+
+    '</div>'+
+
+    '<div class="dg">'+
+      '<div class="dr"><span class="k">Preço</span><span class="v gold">'+fmtM(op.Preco_Atual)+'</span></div>'+
+      '<div class="dr"><span class="k">Venc</span><span class="v">'+venc+' ('+op.Dias_ate_Venc+'d)</span></div>'+
+      '<div class="dr"><span class="k">Strike Call</span><span class="v">'+fmtM(op.Strike_Call)+' ('+op.Dist_Strike+')</span></div>'+
+      '<div class="dr"><span class="k">Strike Put</span><span class="v neg">'+fmtM(op.Strike_Put)+' ('+op.Dist_Put+')</span></div>'+
+      '<div class="dr"><span class="k">Volume ativo</span><span class="v">'+fmtI(op.Volume_Call)+'</span></div>'+
+      '<div class="dr"><span class="k">Perda máx.</span><span class="v neg">'+fmt(op.Perda_Maxima)+'%</span></div>'+
+      '<div class="dr"><span class="k">Taxa bruta</span><span class="v">'+fmt(taxaBruta)+'%</span></div>'+
+      '<div class="dr"><span class="k">Taxa/dia</span><span class="v">'+fmt4(op.Taxa_Dia)+'% ('+ganCDI+'×CDI)</span></div>'+
+    '</div>'+
+
+    '<div class="div"></div>'+
+
+    '<div class="sim"><h4>📊 Simulação de Ganho (Collar)</h4>'+
+      '<div class="sim-row"><span class="sim-lbl">100 opções — '+fmtM(op.Preco_Atual*100)+'</span><span class="sim-g">+'+fmtM(op.Premio_Liquido*100)+'</span></div>'+
+      '<div class="sim-row"><span class="sim-lbl">1.000 opções — '+fmtM(op.Preco_Atual*1000)+'</span><span class="sim-g">+'+fmtM(op.Premio_Liquido*1000)+'</span></div>'+
+      (qtd>0?'<div class="sim-row sim-hl"><span class="sim-lbl" style="font-weight:700">💼 Seu caixa: '+fmtI(qtd)+' opções</span><span class="sim-g">+'+fmtM(qtd*op.Premio_Liquido)+'</span></div>':'')+
+    '</div>'+
+
+    '<div class="liq '+(op.Sem_Oferta_Call?'warn':'ok')+'">'+
+      (op.Sem_Oferta_Call?'⚠️ Sem contraparte na CALL':'✅ Book CALL: '+fmtI(op.Bid_Volume_Call)+' | PUT ask: '+fmtI(op.Ask_Volume_Put))+
+    '</div>'+
+    '</div></div>';
+}
+
+// ── manual load ──
+function loadJSON(){
+  var raw=document.getElementById('json-input').value.trim();
+  if(!raw){toast('Cole o JSON antes.','warn');return;}
+  try{
+    var p=JSON.parse(raw);
+    if(Array.isArray(p)) p=p[0];
+    processData(p);
+  }catch(e){toast('JSON inválido: '+e.message,'err');}
+}
+
+// ── demo ──
+function loadDemo(){
+  processData({
+    updated_at:new Date().toISOString(),
+    cdi_dia:0.054266,cdi_mes:1.15,ipca_ano:4.14,
+    ia_analise:{
+      estrategia_geral:'COMPRAR_ACAO_CALL_SEQUENCIAL',
+      resumo:'IV rank elevado em PETR4 e ITUB4 indica bom momento para venda de opções. PETR4 apresenta a melhor relação risco/retorno.',
+      top3:[
+        {rank:1,acao:'PETR4',estrategia:'PURA',ticker_opcao:'PETRD234',taxa_mes:2.28,iv_rank:55,iv_atual:41.8,beta:1.54,delta:0.28,theta_mes:0.8,volatilidade_classificacao:'ALTA',premium_vs_fair:'CARO',justificativa:'IV rank 55 — prêmio acima da média histórica. Delta 0.28 oferece boa margem de segurança.',riscos:'Beta 1.54 — sensível ao Ibov.',score:8.5},
+        {rank:2,acao:'ITUB4',estrategia:'PURA',ticker_opcao:'ITUBD234',taxa_mes:2.34,iv_rank:48,iv_atual:38.2,beta:1.12,delta:0.30,theta_mes:0.7,volatilidade_classificacao:'MEDIA',premium_vs_fair:'JUSTO',justificativa:'Beta controlado e boa liquidez. Ideal para venda coberta sequencial.',riscos:'Setor financeiro sensível ao Copom.',score:8.1}
+      ],
+      alertas:['BBAS3 opção americana — risco de exercício antecipado antes de dividendos'],
+      gerado_em:new Date().toISOString()
+    },
+    resultados:[{
+      cdi_dia:0.054266,cdi_mes:1.15,ipca_ano:4.14,
+      puras:[
+        {Acao:'PETR4',Ticker_Opcao:'PETRD234',Estilo:'EUROPEAN',Venc:'2025-06-20',Dias_ate_Venc:41,Strike:42.00,Preco_Atual:38.50,Posicao:'OTM',Dist_Strike:'+9.1%',Premio_Bruto:0.58,IR:0.087,Corretagem:0.042,Premio_Liquido:0.451,Taxa:1.17,Taxa_Dia:0.0286,Taxa_Mes:2.28,Volume:18420,Bid_Volume:3200,Sem_Oferta:false,CDI:'SUPERA',IPCA:'SUPERA'},
+        {Acao:'ITUB4',Ticker_Opcao:'ITUBD234',Estilo:'EUROPEAN',Venc:'2025-06-20',Dias_ate_Venc:41,Strike:34.00,Preco_Atual:31.20,Posicao:'OTM',Dist_Strike:'+9.0%',Premio_Bruto:0.48,IR:0.072,Corretagem:0.034,Premio_Liquido:0.374,Taxa:1.20,Taxa_Dia:0.0292,Taxa_Mes:2.34,Volume:7600,Bid_Volume:2100,Sem_Oferta:false,CDI:'SUPERA',IPCA:'SUPERA'},
+        {Acao:'VALE3',Ticker_Opcao:'VALED234',Estilo:'EUROPEAN',Venc:'2025-06-20',Dias_ate_Venc:41,Strike:68.00,Preco_Atual:62.30,Posicao:'OTM',Dist_Strike:'+9.1%',Premio_Bruto:0.72,IR:0.108,Corretagem:0.068,Premio_Liquido:0.544,Taxa:0.87,Taxa_Dia:0.0213,Taxa_Mes:1.70,Volume:9800,Bid_Volume:1500,Sem_Oferta:false,CDI:'SUPERA',IPCA:'NAO_SUPERA'},
+        {Acao:'BBAS3',Ticker_Opcao:'BBASD234',Estilo:'AMERICAN',Venc:'2025-06-20',Dias_ate_Venc:41,Strike:28.00,Preco_Atual:25.60,Posicao:'OTM',Dist_Strike:'+9.4%',Premio_Bruto:0.42,IR:0.063,Corretagem:0.028,Premio_Liquido:0.329,Taxa:1.29,Taxa_Dia:0.0313,Taxa_Mes:2.50,Volume:5200,Bid_Volume:0,Sem_Oferta:true,CDI:'SUPERA',IPCA:'SUPERA'}
+      ],
+      collars:[
+        {Acao:'PETR4',Ticker_Call:'PETRD234',Ticker_Put:'PETRP223',Estilo:'EUROPEAN',Venc:'2025-06-20',Dias_ate_Venc:41,Strike_Call:42.00,Posicao:'OTM',Dist_Strike:'+9.1%',Strike_Put:36.00,Dist_Put:'-6.5%',Preco_Atual:38.50,Premio_Bruto:0.58,Custo_Put:0.18,IR:0.087,Corretagem:0.042,Premio_Liquido:0.271,Taxa:0.70,Taxa_Dia:0.0172,Taxa_Mes:1.37,Perda_Maxima:-6.5,Volume_Call:18420,Bid_Volume_Call:3200,Ask_Volume_Put:1800,Sem_Oferta_Call:false,CDI:'SUPERA',IPCA:'NAO_SUPERA'},
+        {Acao:'VALE3',Ticker_Call:'VALED234',Ticker_Put:'VALEP223',Estilo:'EUROPEAN',Venc:'2025-06-20',Dias_ate_Venc:41,Strike_Call:68.00,Posicao:'OTM',Dist_Strike:'+9.1%',Strike_Put:58.50,Dist_Put:'-6.1%',Preco_Atual:62.30,Premio_Bruto:0.72,Custo_Put:0.22,IR:0.108,Corretagem:0.068,Premio_Liquido:0.324,Taxa:0.52,Taxa_Dia:0.0127,Taxa_Mes:1.01,Perda_Maxima:-6.1,Volume_Call:9800,Bid_Volume_Call:1500,Ask_Volume_Put:950,Sem_Oferta_Call:false,CDI:'NAO_SUPERA',IPCA:'NAO_SUPERA'}
+      ]
+    }]
+  });
+  toast('🧪 Demo carregado!');
+}
+
+// ── LOGIN ──
+var SENHA='taxa2025';
+function checkSenha(){
+  var inp=document.getElementById('senha');
+  var err=document.getElementById('lerr');
+  if(!inp) return;
+  if(inp.value===SENHA){
+    sessionStorage.setItem('auth','1');
+    var sc=document.getElementById('lscreen');
+    sc.classList.add('fade');
+    setTimeout(function(){sc.style.display='none';autoLoad();},400);
+  }else{
+    inp.classList.add('err');
+    err.textContent='Senha incorreta.';
+    inp.value='';
+    setTimeout(function(){inp.classList.remove('err');},400);
+    inp.focus();
+  }
+}
+
+window.addEventListener('DOMContentLoaded',function(){
+  if(sessionStorage.getItem('auth')==='1'){
+    var sc=document.getElementById('lscreen');
+    if(sc) sc.style.display='none';
+    autoLoad();
+  }else{
+    setTimeout(function(){
+      var s=document.getElementById('senha');
+      if(s) s.focus();
+    },100);
   }
 });
 </script>
