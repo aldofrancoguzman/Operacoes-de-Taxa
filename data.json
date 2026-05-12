@@ -1,37 +1,37 @@
 {
-  "updated_at": "2026-05-12T03:13:23.824Z",
+  "updated_at": "2026-05-12T03:14:20.149Z",
   "cdi_dia": 0,
   "cdi_mes": 0,
   "ipca_ano": 0,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_COLLAR",
-    "resumo": "A volatilidade implícita atual está elevada, tornando este um bom momento para vender opções. Dado o cenário de alta sensibilidade ao índice e comportamento imprevisível de alguns ativos, a estratégia geral recomendada é a compra de ações com Collar para proteção.",
+    "resumo": "O cenário atual apresenta boas oportunidades para estratégias de Collar, com várias opções de proteção barata. A volatilidade implícita não foi fornecida, mas a presença de Collars baratos sugere que é um bom momento para proteção.",
     "top3": [
       {
         "rank": 1,
-        "acao": "CMIN",
+        "acao": "BOVA",
         "estrategia": "COLLAR",
-        "ticker_opcao": "CMINE49",
-        "ticker_put": "CMINQ500",
-        "taxa_mes": 5.63,
+        "ticker_opcao": "BOVAE180",
+        "ticker_put": "BOVAQ161",
+        "taxa_mes": 3.53,
         "prazo_ideal_dias": 4,
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
-        "delta": 0.302681,
-        "theta_mes": -0.2402,
+        "delta": 0.409366,
+        "theta_mes": -7.2627,
         "fair_value": 0,
         "premium_vs_fair": "JUSTO",
         "volatilidade_classificacao": "MEDIA",
         "cobertura": {
-          "perda_maxima_pct": -8.3,
-          "custo_put_em_meses": 0.28,
+          "perda_maxima_pct": -9.9,
+          "custo_put_em_meses": 0.06,
           "avaliacao": "BARATA",
-          "recomendacao": "Proteção barata e eficaz, vale a pena."
+          "recomendacao": "Proteção vale a pena devido ao baixo custo."
         },
-        "justificativa": "A opção CMIN possui delta de 0.302681, indicando um risco moderado de exercício. O theta é negativo, mas a proteção é barata, com custo de apenas 0.28 meses de prêmio líquido.",
-        "riscos": "Risco de exercício moderado devido ao delta próximo de 0.30.",
-        "score": 8.5
+        "justificativa": "Delta de 0.41 indica risco moderado de exercício, mas o custo da PUT é extremamente baixo (0.06 meses de prêmio), tornando a proteção muito atrativa.",
+        "riscos": "Risco de exercício moderado devido ao delta, mas compensado pela proteção barata.",
+        "score": 9
       },
       {
         "rank": 2,
@@ -53,42 +53,42 @@
           "perda_maxima_pct": -9.9,
           "custo_put_em_meses": 0.03,
           "avaliacao": "BARATA",
-          "recomendacao": "Proteção extremamente barata, altamente recomendada."
+          "recomendacao": "Proteção vale a pena devido ao custo extremamente baixo."
         },
-        "justificativa": "A opção VALE tem delta baixo de 0.090255, reduzindo o risco de exercício. A proteção é muito barata, com custo de apenas 0.03 meses de prêmio líquido.",
-        "riscos": "Baixo risco de exercício devido ao delta baixo.",
-        "score": 8.2
+        "justificativa": "Delta muito baixo (0.09) reduz o risco de exercício, e a proteção é extremamente barata (0.03 meses de prêmio).",
+        "riscos": "Risco de exercício muito baixo, proteção barata compensa qualquer volatilidade.",
+        "score": 8.8
       },
       {
         "rank": 3,
-        "acao": "B3SA",
+        "acao": "ITSA",
         "estrategia": "COLLAR",
-        "ticker_opcao": "B3SAE180",
-        "ticker_put": "B3SAQ162",
-        "taxa_mes": 3.26,
+        "ticker_opcao": "ITSAE135",
+        "ticker_put": "ITSAQ123",
+        "taxa_mes": 3.42,
         "prazo_ideal_dias": 4,
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
-        "delta": 0.509316,
-        "theta_mes": -1.334,
+        "delta": 0.269766,
+        "theta_mes": -0.5658,
         "fair_value": 0,
         "premium_vs_fair": "JUSTO",
         "volatilidade_classificacao": "MEDIA",
         "cobertura": {
-          "perda_maxima_pct": -9.5,
-          "custo_put_em_meses": 0.51,
+          "perda_maxima_pct": -9,
+          "custo_put_em_meses": 0.16,
           "avaliacao": "BARATA",
-          "recomendacao": "Proteção barata, vale a pena considerar."
+          "recomendacao": "Proteção vale a pena devido ao baixo custo."
         },
-        "justificativa": "A opção B3SA tem delta de 0.509316, indicando um risco mais alto de exercício, mas a proteção é barata, com custo de 0.51 meses de prêmio líquido.",
-        "riscos": "Risco de exercício mais alto devido ao delta acima de 0.50.",
-        "score": 7.9
+        "justificativa": "Delta de 0.27 oferece um risco moderado de exercício, mas a proteção é barata (0.16 meses de prêmio), tornando a estratégia atrativa.",
+        "riscos": "Risco moderado de exercício, mas a proteção barata compensa.",
+        "score": 8.5
       }
     ],
     "alertas": [
-      "CYRE e VAMO sem oferta, volume baixo.",
-      "Opções com delta acima de 0.35 apresentam maior risco de exercício."
+      "Opções com volume baixo ou sem oferta foram descartadas.",
+      "Proteções baratas disponíveis, aproveite para mitigar riscos."
     ],
     "gerado_em": "2026-05-12T00:00:00Z"
   },
