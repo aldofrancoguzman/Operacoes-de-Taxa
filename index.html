@@ -724,43 +724,6 @@ footer {
 <div class="toast" id="toast"></div>
 
 <script>
-// ─── LOGIN ────────────────────────────────────────────
-// Altere a senha abaixo para a sua
-const SENHA_CORRETA = 'taxa2025';
-
-function checkSenha() {
-  const input = document.getElementById('senha');
-  const erro  = document.getElementById('login-error');
-  if (input.value === SENHA_CORRETA) {
-    // Salva sessão (dura enquanto o browser estiver aberto)
-    sessionStorage.setItem('auth', '1');
-    const screen = document.getElementById('login-screen');
-    screen.classList.add('fade-out');
-    setTimeout(() => { screen.style.display = 'none'; autoLoadData(); }, 400);
-  } else {
-    input.classList.add('error');
-    erro.textContent = 'Senha incorreta. Tente novamente.';
-    input.value = '';
-    setTimeout(() => input.classList.remove('error'), 400);
-    input.focus();
-  }
-}
-
-// Verifica se já autenticou nesta sessão
-(function() {
-  if (sessionStorage.getItem('auth') === '1') {
-    const screen = document.getElementById('login-screen');
-    if (screen) screen.style.display = 'none';
-    window.addEventListener('load', autoLoadData);
-  } else {
-    // Foca no campo de senha automaticamente
-    window.addEventListener('load', () => {
-      const s = document.getElementById('senha');
-      if (s) s.focus();
-    });
-  }
-})();
-
 // ─── STATE ───────────────────────────────────────────
 let DATA = null;          // dados carregados
 let CDI_DIA  = 0.054;     // fallback
@@ -1231,48 +1194,41 @@ function parseAISuggestions(text) {
 }
 
 function renderIAFromJSON(analise) {
-  // Exibe análise que veio direto do data.json (gerada pelo n8n)
   const output = document.getElementById('ai-output');
   if (!output) return;
   output.classList.remove('loading', 'cursor');
 
-  let txt = '';
-  if (analise.resumo) txt += analise.resumo + '
-
-';
+  const linhas = [];
+  if (analise.estrategia_geral) linhas.push('📌 Estratégia: ' + analise.estrategia_geral);
+  if (analise.resumo) linhas.push('', analise.resumo);
 
   if (analise.top3 && analise.top3.length) {
-    txt += '🏆 TOP RECOMENDAÇÕES
-';
+    linhas.push('', '🏆 TOP RECOMENDAÇÕES');
     for (const op of analise.top3) {
-      txt += `
-${op.rank}. ${op.acao} — ${op.estrategia} (Score: ${op.score})
-`;
-      txt += `   Opção: ${op.ticker_opcao} | Taxa: ${(op.taxa_mes||0).toFixed(2)}%/mês
-`;
-      txt += `   ${op.justificativa}
-`;
-      if (op.riscos) txt += `   ⚠️ ${op.riscos}
-`;
+      linhas.push('');
+      linhas.push(op.rank + '. ' + op.acao + ' — ' + op.estrategia + ' (Score: ' + op.score + ')');
+      linhas.push('   Opção: ' + (op.ticker_opcao || '—') + ' | Taxa: ' + ((op.taxa_mes||0).toFixed(2)) + '%/mês | Delta: ' + (op.delta||'—') + ' | IV Rank: ' + (op.iv_rank||'—'));
+      if (op.volatilidade_classificacao) linhas.push('   Volatilidade: ' + op.volatilidade_classificacao);
+      if (op.premium_vs_fair) linhas.push('   Prêmio vs Fair Value: ' + op.premium_vs_fair);
+      if (op.cobertura && op.cobertura.perda_maxima_pct) {
+        linhas.push('   🛡 Cobertura: ' + op.cobertura.perda_maxima_pct + '% | Custo: ' + op.cobertura.custo_put_em_meses + ' meses | ' + op.cobertura.avaliacao);
+      }
+      if (op.justificativa) linhas.push('   ' + op.justificativa);
+      if (op.riscos) linhas.push('   ⚠️ ' + op.riscos);
     }
   }
 
   if (analise.alertas && analise.alertas.length) {
-    txt += '
-⚠️ ALERTAS
-';
-    for (const a of analise.alertas) txt += `• ${a}
-`;
+    linhas.push('', '⚠️ ALERTAS');
+    for (const a of analise.alertas) linhas.push('• ' + a);
   }
 
   if (analise.gerado_em) {
-    txt += '
-🤖 Análise gerada em ' + new Date(analise.gerado_em).toLocaleString('pt-BR', {timeZone:'America/Sao_Paulo'});
+    linhas.push('', '🤖 Gerado em ' + new Date(analise.gerado_em).toLocaleString('pt-BR', {timeZone:'America/Sao_Paulo'}));
   }
 
-  output.textContent = txt;
+  output.textContent = linhas.join('\n');
 
-  // Destaca cards recomendados
   if (analise.top3) {
     for (const op of analise.top3) {
       if (op.acao) {
@@ -1330,6 +1286,45 @@ function toast(msg, type='ok') {
   el.classList.add('show');
   setTimeout(() => el.classList.remove('show'), 3500);
 }
+
+// ─── LOGIN ──────────────────────────────────────────
+// Troque a senha aqui
+const SENHA_CORRETA = 'taxa2025';
+
+function checkSenha() {
+  const input = document.getElementById('senha');
+  const erro  = document.getElementById('login-error');
+  if (!input) return;
+  if (input.value === SENHA_CORRETA) {
+    sessionStorage.setItem('auth', '1');
+    const screen = document.getElementById('login-screen');
+    screen.classList.add('fade-out');
+    setTimeout(() => {
+      screen.style.display = 'none';
+      autoLoadData();
+    }, 400);
+  } else {
+    input.classList.add('error');
+    erro.textContent = 'Senha incorreta. Tente novamente.';
+    input.value = '';
+    setTimeout(() => input.classList.remove('error'), 400);
+    input.focus();
+  }
+}
+
+// Inicialização — roda depois de todas as funções definidas
+window.addEventListener('DOMContentLoaded', () => {
+  if (sessionStorage.getItem('auth') === '1') {
+    // Já estava logado — esconde tela e carrega dados
+    const screen = document.getElementById('login-screen');
+    if (screen) screen.style.display = 'none';
+    autoLoadData();
+  } else {
+    // Foca no campo de senha
+    const s = document.getElementById('senha');
+    if (s) s.focus();
+  }
+});
 </script>
 </body>
 </html>
