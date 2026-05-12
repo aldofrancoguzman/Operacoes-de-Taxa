@@ -1,36 +1,36 @@
 {
-  "updated_at": "2026-05-12T04:17:46.047Z",
+  "updated_at": "2026-05-12T04:18:10.294Z",
   "cdi_dia": 0,
   "cdi_mes": 0,
   "ipca_ano": 0,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_COLLAR",
-    "resumo": "O cenário atual apresenta volatilidade elevada em algumas ações, tornando o momento propício para a venda de opções. A estratégia geral recomendada é o uso de Collar, especialmente para ativos com alta sensibilidade ao índice ou comportamento imprevisível.",
+    "resumo": "O cenário atual apresenta oportunidades interessantes para estratégias de Collar, especialmente devido ao baixo custo das PUTs, que oferecem proteção barata. A volatilidade implícita não foi fornecida, mas a proteção barata e o risco de mercado justificam a escolha do Collar.",
     "top3": [
       {
         "rank": 1,
-        "acao": "CMIN",
+        "acao": "BOVA",
         "estrategia": "COLLAR",
-        "ticker_opcao": "CMINE49",
-        "ticker_put": "CMINQ500",
-        "taxa_mes": 5.63,
+        "ticker_opcao": "BOVAE180",
+        "ticker_put": "BOVAQ161",
+        "taxa_mes": 3.53,
         "prazo_ideal_dias": 4,
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
-        "delta": 0.302681,
-        "theta_mes": -0.2402,
+        "delta": 0.409366,
+        "theta_mes": -7.2627,
         "fair_value": 0,
         "premium_vs_fair": "JUSTO",
         "volatilidade_classificacao": "MEDIA",
         "cobertura": {
-          "perda_maxima_pct": -8.3,
-          "custo_put_em_meses": 0.28,
+          "perda_maxima_pct": -9.9,
+          "custo_put_em_meses": 0.06,
           "avaliacao": "BARATA",
-          "recomendacao": "Proteção vale a pena devido ao baixo custo e cobertura significativa."
+          "recomendacao": "Proteção barata, vale a pena"
         },
-        "justificativa": "A opção CMIN apresenta um delta de 0.302681, indicando um risco moderado de exercício. O theta_mes de -0.2402 é aceitável, e o custo da PUT é baixo, tornando a proteção barata e eficaz.",
-        "riscos": "Risco de exercício moderado devido ao delta próximo de 0.30.",
+        "justificativa": "Delta de 0.409366 indica risco moderado de exercício, mas a proteção barata com PUT justifica a estratégia de Collar. Theta alto sugere bom ganho temporal.",
+        "riscos": "Risco de exercício moderado devido ao delta acima de 0.35, mas mitigado pela proteção da PUT.",
         "score": 8.5
       },
       {
@@ -53,42 +53,42 @@
           "perda_maxima_pct": -9.9,
           "custo_put_em_meses": 0.03,
           "avaliacao": "BARATA",
-          "recomendacao": "Proteção extremamente barata, ideal para mitigar riscos de queda."
+          "recomendacao": "Proteção barata, vale a pena"
         },
-        "justificativa": "Com um delta de 0.090255, o risco de exercício é baixo. A proteção é barata, cobrindo quedas significativas, e o theta_mes é negativo, mas aceitável.",
-        "riscos": "Baixo risco de exercício devido ao delta baixo.",
-        "score": 8
+        "justificativa": "Delta baixo de 0.090255 reduz o risco de exercício. A PUT oferece proteção barata, tornando o Collar atrativo.",
+        "riscos": "Risco de exercício baixo, mas a proteção da PUT é eficiente.",
+        "score": 8.2
       },
       {
         "rank": 3,
-        "acao": "B3SA",
+        "acao": "ITSA",
         "estrategia": "COLLAR",
-        "ticker_opcao": "B3SAE180",
-        "ticker_put": "B3SAQ162",
-        "taxa_mes": 3.26,
+        "ticker_opcao": "ITSAE135",
+        "ticker_put": "ITSAQ123",
+        "taxa_mes": 3.42,
         "prazo_ideal_dias": 4,
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
-        "delta": 0.509316,
-        "theta_mes": -1.334,
+        "delta": 0.269766,
+        "theta_mes": -0.5658,
         "fair_value": 0,
         "premium_vs_fair": "JUSTO",
         "volatilidade_classificacao": "MEDIA",
         "cobertura": {
-          "perda_maxima_pct": -9.5,
-          "custo_put_em_meses": 0.51,
+          "perda_maxima_pct": -9,
+          "custo_put_em_meses": 0.16,
           "avaliacao": "BARATA",
-          "recomendacao": "Proteção barata e eficiente contra quedas significativas."
+          "recomendacao": "Proteção barata, vale a pena"
         },
-        "justificativa": "Apesar do delta alto de 0.509316, a proteção é barata e cobre quedas significativas. O theta_mes negativo é uma consideração, mas o custo da PUT justifica a proteção.",
-        "riscos": "Risco de exercício elevado devido ao delta acima de 0.50.",
-        "score": 7.5
+        "justificativa": "Delta de 0.269766 é aceitável, e a proteção barata da PUT justifica a estratégia de Collar.",
+        "riscos": "Risco de exercício moderado, mas mitigado pela proteção da PUT.",
+        "score": 8
       }
     ],
     "alertas": [
-      "CYRE e VAMO apresentam sem_oferta=true, evitando operações.",
-      "Opções com delta elevado (>0.50) têm maior risco de exercício."
+      "Volume baixo em algumas opções pode indicar menor liquidez.",
+      "Sem oferta em algumas opções pode dificultar a execução da estratégia."
     ],
     "gerado_em": "2026-05-12T00:00:00Z"
   },
