@@ -111,9 +111,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 
 /* Card header */
 .card-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
-.card-ticker{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;line-height:1}
-.card-sub{display:flex;align-items:center;gap:5px;margin-top:3px}
-.card-option{font-family:'DM Mono',monospace;font-size:10px;color:var(--ink2)}
+.card-ticker{font-family:'DM Serif Display',serif;font-size:18px;font-weight:400;line-height:1;color:var(--ink2)}
+.card-sub{display:flex;align-items:center;gap:5px;margin-top:4px}
+.card-option{font-family:'DM Mono',monospace;font-size:20px;font-weight:500;color:var(--ink);letter-spacing:-0.5px}
 .flag{font-size:13px}
 .card-taxa-mes .val{font-family:'DM Mono',monospace;font-size:22px;font-weight:600;color:var(--green);text-align:right}
 .card-taxa-mes .lbl{font-size:9px;color:var(--ink3);text-align:right;text-transform:uppercase;letter-spacing:.5px}
@@ -129,6 +129,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 .bg-am{background:var(--amber-light);color:var(--amber)}
 .bg-sb{background:var(--red-light);color:var(--red)}
 .bg-col{background:var(--blue-light);color:var(--blue)}
+.bg-book{background:#E8F4FD;color:#1558A8;border:1px solid #B5D4F4}
+.bg-vol{background:#F0F4FF;color:#3B4F8A;border:1px solid #C5CFF7}
+.badge-rank{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--gold);color:white;font-size:10px;font-weight:700;flex-shrink:0}
+.badge-rank.r1{background:#B8860B}
+.badge-rank.r2{background:#888780}
+.badge-rank.r3{background:#C77B2A}
 
 /* Premio breakdown */
 .premio-box{background:var(--bg);border-radius:var(--radius-sm);padding:9px 12px;margin-bottom:10px}
@@ -158,15 +164,30 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 .sim-g{font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--green)}
 .sim-hl{background:var(--gold-light);border-radius:5px;padding:3px 6px;margin-top:3px}
 
-/* Liquidez */
-.liq{display:flex;align-items:center;gap:5px;font-size:11px;padding:5px 8px;border-radius:var(--radius-sm);margin-top:auto}
-.liq.ok{background:var(--green-light);color:var(--green)}
-.liq.warn{background:var(--amber-light);color:var(--amber)}
+/* Liquidez row no final */
+.liq-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:4px}
+.liq-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 9px;border-radius:var(--radius-sm);font-size:11px;font-weight:600}
+.liq-chip.vol{background:var(--green-light);color:var(--green)}
+.liq-chip.book{background:var(--red-light);color:var(--red)}
+.liq-chip.book-ok{background:var(--green-light);color:var(--green)}
+.liq-chip.warn{background:var(--amber-light);color:var(--amber)}
+
+/* tipo operacao inline com ticker */
+.op-tipo{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px;background:var(--gold-light);color:var(--gold);text-transform:uppercase;letter-spacing:.5px}
+.op-tipo.collar{background:var(--blue-light);color:var(--blue)}
+
+/* taxa liquida destaque */
+.taxa-liq-box{display:flex;align-items:center;justify-content:space-between;background:var(--green-light);border-radius:var(--radius-sm);padding:6px 10px;margin-bottom:8px}
+.taxa-liq-box .tl-label{font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--green);font-weight:700}
+.taxa-liq-box .tl-val{font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--green)}
+.taxa-liq-box .tl-dia{font-family:'DM Mono',monospace;font-size:11px;color:var(--green);opacity:.8}
 
 /* IA suggestion in card */
-.ia-sug{background:linear-gradient(135deg,#F5F3EE,#E8F4FD);border:1px solid var(--blue-light);border-radius:var(--radius-sm);padding:7px 10px;margin-bottom:9px}
-.ia-sug .al{font-size:9px;text-transform:uppercase;letter-spacing:.6px;color:var(--blue);font-weight:700;margin-bottom:2px}
-.ia-sug p{font-size:11px;color:var(--ink);line-height:1.4}
+.ia-sug{background:#EEF5FF;border-left:3px solid var(--blue);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:9px 12px;margin-bottom:10px}
+.ia-sug .al-hd{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.ia-sug .al{font-size:9px;text-transform:uppercase;letter-spacing:.6px;color:var(--blue);font-weight:700}
+.ia-sug p{font-size:11px;color:var(--ink);line-height:1.55}
+.no-ia-sug{height:4px;margin-bottom:10px}
 
 /* Login */
 #lscreen{position:fixed;inset:0;background:var(--ink);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .4s}
@@ -479,11 +500,24 @@ function renderIA(a){
   AI_SCORES={};
   if(a.top3) for(var k=0;k<a.top3.length;k++){
     var r=a.top3[k];
-    if(r.acao) AI_SCORES[r.acao]={estrategia:r.estrategia,reason:r.justificativa,score:r.score};
+    if(r.acao) AI_SCORES[r.acao]={estrategia:r.estrategia,reason:r.justificativa,score:r.score,rank:r.rank||999};
   }
 }
 
 // ── render ops ──
+function rankOp(op){
+  var ai=AI_SCORES[op.Acao];
+  if(!ai) return 999;
+  var r=ai.rank||999;
+  return r;
+}
+function sortByRank(arr){
+  return arr.slice().sort(function(a,b){
+    var ra=rankOp(a), rb=rankOp(b);
+    if(ra!==rb) return ra-rb;
+    return b.Taxa_Mes-a.Taxa_Mes;
+  });
+}
 function renderOps(){
   if(!DATA) return;
   var caixa=parseFloat(document.getElementById('caixa').value)||0;
@@ -494,8 +528,8 @@ function renderOps(){
   var showP=(F_TIPO===''||F_TIPO==='pura');
   var showC=(F_TIPO===''||F_TIPO==='collar');
 
-  var fp=DATA.puras.filter(filterOp);
-  var fc=DATA.collars.filter(filterOp);
+  var fp=sortByRank(DATA.puras.filter(filterOp));
+  var fc=sortByRank(DATA.collars.filter(filterOp));
 
   var secP=document.getElementById('sec-puras');
   secP.style.display=(showP&&fp.length)?'block':'none';
@@ -540,21 +574,37 @@ function cardPura(op,porAt){
   var ai=AI_SCORES[op.Acao];
   var sug=ai&&ai.estrategia==='PURA';
 
+  var rank=ai?ai.rank:null;
+  var rankCls=rank===1?'r1':rank===2?'r2':rank===3?'r3':'';
+
   return '<div class="op-card'+(sug?' suggested':'')+'">' +
     '<div class="card-stripe"></div>' +
     '<div class="card-body">' +
-    (sug?'<div class="ia-sug"><div class="al">✨ IA Recomenda</div><p>'+(ai.reason||'')+'</p></div>':'') +
+
+    // IA suggestion com rank — aparece em TODOS os cards (com ou sem recomendação)
+    (sug?
+      '<div class="ia-sug">'+
+        '<div class="al-hd">'+
+          '<span class="badge-rank '+rankCls+'">'+(rank||'—')+'</span>'+
+          '<span class="al">✨ IA Recomenda — Score '+(ai.score||'')+'</span>'+
+        '</div>'+
+        '<p>'+(ai.reason||'')+'</p>'+
+      '</div>'
+    :
+      '<div class="no-ia-sug"></div>'
+    )+
 
     // CDI comparison bar
     cdiBar(op.Taxa_Mes) +
 
-    // Header
+    // Header: ação menor em cima, opção maior embaixo
     '<div class="card-hd">'+
       '<div>'+
         '<div class="card-ticker">'+op.Acao+'</div>'+
         '<div class="card-sub">'+
           '<span class="flag">'+flag+'</span>'+
           '<span class="card-option">'+op.Ticker_Opcao+'</span>'+
+          '<span class="op-tipo">CALL</span>'+
         '</div>'+
       '</div>'+
       '<div class="card-taxa-mes">'+
@@ -563,13 +613,25 @@ function cardPura(op,porAt){
       '</div>'+
     '</div>'+
 
-    // Badges: CDI | IPCA | posição+book | volume
+    // Badges: CDI | IPCA | posição — SEM volume aqui
     '<div class="badges">'+
-      '<span class="badge bg-'+(op.CDI==='SUPERA'?'s':'n')+'">CDI '+(op.CDI==='SUPERA'?'✓':'✗')+(op.Bid_Volume>0?' · '+fmtI(op.Bid_Volume)+' ctr':'')+'</span>'+
+      '<span class="badge bg-'+(op.CDI==='SUPERA'?'s':'n')+'">CDI '+(op.CDI==='SUPERA'?'✓':'✗')+'</span>'+
       '<span class="badge bg-'+(op.IPCA==='SUPERA'?'s':'n')+'">IPCA '+(op.IPCA==='SUPERA'?'✓':'✗')+'</span>'+
-      '<span class="badge '+posC+'">'+op.Posicao+' · '+fmtI(op.Bid_Volume)+' book</span>'+
+      '<span class="badge '+posC+'">'+op.Posicao+'</span>'+
       (op.Sem_Oferta?'<span class="badge bg-sb">⚠ Sem book</span>':'')+
       (isAm?'<span class="badge bg-am">🇺🇸 Exercício</span>':'')+
+    '</div>'+
+
+    // Taxa líquida em destaque
+    '<div class="taxa-liq-box">'+
+      '<div>'+
+        '<div class="tl-label">Taxa Líquida</div>'+
+        '<div class="tl-val">'+fmt(op.Taxa_Mes)+'%/mês</div>'+
+      '</div>'+
+      '<div style="text-align:right">'+
+        '<div class="tl-label">por dia</div>'+
+        '<div class="tl-dia">'+fmt4(op.Taxa_Dia)+'% ('+ganCDI+'×CDI)</div>'+
+      '</div>'+
     '</div>'+
 
     // Premio breakdown
@@ -593,22 +655,24 @@ function cardPura(op,porAt){
       '<div class="dr"><span class="k">Preço</span><span class="v gold">'+fmtM(op.Preco_Atual)+'</span></div>'+
       '<div class="dr"><span class="k">Strike</span><span class="v">'+fmtM(op.Strike)+' ('+op.Dist_Strike+')</span></div>'+
       '<div class="dr"><span class="k">Venc</span><span class="v">'+venc+' ('+op.Dias_ate_Venc+'d)</span></div>'+
-      '<div class="dr"><span class="k">Volume ativo</span><span class="v">'+fmtI(op.Volume)+'</span></div>'+
       '<div class="dr"><span class="k">Taxa bruta</span><span class="v">'+fmt(taxaBruta)+'%</span></div>'+
-      '<div class="dr"><span class="k">Taxa/dia</span><span class="v">'+fmt4(op.Taxa_Dia)+'% ('+ganCDI+'×CDI)</span></div>'+
+    '</div>'+
+
+    '<div class="div"></div>'+
+
+    // Volume + Book — linha dedicada
+    '<div class="liq-row">'+
+      '<div class="liq-chip vol">Vol negociado: '+fmtI(op.Volume||0)+'</div>'+
+      '<div class="liq-chip '+(op.Bid_Volume>0?'book-ok':'book')+'">Book: '+fmtI(op.Bid_Volume||0)+' ctr</div>'+
     '</div>'+
 
     '<div class="div"></div>'+
 
     // Simulação
-    '<div class="sim"><h4>📊 Simulação de Ganho</h4>'+
+    '<div class="sim"><h4>Simulação de Ganho</h4>'+
       '<div class="sim-row"><span class="sim-lbl">100 opções — '+fmtM(op.Preco_Atual*100)+'</span><span class="sim-g">+'+fmtM(op.Premio_Liquido*100)+'</span></div>'+
       '<div class="sim-row"><span class="sim-lbl">1.000 opções — '+fmtM(op.Preco_Atual*1000)+'</span><span class="sim-g">+'+fmtM(op.Premio_Liquido*1000)+'</span></div>'+
       (qtd>0?'<div class="sim-row sim-hl"><span class="sim-lbl" style="font-weight:700">💼 Seu caixa: '+fmtI(qtd)+' opções</span><span class="sim-g">+'+fmtM(qtd*op.Premio_Liquido)+'</span></div>':'')+
-    '</div>'+
-
-    '<div class="liq '+(op.Sem_Oferta?'warn':'ok')+'">'+
-      (op.Sem_Oferta?'⚠️ Sem contraparte no book':'✅ Book: '+fmtI(op.Bid_Volume)+' contratos')+
     '</div>'+
     '</div></div>';
 }
@@ -623,11 +687,24 @@ function cardCollar(op,porAt){
   var qtd=op.Preco_Atual>0?Math.floor(porAt/op.Preco_Atual/100)*100:0;
   var ai=AI_SCORES[op.Acao];
   var sug=ai&&ai.estrategia==='COLLAR';
+  var rank2=ai?ai.rank:null;
+  var rankCls2=rank2===1?'r1':rank2===2?'r2':rank2===3?'r3':'';
 
   return '<div class="op-card collar'+(sug?' suggested':'')+'">' +
     '<div class="card-stripe"></div>' +
     '<div class="card-body">' +
-    (sug?'<div class="ia-sug"><div class="al">✨ IA Recomenda</div><p>'+(ai.reason||'')+'</p></div>':'') +
+
+    (sug?
+      '<div class="ia-sug">'+
+        '<div class="al-hd">'+
+          '<span class="badge-rank '+rankCls2+'">'+(rank2||'—')+'</span>'+
+          '<span class="al">✨ IA Recomenda — Score '+(ai.score||'')+'</span>'+
+        '</div>'+
+        '<p>'+(ai.reason||'')+'</p>'+
+      '</div>'
+    :
+      '<div class="no-ia-sug"></div>'
+    )+
 
     cdiBar(op.Taxa_Mes) +
 
@@ -636,7 +713,11 @@ function cardCollar(op,porAt){
         '<div class="card-ticker">'+op.Acao+'</div>'+
         '<div class="card-sub">'+
           '<span class="flag">'+flag+'</span>'+
-          '<span class="card-option">'+op.Ticker_Call+' + '+op.Ticker_Put+'</span>'+
+          '<span class="card-option">'+op.Ticker_Call+'</span>'+
+          '<span class="op-tipo collar">CALL</span>'+
+          '<span style="font-size:13px;color:var(--ink3)">+</span>'+
+          '<span class="card-option">'+op.Ticker_Put+'</span>'+
+          '<span class="op-tipo collar">PUT</span>'+
         '</div>'+
       '</div>'+
       '<div class="card-taxa-mes">'+
@@ -647,11 +728,23 @@ function cardCollar(op,porAt){
 
     '<div class="badges">'+
       '<span class="badge bg-col">🛡 Collar</span>'+
-      '<span class="badge bg-'+(op.CDI==='SUPERA'?'s':'n')+'">CDI '+(op.CDI==='SUPERA'?'✓':'✗')+(op.Bid_Volume_Call>0?' · '+fmtI(op.Bid_Volume_Call)+' ctr':'')+'</span>'+
+      '<span class="badge bg-'+(op.CDI==='SUPERA'?'s':'n')+'">CDI '+(op.CDI==='SUPERA'?'✓':'✗')+'</span>'+
       '<span class="badge bg-'+(op.IPCA==='SUPERA'?'s':'n')+'">IPCA '+(op.IPCA==='SUPERA'?'✓':'✗')+'</span>'+
-      '<span class="badge bg-otm">'+op.Posicao+' · '+fmtI(op.Bid_Volume_Call)+' book</span>'+
+      '<span class="badge bg-otm">'+op.Posicao+'</span>'+
       (op.Sem_Oferta_Call?'<span class="badge bg-sb">⚠ Sem book</span>':'')+
       (isAm?'<span class="badge bg-am">🇺🇸 Exercício</span>':'')+
+    '</div>'+
+
+    // Taxa líquida em destaque
+    '<div class="taxa-liq-box">'+
+      '<div>'+
+        '<div class="tl-label">Taxa Líquida</div>'+
+        '<div class="tl-val">'+fmt(op.Taxa_Mes)+'%/mês</div>'+
+      '</div>'+
+      '<div style="text-align:right">'+
+        '<div class="tl-label">por dia</div>'+
+        '<div class="tl-dia">'+fmt4(op.Taxa_Dia)+'% ('+ganCDI+'×CDI)</div>'+
+      '</div>'+
     '</div>'+
 
     '<div class="premio-box">'+
@@ -677,22 +770,28 @@ function cardCollar(op,porAt){
       '<div class="dr"><span class="k">Venc</span><span class="v">'+venc+' ('+op.Dias_ate_Venc+'d)</span></div>'+
       '<div class="dr"><span class="k">Strike Call</span><span class="v">'+fmtM(op.Strike_Call)+' ('+op.Dist_Strike+')</span></div>'+
       '<div class="dr"><span class="k">Strike Put</span><span class="v neg">'+fmtM(op.Strike_Put)+' ('+op.Dist_Put+')</span></div>'+
-      '<div class="dr"><span class="k">Volume ativo</span><span class="v">'+fmtI(op.Volume_Call)+'</span></div>'+
       '<div class="dr"><span class="k">Perda máx.</span><span class="v neg">'+fmt(op.Perda_Maxima)+'%</span></div>'+
       '<div class="dr"><span class="k">Taxa bruta</span><span class="v">'+fmt(taxaBruta)+'%</span></div>'+
-      '<div class="dr"><span class="k">Taxa/dia</span><span class="v">'+fmt4(op.Taxa_Dia)+'% ('+ganCDI+'×CDI)</span></div>'+
     '</div>'+
 
     '<div class="div"></div>'+
 
-    '<div class="sim"><h4>📊 Simulação de Ganho (Collar)</h4>'+
+    // Volume + Book: CALL e PUT em linhas separadas
+    '<div class="liq-row">'+
+      '<div class="liq-chip vol">CALL vol: '+fmtI(op.Volume_Call||0)+'</div>'+
+      '<div class="liq-chip '+(op.Bid_Volume_Call>0?'book-ok':'book')+'">CALL book: '+fmtI(op.Bid_Volume_Call||0)+'</div>'+
+    '</div>'+
+    '<div class="liq-row" style="margin-top:4px">'+
+      '<div class="liq-chip vol">PUT vol: '+fmtI(op.Ask_Volume_Put||0)+'</div>'+
+      '<div class="liq-chip '+(op.Ask_Volume_Put>0?'book-ok':'book')+'">PUT ask: '+fmtI(op.Ask_Volume_Put||0)+'</div>'+
+    '</div>'+
+
+    '<div class="div"></div>'+
+
+    '<div class="sim"><h4>Simulação de Ganho (Collar)</h4>'+
       '<div class="sim-row"><span class="sim-lbl">100 opções — '+fmtM(op.Preco_Atual*100)+'</span><span class="sim-g">+'+fmtM(op.Premio_Liquido*100)+'</span></div>'+
       '<div class="sim-row"><span class="sim-lbl">1.000 opções — '+fmtM(op.Preco_Atual*1000)+'</span><span class="sim-g">+'+fmtM(op.Premio_Liquido*1000)+'</span></div>'+
       (qtd>0?'<div class="sim-row sim-hl"><span class="sim-lbl" style="font-weight:700">💼 Seu caixa: '+fmtI(qtd)+' opções</span><span class="sim-g">+'+fmtM(qtd*op.Premio_Liquido)+'</span></div>':'')+
-    '</div>'+
-
-    '<div class="liq '+(op.Sem_Oferta_Call?'warn':'ok')+'">'+
-      (op.Sem_Oferta_Call?'⚠️ Sem contraparte na CALL':'✅ Book CALL: '+fmtI(op.Bid_Volume_Call)+' | PUT ask: '+fmtI(op.Ask_Volume_Put))+
     '</div>'+
     '</div></div>';
 }
