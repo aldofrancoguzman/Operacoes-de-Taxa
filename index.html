@@ -672,14 +672,19 @@ footer {
   <!-- INDICATORS ROW -->
   <div class="indicators-row" id="indicators-row" style="display:none"></div>
 
-  <!-- DATA INPUT -->
+  <!-- DATA INPUT — auto-load + fallback manual -->
   <div class="data-input-card" id="data-input-card">
-    <h2>📋 Dados do Workflow (n8n JSON)</h2>
-    <textarea id="json-input" placeholder='Cole aqui o JSON gerado pelo n8n (campo "resultados" com puras e collars)...'></textarea>
-    <p class="data-hint">Aceita o JSON bruto do node <b>Agregar resultados</b> ou do <b>Formatar relatório</b>.</p>
-    <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;">
-      <button class="btn btn-primary" onclick="loadJSON()">▶ Carregar Dados</button>
-      <button class="btn btn-outline" onclick="loadDemo()">🧪 Demo com dados fictícios</button>
+    <h2>📡 Fonte de Dados</h2>
+    <p id="autoload-status" style="font-size:13px;margin-bottom:12px;color:var(--ink3);">⏳ Buscando dados publicados pelo n8n…</p>
+
+    <!-- Seção manual — visível apenas se data.json não existir -->
+    <div id="manual-input-section" style="display:none">
+      <textarea id="json-input" placeholder='Cole aqui o JSON gerado pelo n8n (campo "resultados" com puras e collars)...'></textarea>
+      <p class="data-hint">Aceita o JSON bruto do node <b>Agregar resultados</b>.</p>
+      <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="loadJSON()">▶ Carregar Dados</button>
+        <button class="btn btn-outline" onclick="loadDemo()">🧪 Demo com dados fictícios</button>
+      </div>
     </div>
   </div>
 
@@ -731,7 +736,7 @@ function checkSenha() {
     sessionStorage.setItem('auth', '1');
     const screen = document.getElementById('login-screen');
     screen.classList.add('fade-out');
-    setTimeout(() => screen.style.display = 'none', 400);
+    setTimeout(() => { screen.style.display = 'none'; autoLoadData(); }, 400);
   } else {
     input.classList.add('error');
     erro.textContent = 'Senha incorreta. Tente novamente.';
@@ -746,6 +751,7 @@ function checkSenha() {
   if (sessionStorage.getItem('auth') === '1') {
     const screen = document.getElementById('login-screen');
     if (screen) screen.style.display = 'none';
+    window.addEventListener('load', autoLoadData);
   } else {
     // Foca no campo de senha automaticamente
     window.addEventListener('load', () => {
@@ -798,15 +804,36 @@ function fmt4(n)      { return (n||0).toLocaleString('pt-BR', {minimumFractionDi
 function fmtMoeda(n)  { return 'R$ ' + fmt(n); }
 function fmtInt(n)    { return Math.round(n||0).toLocaleString('pt-BR'); }
 
-// ─── LOAD JSON ────────────────────────────────────────
+// ─── AUTO-LOAD data.json (publicado pelo n8n via GitHub API) ─────
+async function autoLoadData() {
+  const statusEl = document.getElementById('autoload-status');
+  try {
+    const resp = await fetch('data.json?_=' + Date.now());
+    if (!resp.ok) throw new Error('status ' + resp.status);
+    const parsed = await resp.json();
+    processData(parsed);
+    if (statusEl) {
+      const ts = parsed.updated_at || null;
+      statusEl.innerHTML = '✅ Dados carregados automaticamente' + (ts ? ' — ' + new Date(ts).toLocaleString('pt-BR', {timeZone:'America/Sao_Paulo'}) : '');
+      statusEl.style.color = 'var(--green)';
+    }
+    document.getElementById('manual-input-section').style.display = 'none';
+  } catch(e) {
+    if (statusEl) {
+      statusEl.innerHTML = '⚠️ Nenhum dado publicado ainda — cole o JSON manualmente abaixo.';
+      statusEl.style.color = 'var(--amber)';
+    }
+    document.getElementById('manual-input-section').style.display = 'block';
+  }
+}
+
+// ─── LOAD JSON (manual fallback) ──────────────────────
 function loadJSON() {
   const raw = document.getElementById('json-input').value.trim();
   if (!raw) { toast('Cole o JSON antes.', 'warn'); return; }
   try {
     let parsed = JSON.parse(raw);
-    // aceita array ou objeto
     if (Array.isArray(parsed)) parsed = parsed[0];
-    // nível resultados
     if (parsed.resultados) parsed = { resultados: parsed.resultados };
     processData(parsed);
   } catch(e) {
@@ -815,25 +842,50 @@ function loadJSON() {
 }
 
 function processData(parsed) {
+  // Lê indicadores do nível raiz (formato novo do data.json)
+  // e também de dentro de resultados (formato legado)
+  if (parsed.cdi_dia)  CDI_DIA  = parsed.cdi_dia;
+  if (parsed.cdi_mes)  CDI_MES  = parsed.cdi_mes;
+  if (parsed.ipca_ano) IPCA_ANO = parsed.ipca_ano;
+
   const resultados = parsed.resultados || (Array.isArray(parsed) ? parsed : [parsed]);
   let puras = [], collars = [];
+
   for (const r of resultados) {
     if (!r) continue;
     if (r.puras)   puras   = puras.concat(r.puras);
     if (r.collars) collars = collars.concat(r.collars);
-    if (!CDI_DIA && r.cdi_dia)  CDI_DIA  = r.cdi_dia;
-    if (!CDI_MES && r.cdi_mes)  CDI_MES  = r.cdi_mes;
+    // fallback: lê do nível de resultados se não veio na raiz
+    if (!CDI_DIA  && r.cdi_dia)  CDI_DIA  = r.cdi_dia;
+    if (!CDI_MES  && r.cdi_mes)  CDI_MES  = r.cdi_mes;
     if (!IPCA_ANO && r.ipca_ano) IPCA_ANO = r.ipca_ano;
   }
-  puras.sort((a,b) => b.Taxa_Mes - a.Taxa_Mes);
+
+  // Atualiza status de data/hora
+  const statusEl = document.getElementById('autoload-status');
+  if (statusEl && parsed.updated_at) {
+    statusEl.innerHTML = '✅ Atualizado em ' + new Date(parsed.updated_at).toLocaleString('pt-BR', {timeZone:'America/Sao_Paulo'});
+    statusEl.style.color = 'var(--green)';
+  }
+
+  // Renderiza análise da IA se vier no JSON
+  if (parsed.ia_analise && Object.keys(parsed.ia_analise).length) {
+    renderIAFromJSON(parsed.ia_analise);
+  }
+
+  puras.sort((a,b)   => b.Taxa_Mes - a.Taxa_Mes);
   collars.sort((a,b) => b.Taxa_Mes - a.Taxa_Mes);
   DATA = { puras, collars };
-  toast(`✅ ${puras.length} calls + ${collars.length} collars carregados`);
+
+  // Mostra seções, esconde input manual
+  document.getElementById('alloc-card').style.display = 'block';
+  document.getElementById('ai-panel').style.display   = 'block';
+  document.getElementById('data-input-card').style.display = 'block'; // mantém visível (só esconde o textarea interno)
+  document.getElementById('manual-input-section').style.display = 'none';
+
+  toast('✅ ' + puras.length + ' calls + ' + collars.length + ' collars carregados');
   renderIndicators();
   recalcAlloc();
-  document.getElementById('alloc-card').style.display = 'block';
-  document.getElementById('ai-panel').style.display = 'block';
-  document.getElementById('data-input-card').style.display = 'none';
   renderOps();
 }
 
@@ -1176,6 +1228,65 @@ function parseAISuggestions(text) {
     }
   }
   renderOps();
+}
+
+function renderIAFromJSON(analise) {
+  // Exibe análise que veio direto do data.json (gerada pelo n8n)
+  const output = document.getElementById('ai-output');
+  if (!output) return;
+  output.classList.remove('loading', 'cursor');
+
+  let txt = '';
+  if (analise.resumo) txt += analise.resumo + '
+
+';
+
+  if (analise.top3 && analise.top3.length) {
+    txt += '🏆 TOP RECOMENDAÇÕES
+';
+    for (const op of analise.top3) {
+      txt += `
+${op.rank}. ${op.acao} — ${op.estrategia} (Score: ${op.score})
+`;
+      txt += `   Opção: ${op.ticker_opcao} | Taxa: ${(op.taxa_mes||0).toFixed(2)}%/mês
+`;
+      txt += `   ${op.justificativa}
+`;
+      if (op.riscos) txt += `   ⚠️ ${op.riscos}
+`;
+    }
+  }
+
+  if (analise.alertas && analise.alertas.length) {
+    txt += '
+⚠️ ALERTAS
+';
+    for (const a of analise.alertas) txt += `• ${a}
+`;
+  }
+
+  if (analise.gerado_em) {
+    txt += '
+🤖 Análise gerada em ' + new Date(analise.gerado_em).toLocaleString('pt-BR', {timeZone:'America/Sao_Paulo'});
+  }
+
+  output.textContent = txt;
+
+  // Destaca cards recomendados
+  if (analise.top3) {
+    for (const op of analise.top3) {
+      if (op.acao) {
+        AI_SCORES[op.acao] = {
+          estrategia: op.estrategia,
+          reason: op.justificativa,
+          score: op.score
+        };
+      }
+    }
+    renderOps();
+  }
+
+  document.getElementById('ai-panel').style.display = 'block';
 }
 
 function clearAI() {
