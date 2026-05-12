@@ -1,37 +1,37 @@
 {
-  "updated_at": "2026-05-12T03:14:20.149Z",
+  "updated_at": "2026-05-12T03:40:24.466Z",
   "cdi_dia": 0,
   "cdi_mes": 0,
   "ipca_ano": 0,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_COLLAR",
-    "resumo": "O cenário atual apresenta boas oportunidades para estratégias de Collar, com várias opções de proteção barata. A volatilidade implícita não foi fornecida, mas a presença de Collars baratos sugere que é um bom momento para proteção.",
+    "resumo": "O cenário atual apresenta oportunidades de proteção com custos baixos para Collars, especialmente em ativos com alta volatilidade e risco de queda. A estratégia geral recomendada é o uso de Collars devido à proteção barata e volatilidade elevada em alguns ativos.",
     "top3": [
       {
         "rank": 1,
-        "acao": "BOVA",
+        "acao": "CMIN",
         "estrategia": "COLLAR",
-        "ticker_opcao": "BOVAE180",
-        "ticker_put": "BOVAQ161",
-        "taxa_mes": 3.53,
+        "ticker_opcao": "CMINE49",
+        "ticker_put": "CMINQ500",
+        "taxa_mes": 5.63,
         "prazo_ideal_dias": 4,
-        "iv_rank": 0,
-        "iv_atual": 0,
-        "beta": 0,
-        "delta": 0.409366,
-        "theta_mes": -7.2627,
-        "fair_value": 0,
+        "iv_rank": null,
+        "iv_atual": null,
+        "beta": null,
+        "delta": 0.302681,
+        "theta_mes": -0.2402,
+        "fair_value": null,
         "premium_vs_fair": "JUSTO",
         "volatilidade_classificacao": "MEDIA",
         "cobertura": {
-          "perda_maxima_pct": -9.9,
-          "custo_put_em_meses": 0.06,
+          "perda_maxima_pct": -8.3,
+          "custo_put_em_meses": 0.28,
           "avaliacao": "BARATA",
-          "recomendacao": "Proteção vale a pena devido ao baixo custo."
+          "recomendacao": "Proteção barata e eficaz contra quedas significativas."
         },
-        "justificativa": "Delta de 0.41 indica risco moderado de exercício, mas o custo da PUT é extremamente baixo (0.06 meses de prêmio), tornando a proteção muito atrativa.",
-        "riscos": "Risco de exercício moderado devido ao delta, mas compensado pela proteção barata.",
-        "score": 9
+        "justificativa": "Delta de 0.302681 indica risco moderado de exercício, enquanto o theta_mes de -0.2402 é aceitável. O custo da PUT é baixo, tornando a proteção barata.",
+        "riscos": "Risco de exercício moderado devido ao delta, mas compensado pela proteção barata da PUT.",
+        "score": 8.5
       },
       {
         "rank": 2,
@@ -41,54 +41,54 @@
         "ticker_put": "VALEQ734",
         "taxa_mes": 3.11,
         "prazo_ideal_dias": 4,
-        "iv_rank": 0,
-        "iv_atual": 0,
-        "beta": 0,
+        "iv_rank": null,
+        "iv_atual": null,
+        "beta": null,
         "delta": 0.090255,
         "theta_mes": -1.7595,
-        "fair_value": 0,
+        "fair_value": null,
         "premium_vs_fair": "JUSTO",
         "volatilidade_classificacao": "MEDIA",
         "cobertura": {
           "perda_maxima_pct": -9.9,
           "custo_put_em_meses": 0.03,
           "avaliacao": "BARATA",
-          "recomendacao": "Proteção vale a pena devido ao custo extremamente baixo."
+          "recomendacao": "Proteção extremamente barata, ideal para ativos voláteis."
         },
-        "justificativa": "Delta muito baixo (0.09) reduz o risco de exercício, e a proteção é extremamente barata (0.03 meses de prêmio).",
-        "riscos": "Risco de exercício muito baixo, proteção barata compensa qualquer volatilidade.",
-        "score": 8.8
+        "justificativa": "Delta baixo de 0.090255 reduz o risco de exercício, e a PUT oferece proteção quase gratuita.",
+        "riscos": "Theta negativo alto, mas compensado pela proteção barata e delta baixo.",
+        "score": 8.2
       },
       {
         "rank": 3,
-        "acao": "ITSA",
+        "acao": "B3SA",
         "estrategia": "COLLAR",
-        "ticker_opcao": "ITSAE135",
-        "ticker_put": "ITSAQ123",
-        "taxa_mes": 3.42,
+        "ticker_opcao": "B3SAE180",
+        "ticker_put": "B3SAQ162",
+        "taxa_mes": 3.26,
         "prazo_ideal_dias": 4,
-        "iv_rank": 0,
-        "iv_atual": 0,
-        "beta": 0,
-        "delta": 0.269766,
-        "theta_mes": -0.5658,
-        "fair_value": 0,
+        "iv_rank": null,
+        "iv_atual": null,
+        "beta": null,
+        "delta": 0.509316,
+        "theta_mes": -1.334,
+        "fair_value": null,
         "premium_vs_fair": "JUSTO",
         "volatilidade_classificacao": "MEDIA",
         "cobertura": {
-          "perda_maxima_pct": -9,
-          "custo_put_em_meses": 0.16,
+          "perda_maxima_pct": -9.5,
+          "custo_put_em_meses": 0.51,
           "avaliacao": "BARATA",
-          "recomendacao": "Proteção vale a pena devido ao baixo custo."
+          "recomendacao": "Proteção barata com cobertura significativa contra quedas."
         },
-        "justificativa": "Delta de 0.27 oferece um risco moderado de exercício, mas a proteção é barata (0.16 meses de prêmio), tornando a estratégia atrativa.",
-        "riscos": "Risco moderado de exercício, mas a proteção barata compensa.",
-        "score": 8.5
+        "justificativa": "Delta acima de 0.5 indica maior risco de exercício, mas a proteção barata da PUT compensa.",
+        "riscos": "Maior risco de exercício devido ao delta, mas mitigado pela proteção barata.",
+        "score": 7.9
       }
     ],
     "alertas": [
-      "Opções com volume baixo ou sem oferta foram descartadas.",
-      "Proteções baratas disponíveis, aproveite para mitigar riscos."
+      "CYRE e VAMO apresentam sem oferta, evitando operações.",
+      "Opções com delta acima de 0.35 apresentam maior risco de exercício."
     ],
     "gerado_em": "2026-05-12T00:00:00Z"
   },
