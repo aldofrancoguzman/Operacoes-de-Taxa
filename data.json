@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-05-20T13:00:26.514Z",
+  "updated_at": "2026-05-20T14:00:34.129Z",
   "cdi_dia": 0.0534,
   "cdi_mes": 1.1274,
-  "ipca_ano": 4.39,
+  "ipca_ano": 4.14,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_CALL_SEQUENCIAL",
-    "resumo": "O cenário atual de IV está favorável para venda de opções, com várias oportunidades superando o CDI e IPCA. A volatilidade implícita está em níveis que permitem boas taxas de retorno.",
+    "resumo": "O cenário atual de IV está favorável para venda de opções, com taxas mensais superando o CDI e IPCA. É um bom momento para estratégias de venda coberta.",
     "top3": [
       {
         "rank": 1,
@@ -15,7 +15,7 @@
         "taxa_mes": 5.87,
         "score_quantitativo": 10,
         "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": "null",
+        "motivo_ajuste": null,
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -27,9 +27,9 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "JUSTA",
-          "recomendacao": "Venda de CALL pura é adequada devido ao delta baixo e estilo europeu."
+          "recomendacao": "A estratégia de venda coberta com VALEE825W4 é adequada, dado o delta baixo e a taxa mensal atrativa."
         },
-        "justificativa": "A VALE com estilo europeu e delta de 0.246395 é uma boa opção para venda coberta, com um score de 10 que reflete bem o risco e retorno. A taxa mensal de 5.87% supera o CDI e IPCA, justificando a estratégia.",
+        "justificativa": "A opção VALEE825W4 apresenta um delta baixo e uma taxa mensal que supera o CDI, tornando-a uma escolha sólida para venda coberta. A volatilidade é média, e o prêmio está justo em relação ao valor justo.",
         "riscos": "Nenhum risco específico identificado.",
         "score": 10
       },
@@ -41,7 +41,7 @@
         "taxa_mes": 11.24,
         "score_quantitativo": 8.8,
         "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": "null",
+        "motivo_ajuste": null,
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -53,21 +53,21 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "JUSTA",
-          "recomendacao": "Venda de CALL pura é adequada devido ao delta moderado e estilo europeu."
+          "recomendacao": "A opção VALEE815W4 é uma boa escolha para venda coberta, com um delta moderado e uma taxa mensal alta."
         },
-        "justificativa": "A VALE com estilo europeu e delta de 0.427033 oferece uma taxa mensal de 11.24%, superando o CDI e IPCA. O score de 8.8 é adequado considerando o risco e retorno.",
+        "justificativa": "VALEE815W4 tem um delta moderado e uma taxa mensal que supera significativamente o CDI, sendo uma opção atrativa para venda coberta. A volatilidade é média, e o prêmio está justo.",
         "riscos": "Nenhum risco específico identificado.",
         "score": 8.8
       },
       {
         "rank": 3,
         "acao": "EMBJ",
-        "estrategia": "COLLAR",
+        "estrategia": "PURA",
         "ticker_opcao": "EMBJE698W4",
         "taxa_mes": 8.69,
         "score_quantitativo": 8.5,
-        "ajuste_rank": "DESCEU",
-        "motivo_ajuste": "Estilo americano e delta moderado sugerem maior risco.",
+        "ajuste_rank": "CONFIRMADO",
+        "motivo_ajuste": null,
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -76,26 +76,24 @@
         "volatilidade_classificacao": "MEDIA",
         "premium_vs_fair": "JUSTO",
         "cobertura": {
-          "perda_maxima_pct": -10.6,
-          "custo_put_em_meses": 0.21,
-          "avaliacao": "BARATA",
-          "recomendacao": "Considerar COLLAR devido ao estilo americano e proteção barata."
+          "perda_maxima_pct": 0,
+          "custo_put_em_meses": 0,
+          "avaliacao": "JUSTA",
+          "recomendacao": "A opção EMBJE698W4 é adequada para venda coberta, com um delta moderado e uma taxa mensal atrativa."
         },
-        "justificativa": "A EMBJ com estilo americano e delta de 0.315482 apresenta um risco moderado. A taxa mensal de 8.69% é atrativa, mas o estilo americano justifica um ajuste para COLLAR.",
-        "riscos": "Estilo americano pode aumentar o risco de exercício antecipado.",
+        "justificativa": "EMBJE698W4 oferece um delta moderado e uma taxa mensal que supera o CDI, sendo uma escolha sólida para venda coberta. A volatilidade é média, e o prêmio está justo.",
+        "riscos": "Nenhum risco específico identificado.",
         "score": 8.5
       }
     ],
-    "alertas": [
-      "Estilo americano em EMBJ pode aumentar risco de exercício antecipado."
-    ],
+    "alertas": [],
     "gerado_em": "2026-05-20T00:00:00Z"
   },
   "resultados": [
     {
       "cdi_dia": 0.0534,
       "cdi_mes": 1.1274,
-      "ipca_ano": 4.39,
+      "ipca_ano": 4.14,
       "puras": [
         {
           "Acao": "PRIO",
