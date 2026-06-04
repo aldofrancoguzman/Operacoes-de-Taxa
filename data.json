@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-06-04T15:00:28.201Z",
+  "updated_at": "2026-06-04T16:00:35.477Z",
   "cdi_dia": 0.0534,
   "cdi_mes": 1.1274,
   "ipca_ano": 4.39,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_CALL_SEQUENCIAL",
-    "resumo": "A volatilidade implícita está em níveis moderados, tornando este um bom momento para vender opções, especialmente para estratégias de CALL PURA com estilo europeu.",
+    "resumo": "O cenário atual de IV está favorável para a venda de opções, com várias oportunidades superando o CDI e o IPCA. As opções europeias são preferíveis devido ao menor risco de exercício antecipado.",
     "top3": [
       {
         "rank": 1,
@@ -15,7 +15,7 @@
         "taxa_mes": 5.68,
         "score_quantitativo": 7.48,
         "ajuste_rank": "DESCEU",
-        "motivo_ajuste": "Estilo americano e delta próximo ao limite para COLLAR.",
+        "motivo_ajuste": "Estilo americano aumenta risco de exercício antecipado e volatilidade do setor de construção civil pode impactar negativamente.",
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -27,10 +27,10 @@
           "perda_maxima_pct": -13.7,
           "custo_put_em_meses": 0.05,
           "avaliacao": "BARATA",
-          "recomendacao": "A proteção é barata e cobre adequadamente o risco."
+          "recomendacao": "Considerar COLLAR devido ao risco do setor e estilo americano."
         },
-        "justificativa": "Apesar do score quantitativo alto, o estilo americano e delta elevado sugerem maior risco, justificando um COLLAR.",
-        "riscos": "Estilo americano pode aumentar risco de exercício antecipado.",
+        "justificativa": "Apesar do score alto, o estilo americano e a volatilidade do setor de construção civil sugerem um ajuste para COLLAR, garantindo proteção adicional.",
+        "riscos": "Volatilidade do setor de construção civil e risco de exercício antecipado.",
         "score": 7.48
       },
       {
@@ -49,9 +49,14 @@
         "theta_mes": -6.6765,
         "volatilidade_classificacao": "MEDIA",
         "premium_vs_fair": "JUSTO",
-        "cobertura": null,
-        "justificativa": "Delta acima de 0.5 indica maior probabilidade de exercício, mas o estilo europeu reduz riscos.",
-        "riscos": "Delta elevado pode indicar maior risco de exercício.",
+        "cobertura": {
+          "perda_maxima_pct": 0,
+          "custo_put_em_meses": 0,
+          "avaliacao": "JUSTA",
+          "recomendacao": "Manter estratégia PURA devido ao estilo europeu e delta adequado."
+        },
+        "justificativa": "A opção europeia com delta moderado e superação do CDI justifica a manutenção do ranking.",
+        "riscos": "Risco de mercado geral, mas mitigado pelo estilo europeu.",
         "score": 7
       },
       {
@@ -70,14 +75,19 @@
         "theta_mes": -2.752,
         "volatilidade_classificacao": "MEDIA",
         "premium_vs_fair": "JUSTO",
-        "cobertura": null,
-        "justificativa": "Delta baixo e estilo americano são compensados pela proximidade do vencimento.",
-        "riscos": "Proximidade do vencimento pode aumentar a volatilidade do prêmio.",
+        "cobertura": {
+          "perda_maxima_pct": 0,
+          "custo_put_em_meses": 0,
+          "avaliacao": "JUSTA",
+          "recomendacao": "Manter estratégia PURA devido ao delta baixo e superação do CDI."
+        },
+        "justificativa": "Apesar do vencimento próximo, a baixa delta e o estilo americano são compensados pela superação do CDI.",
+        "riscos": "Risco de exercício antecipado devido ao estilo americano.",
         "score": 6.63
       }
     ],
     "alertas": [
-      "CYRE possui estilo americano, aumentando risco de exercício antecipado."
+      "CYRE tem estilo americano, aumentando risco de exercício antecipado."
     ],
     "gerado_em": "2026-06-04T00:00:00Z"
   },
