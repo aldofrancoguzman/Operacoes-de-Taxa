@@ -1,21 +1,21 @@
 {
-  "updated_at": "2026-06-04T17:00:29.461Z",
+  "updated_at": "2026-06-04T18:00:29.671Z",
   "cdi_dia": 0.0534,
   "cdi_mes": 1.1274,
   "ipca_ano": 4.39,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_CALL_SEQUENCIAL",
-    "resumo": "O cenário atual de IV está favorável para a venda de opções, com várias oportunidades superando o CDI e o IPCA. As opções europeias são preferíveis devido ao menor risco de exercício antecipado.",
+    "resumo": "O cenário atual de IV está favorável para a venda de opções, com várias oportunidades superando o CDI e o IPCA. É um bom momento para estratégias de venda coberta.",
     "top3": [
       {
         "rank": 1,
         "acao": "CYRE",
-        "estrategia": "PURA",
+        "estrategia": "COLLAR",
         "ticker_opcao": "CYREF215",
         "taxa_mes": 5.68,
         "score_quantitativo": 7.48,
         "ajuste_rank": "DESCEU",
-        "motivo_ajuste": "Estilo americano aumenta risco de exercício antecipado.",
+        "motivo_ajuste": "Estilo americano e delta próximo ao limite para COLLAR.",
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -24,13 +24,13 @@
         "volatilidade_classificacao": "MEDIA",
         "premium_vs_fair": "JUSTO",
         "cobertura": {
-          "perda_maxima_pct": 0,
-          "custo_put_em_meses": 0,
-          "avaliacao": "JUSTA",
-          "recomendacao": "Considere a volatilidade e o estilo americano antes de decidir."
+          "perda_maxima_pct": -13.7,
+          "custo_put_em_meses": 0.05,
+          "avaliacao": "BARATA",
+          "recomendacao": "A proteção é barata e cobre adequadamente o risco."
         },
-        "justificativa": "Apesar do score alto, o estilo americano e a volatilidade média sugerem cautela. A taxa mensal é atrativa, mas o risco de exercício antecipado deve ser considerado.",
-        "riscos": "Risco de exercício antecipado devido ao estilo americano.",
+        "justificativa": "Apesar do score alto, o estilo americano e o delta elevado sugerem um ajuste para COLLAR. A proteção é barata e cobre adequadamente o risco.",
+        "riscos": "Estilo americano pode resultar em exercício antecipado.",
         "score": 7.48
       },
       {
@@ -53,10 +53,10 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "JUSTA",
-          "recomendacao": "A opção europeia reduz o risco de exercício antecipado."
+          "recomendacao": "null"
         },
-        "justificativa": "A opção europeia e a taxa mensal atrativa tornam esta uma boa escolha. O delta sugere uma probabilidade razoável de exercício, mas o estilo europeu mitiga riscos.",
-        "riscos": "Volatilidade pode impactar o prêmio, mas o risco é controlado pelo estilo europeu.",
+        "justificativa": "A opção é europeia e está ATM, com um delta adequado para uma estratégia pura. O theta é forte, indicando boa remuneração.",
+        "riscos": "Volatilidade pode impactar o prêmio.",
         "score": 7
       },
       {
@@ -66,8 +66,8 @@
         "ticker_opcao": "VALEF840W1",
         "taxa_mes": 4.4,
         "score_quantitativo": 6.63,
-        "ajuste_rank": "DESCEU",
-        "motivo_ajuste": "Vencimento muito próximo e estilo americano aumentam risco.",
+        "ajuste_rank": "CONFIRMADO",
+        "motivo_ajuste": "null",
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -79,15 +79,15 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "JUSTA",
-          "recomendacao": "Considere o risco de exercício antecipado devido ao vencimento iminente."
+          "recomendacao": "null"
         },
-        "justificativa": "O vencimento em 1 dia e o estilo americano aumentam o risco de exercício antecipado. A taxa mensal é menos atrativa comparada a outras opções.",
-        "riscos": "Exercício antecipado devido ao vencimento iminente e estilo americano.",
+        "justificativa": "Apesar do estilo americano, o delta baixo e a proximidade do vencimento tornam esta opção uma boa escolha para venda coberta pura.",
+        "riscos": "Exercício antecipado devido ao estilo americano.",
         "score": 6.63
       }
     ],
     "alertas": [
-      "CYRE e VALE possuem estilo americano, aumentando o risco de exercício antecipado."
+      "CYRE possui estilo americano, risco de exercício antecipado."
     ],
     "gerado_em": "2026-06-04T00:00:00Z"
   },
