@@ -1,21 +1,21 @@
 {
-  "updated_at": "2026-06-04T13:00:27.124Z",
+  "updated_at": "2026-06-04T14:00:38.774Z",
   "cdi_dia": 0.0534,
   "cdi_mes": 1.1274,
-  "ipca_ano": 4.14,
+  "ipca_ano": 4.39,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_CALL_SEQUENCIAL",
-    "resumo": "O cenário atual de IV está favorável para venda de opções, com várias oportunidades superando o CDI e o IPCA. É um bom momento para estratégias de venda coberta.",
+    "resumo": "O cenário atual de IV está favorável para venda de opções, com várias oportunidades superando o CDI e IPCA. É um bom momento para estratégias de venda coberta.",
     "top3": [
       {
         "rank": 1,
         "acao": "CYRE",
-        "estrategia": "PURA",
+        "estrategia": "COLLAR",
         "ticker_opcao": "CYREF215",
         "taxa_mes": 5.68,
         "score_quantitativo": 7.48,
-        "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": "null",
+        "ajuste_rank": "DESCEU",
+        "motivo_ajuste": "Estilo americano e delta próximo ao limite para COLLAR.",
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -24,13 +24,13 @@
         "volatilidade_classificacao": "MEDIA",
         "premium_vs_fair": "JUSTO",
         "cobertura": {
-          "perda_maxima_pct": 0,
-          "custo_put_em_meses": 0,
-          "avaliacao": "JUSTA",
-          "recomendacao": "A opção CYREF215 é uma boa escolha para venda coberta, com um delta moderado e superando o CDI."
+          "perda_maxima_pct": -13.7,
+          "custo_put_em_meses": 0.05,
+          "avaliacao": "BARATA",
+          "recomendacao": "Ajustar para COLLAR devido ao estilo americano e delta alto."
         },
-        "justificativa": "A CYRE apresenta um bom score de risco/retorno, com delta moderado e theta negativo aceitável. A taxa mensal supera o CDI, justificando a estratégia de venda coberta.",
-        "riscos": "A opção é americana, o que pode aumentar o risco de exercício antecipado.",
+        "justificativa": "Apesar do score alto, o estilo americano e delta próximo ao limite sugerem maior risco. A proteção COLLAR é recomendada para mitigar riscos.",
+        "riscos": "Estilo americano pode levar a exercício antecipado.",
         "score": 7.48
       },
       {
@@ -53,9 +53,9 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "JUSTA",
-          "recomendacao": "A opção CSMGF608 é uma escolha sólida, com um delta próximo de 0.5, ideal para estratégias de venda coberta."
+          "recomendacao": "Manter estratégia PURA devido ao estilo europeu e delta adequado."
         },
-        "justificativa": "CSMG tem um delta próximo de 0.5, o que é ideal para venda coberta. A taxa mensal é competitiva, superando o CDI.",
+        "justificativa": "A opção europeia com delta adequado e superando CDI e IPCA justifica a manutenção da estratégia PURA.",
         "riscos": "Nenhum risco específico identificado.",
         "score": 7
       },
@@ -79,15 +79,15 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "JUSTA",
-          "recomendacao": "A opção VALEF840W1 é adequada para venda coberta, com um delta baixo e superando o CDI."
+          "recomendacao": "Manter estratégia PURA devido ao delta baixo e superação do CDI."
         },
-        "justificativa": "VALE apresenta um delta baixo, o que reduz o risco de exercício. A taxa mensal é atrativa, superando o CDI.",
-        "riscos": "A opção é americana, o que pode aumentar o risco de exercício antecipado.",
+        "justificativa": "A baixa delta e superação do CDI justificam a manutenção da estratégia PURA.",
+        "riscos": "Nenhum risco específico identificado.",
         "score": 6.63
       }
     ],
     "alertas": [
-      "Nenhum alerta específico identificado."
+      "CYRE com estilo americano pode levar a exercício antecipado."
     ],
     "gerado_em": "2026-06-04T00:00:00Z"
   },
@@ -95,7 +95,7 @@
     {
       "cdi_dia": 0.0534,
       "cdi_mes": 1.1274,
-      "ipca_ano": 4.14,
+      "ipca_ano": 4.39,
       "puras": [
         {
           "Acao": "CYRE",
@@ -210,7 +210,7 @@
           "Bid_Volume": 330,
           "Sem_Oferta": false,
           "CDI": "SUPERA",
-          "IPCA": "SUPERA"
+          "IPCA": "NAO_SUPERA"
         },
         {
           "Acao": "ITUB",
@@ -233,7 +233,7 @@
           "Bid_Volume": 1000,
           "Sem_Oferta": false,
           "CDI": "SUPERA",
-          "IPCA": "SUPERA"
+          "IPCA": "NAO_SUPERA"
         },
         {
           "Acao": "SBSP",
