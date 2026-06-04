@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-04T16:00:35.477Z",
+  "updated_at": "2026-06-04T17:00:29.461Z",
   "cdi_dia": 0.0534,
   "cdi_mes": 1.1274,
   "ipca_ano": 4.39,
@@ -10,12 +10,12 @@
       {
         "rank": 1,
         "acao": "CYRE",
-        "estrategia": "COLLAR",
+        "estrategia": "PURA",
         "ticker_opcao": "CYREF215",
         "taxa_mes": 5.68,
         "score_quantitativo": 7.48,
         "ajuste_rank": "DESCEU",
-        "motivo_ajuste": "Estilo americano aumenta risco de exercício antecipado e volatilidade do setor de construção civil pode impactar negativamente.",
+        "motivo_ajuste": "Estilo americano aumenta risco de exercício antecipado.",
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -24,13 +24,13 @@
         "volatilidade_classificacao": "MEDIA",
         "premium_vs_fair": "JUSTO",
         "cobertura": {
-          "perda_maxima_pct": -13.7,
-          "custo_put_em_meses": 0.05,
-          "avaliacao": "BARATA",
-          "recomendacao": "Considerar COLLAR devido ao risco do setor e estilo americano."
+          "perda_maxima_pct": 0,
+          "custo_put_em_meses": 0,
+          "avaliacao": "JUSTA",
+          "recomendacao": "Considere a volatilidade e o estilo americano antes de decidir."
         },
-        "justificativa": "Apesar do score alto, o estilo americano e a volatilidade do setor de construção civil sugerem um ajuste para COLLAR, garantindo proteção adicional.",
-        "riscos": "Volatilidade do setor de construção civil e risco de exercício antecipado.",
+        "justificativa": "Apesar do score alto, o estilo americano e a volatilidade média sugerem cautela. A taxa mensal é atrativa, mas o risco de exercício antecipado deve ser considerado.",
+        "riscos": "Risco de exercício antecipado devido ao estilo americano.",
         "score": 7.48
       },
       {
@@ -53,10 +53,10 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "JUSTA",
-          "recomendacao": "Manter estratégia PURA devido ao estilo europeu e delta adequado."
+          "recomendacao": "A opção europeia reduz o risco de exercício antecipado."
         },
-        "justificativa": "A opção europeia com delta moderado e superação do CDI justifica a manutenção do ranking.",
-        "riscos": "Risco de mercado geral, mas mitigado pelo estilo europeu.",
+        "justificativa": "A opção europeia e a taxa mensal atrativa tornam esta uma boa escolha. O delta sugere uma probabilidade razoável de exercício, mas o estilo europeu mitiga riscos.",
+        "riscos": "Volatilidade pode impactar o prêmio, mas o risco é controlado pelo estilo europeu.",
         "score": 7
       },
       {
@@ -66,8 +66,8 @@
         "ticker_opcao": "VALEF840W1",
         "taxa_mes": 4.4,
         "score_quantitativo": 6.63,
-        "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": "null",
+        "ajuste_rank": "DESCEU",
+        "motivo_ajuste": "Vencimento muito próximo e estilo americano aumentam risco.",
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -79,15 +79,15 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "JUSTA",
-          "recomendacao": "Manter estratégia PURA devido ao delta baixo e superação do CDI."
+          "recomendacao": "Considere o risco de exercício antecipado devido ao vencimento iminente."
         },
-        "justificativa": "Apesar do vencimento próximo, a baixa delta e o estilo americano são compensados pela superação do CDI.",
-        "riscos": "Risco de exercício antecipado devido ao estilo americano.",
+        "justificativa": "O vencimento em 1 dia e o estilo americano aumentam o risco de exercício antecipado. A taxa mensal é menos atrativa comparada a outras opções.",
+        "riscos": "Exercício antecipado devido ao vencimento iminente e estilo americano.",
         "score": 6.63
       }
     ],
     "alertas": [
-      "CYRE tem estilo americano, aumentando risco de exercício antecipado."
+      "CYRE e VALE possuem estilo americano, aumentando o risco de exercício antecipado."
     ],
     "gerado_em": "2026-06-04T00:00:00Z"
   },
