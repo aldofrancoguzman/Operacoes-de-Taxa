@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-06-04T14:00:38.774Z",
+  "updated_at": "2026-06-04T15:00:28.201Z",
   "cdi_dia": 0.0534,
   "cdi_mes": 1.1274,
   "ipca_ano": 4.39,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_CALL_SEQUENCIAL",
-    "resumo": "O cenário atual de IV está favorável para venda de opções, com várias oportunidades superando o CDI e IPCA. É um bom momento para estratégias de venda coberta.",
+    "resumo": "A volatilidade implícita está em níveis moderados, tornando este um bom momento para vender opções, especialmente para estratégias de CALL PURA com estilo europeu.",
     "top3": [
       {
         "rank": 1,
@@ -27,10 +27,10 @@
           "perda_maxima_pct": -13.7,
           "custo_put_em_meses": 0.05,
           "avaliacao": "BARATA",
-          "recomendacao": "Ajustar para COLLAR devido ao estilo americano e delta alto."
+          "recomendacao": "A proteção é barata e cobre adequadamente o risco."
         },
-        "justificativa": "Apesar do score alto, o estilo americano e delta próximo ao limite sugerem maior risco. A proteção COLLAR é recomendada para mitigar riscos.",
-        "riscos": "Estilo americano pode levar a exercício antecipado.",
+        "justificativa": "Apesar do score quantitativo alto, o estilo americano e delta elevado sugerem maior risco, justificando um COLLAR.",
+        "riscos": "Estilo americano pode aumentar risco de exercício antecipado.",
         "score": 7.48
       },
       {
@@ -49,14 +49,9 @@
         "theta_mes": -6.6765,
         "volatilidade_classificacao": "MEDIA",
         "premium_vs_fair": "JUSTO",
-        "cobertura": {
-          "perda_maxima_pct": 0,
-          "custo_put_em_meses": 0,
-          "avaliacao": "JUSTA",
-          "recomendacao": "Manter estratégia PURA devido ao estilo europeu e delta adequado."
-        },
-        "justificativa": "A opção europeia com delta adequado e superando CDI e IPCA justifica a manutenção da estratégia PURA.",
-        "riscos": "Nenhum risco específico identificado.",
+        "cobertura": null,
+        "justificativa": "Delta acima de 0.5 indica maior probabilidade de exercício, mas o estilo europeu reduz riscos.",
+        "riscos": "Delta elevado pode indicar maior risco de exercício.",
         "score": 7
       },
       {
@@ -75,19 +70,14 @@
         "theta_mes": -2.752,
         "volatilidade_classificacao": "MEDIA",
         "premium_vs_fair": "JUSTO",
-        "cobertura": {
-          "perda_maxima_pct": 0,
-          "custo_put_em_meses": 0,
-          "avaliacao": "JUSTA",
-          "recomendacao": "Manter estratégia PURA devido ao delta baixo e superação do CDI."
-        },
-        "justificativa": "A baixa delta e superação do CDI justificam a manutenção da estratégia PURA.",
-        "riscos": "Nenhum risco específico identificado.",
+        "cobertura": null,
+        "justificativa": "Delta baixo e estilo americano são compensados pela proximidade do vencimento.",
+        "riscos": "Proximidade do vencimento pode aumentar a volatilidade do prêmio.",
         "score": 6.63
       }
     ],
     "alertas": [
-      "CYRE com estilo americano pode levar a exercício antecipado."
+      "CYRE possui estilo americano, aumentando risco de exercício antecipado."
     ],
     "gerado_em": "2026-06-04T00:00:00Z"
   },
