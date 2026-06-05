@@ -1,47 +1,21 @@
 {
-  "updated_at": "2026-06-04T19:00:33.561Z",
+  "updated_at": "2026-06-05T12:00:46.283Z",
   "cdi_dia": 0.0534,
   "cdi_mes": 1.1274,
   "ipca_ano": 4.39,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_CALL_SEQUENCIAL",
-    "resumo": "O cenário atual de IV está moderado, com oportunidades para venda de opções, especialmente em ativos com volatilidade controlada e prêmios que superam o CDI.",
+    "resumo": "O cenário atual de IV está relativamente estável, com algumas oportunidades de venda de opções, especialmente em ativos com volatilidade controlada e prêmios que superam o CDI.",
     "top3": [
       {
         "rank": 1,
-        "acao": "CYRE",
-        "estrategia": "COLLAR",
-        "ticker_opcao": "CYREF215",
-        "taxa_mes": 5.68,
-        "score_quantitativo": 7.48,
-        "ajuste_rank": "DESCEU",
-        "motivo_ajuste": "Estilo americano e delta alto sugerem maior risco; COLLAR recomendado.",
-        "iv_rank": 0,
-        "iv_atual": 0,
-        "beta": 0,
-        "delta": 0.388346,
-        "theta_mes": -1.1212,
-        "volatilidade_classificacao": "MEDIA",
-        "premium_vs_fair": "JUSTO",
-        "cobertura": {
-          "perda_maxima_pct": -13.7,
-          "custo_put_em_meses": 0.05,
-          "avaliacao": "BARATA",
-          "recomendacao": "A proteção é barata e cobre adequadamente o risco."
-        },
-        "justificativa": "CYRE apresenta um delta elevado e estilo americano, aumentando o risco. A estratégia COLLAR é mais adequada para mitigar riscos, com uma PUT barata que cobre quedas significativas.",
-        "riscos": "Estilo americano e delta elevado aumentam o risco de exercício antecipado.",
-        "score": 7.48
-      },
-      {
-        "rank": 2,
         "acao": "CSMG",
         "estrategia": "PURA",
         "ticker_opcao": "CSMGF608",
         "taxa_mes": 5.26,
         "score_quantitativo": 7,
-        "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": "null",
+        "ajuste_rank": "SUBIU",
+        "motivo_ajuste": "A opção é europeia, com delta moderado e theta forte, além de superar o CDI e IPCA.",
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -53,11 +27,37 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "JUSTA",
-          "recomendacao": "A estratégia PURA é adequada devido ao estilo europeu e delta moderado."
+          "recomendacao": "A opção é adequada para venda coberta devido ao seu perfil de risco e retorno."
         },
-        "justificativa": "CSMG possui um delta moderado e estilo europeu, tornando a estratégia PURA adequada para capturar prêmios sem riscos excessivos.",
-        "riscos": "Delta próximo de 0.5 indica maior sensibilidade ao preço do ativo subjacente.",
+        "justificativa": "A CSMG apresenta um delta próximo de 0.5, indicando uma boa sensibilidade ao preço do ativo subjacente. O theta é forte, o que é favorável para a estratégia de venda coberta. A opção é europeia, o que reduz o risco de exercício antecipado.",
+        "riscos": "Nenhum risco específico identificado além dos riscos normais de mercado.",
         "score": 7
+      },
+      {
+        "rank": 2,
+        "acao": "CYRE",
+        "estrategia": "PURA",
+        "ticker_opcao": "CYREF215",
+        "taxa_mes": 5.68,
+        "score_quantitativo": 7.48,
+        "ajuste_rank": "CONFIRMADO",
+        "motivo_ajuste": "null",
+        "iv_rank": 0,
+        "iv_atual": 0,
+        "beta": 0,
+        "delta": 0.388346,
+        "theta_mes": -1.1212,
+        "volatilidade_classificacao": "MEDIA",
+        "premium_vs_fair": "JUSTO",
+        "cobertura": {
+          "perda_maxima_pct": 0,
+          "custo_put_em_meses": 0,
+          "avaliacao": "JUSTA",
+          "recomendacao": "A opção é interessante para venda coberta, considerando a taxa mensal atrativa e o delta moderado."
+        },
+        "justificativa": "CYRE tem um delta moderado e um theta que, embora negativo, é compensado pela alta taxa mensal. A opção americana requer atenção ao risco de exercício antecipado.",
+        "riscos": "Risco de exercício antecipado devido ao estilo americano.",
+        "score": 7.48
       },
       {
         "rank": 3,
@@ -79,17 +79,17 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "JUSTA",
-          "recomendacao": "A estratégia PURA é adequada devido ao delta baixo e estilo americano próximo ao vencimento."
+          "recomendacao": "A opção é adequada para venda coberta, apesar do delta baixo, devido à taxa mensal que supera o CDI."
         },
-        "justificativa": "VALE apresenta um delta baixo e está próximo do vencimento, tornando a estratégia PURA uma boa escolha para capturar prêmios com risco controlado.",
-        "riscos": "Proximidade do vencimento pode limitar o tempo para ajustes.",
+        "justificativa": "VALE apresenta um delta baixo, o que limita a sensibilidade ao preço do ativo subjacente, mas a taxa mensal ainda é atrativa. A opção americana requer atenção ao risco de exercício antecipado.",
+        "riscos": "Risco de exercício antecipado devido ao estilo americano.",
         "score": 6.63
       }
     ],
     "alertas": [
-      "CYRE possui estilo americano e delta elevado, aumentando o risco de exercício antecipado."
+      "Nenhum alerta específico no momento."
     ],
-    "gerado_em": "2026-06-04T00:00:00Z"
+    "gerado_em": "2026-06-05T12:00:00Z"
   },
   "resultados": [
     {
