@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-07T14:00:46.868Z",
+  "updated_at": "2026-09-07T15:00:52.955Z",
   "cdi_dia": 0.05166,
   "cdi_mes": 1.0905,
   "ipca_ano": 4.44,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_CALL_SEQUENCIAL",
-    "resumo": "O cenário atual de IV está favorável para a venda de opções, com várias opções superando o CDI e IPCA. É um bom momento para estratégias de venda coberta.",
+    "resumo": "A volatilidade implícita está em níveis moderados, tornando este um bom momento para vender opções, especialmente para estratégias de CALL PURA com estilo europeu.",
     "top3": [
       {
         "rank": 1,
@@ -15,7 +15,7 @@
         "taxa_mes": 6.45,
         "score_quantitativo": 8.8,
         "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": "null",
+        "motivo_ajuste": null,
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -27,9 +27,9 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "BARATA",
-          "recomendacao": "A opção está bem posicionada com um delta moderado e um theta razoável para a estratégia."
+          "recomendacao": "A estratégia de CALL PURA é adequada devido ao delta moderado e estilo europeu, minimizando riscos de exercício antecipado."
         },
-        "justificativa": "A TOTS apresenta um bom score quantitativo, delta moderado e theta negativo, mas aceitável. A estratégia pura é adequada devido ao estilo europeu e a taxa mensal atrativa.",
+        "justificativa": "A TOTS apresenta um delta abaixo de 0.4, o que é adequado para uma estratégia de CALL PURA. O estilo europeu reduz o risco de exercício antecipado, e a taxa mensal de 6.45% supera o CDI, tornando-a uma opção atrativa.",
         "riscos": "Nenhum risco específico identificado.",
         "score": 8.8
       },
@@ -41,7 +41,7 @@
         "taxa_mes": 4.73,
         "score_quantitativo": 8.67,
         "ajuste_rank": "CONFIRMADO",
-        "motivo_ajuste": "null",
+        "motivo_ajuste": null,
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -53,21 +53,21 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "BARATA",
-          "recomendacao": "A opção está bem posicionada com um delta baixo e um theta razoável para a estratégia."
+          "recomendacao": "A estratégia de CALL PURA é adequada devido ao delta baixo, indicando menor risco de exercício."
         },
-        "justificativa": "A SBSP apresenta um delta baixo, o que reduz o risco de exercício, e um theta negativo, mas aceitável. A estratégia pura é adequada devido ao estilo europeu e a taxa mensal atrativa.",
+        "justificativa": "SBSP tem um delta baixo de 0.177, o que é ideal para CALL PURA, minimizando o risco de exercício. A taxa mensal de 4.73% é competitiva, e o estilo europeu oferece proteção adicional.",
         "riscos": "Nenhum risco específico identificado.",
         "score": 8.67
       },
       {
         "rank": 3,
         "acao": "B3SA",
-        "estrategia": "PURA",
+        "estrategia": "COLLAR",
         "ticker_opcao": "B3SAI179W2",
         "taxa_mes": 5.32,
         "score_quantitativo": 8.29,
         "ajuste_rank": "DESCEU",
-        "motivo_ajuste": "Opção americana reduz a atratividade da estratégia pura.",
+        "motivo_ajuste": "O estilo americano da opção aumenta o risco de exercício antecipado, justificando a necessidade de proteção adicional.",
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -76,18 +76,18 @@
         "volatilidade_classificacao": "MEDIA",
         "premium_vs_fair": "JUSTO",
         "cobertura": {
-          "perda_maxima_pct": 0,
-          "custo_put_em_meses": 0,
+          "perda_maxima_pct": -14.6,
+          "custo_put_em_meses": 0.02,
           "avaliacao": "BARATA",
-          "recomendacao": "A opção americana reduz a atratividade, mas ainda é uma boa escolha devido à taxa mensal."
+          "recomendacao": "A proteção via COLLAR é recomendada devido ao estilo americano da CALL, que aumenta o risco de exercício antecipado."
         },
-        "justificativa": "Apesar do score quantitativo alto, o estilo americano reduz a atratividade da estratégia pura. No entanto, a taxa mensal ainda é competitiva.",
-        "riscos": "Risco de exercício antecipado devido ao estilo americano.",
+        "justificativa": "A B3SA apresenta um delta moderado, mas o estilo americano da CALL justifica a proteção adicional de um COLLAR. A taxa mensal de 5.32% é atrativa, mas o risco de exercício antecipado é uma preocupação.",
+        "riscos": "Risco de exercício antecipado devido ao estilo americano da opção.",
         "score": 8.29
       }
     ],
     "alertas": [
-      "A opção B3SAI179W2 é americana, o que pode aumentar o risco de exercício antecipado."
+      "A B3SA possui estilo americano, aumentando o risco de exercício antecipado."
     ],
     "gerado_em": "2026-09-07T00:00:00Z"
   },
