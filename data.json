@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-07T17:00:35.574Z",
+  "updated_at": "2026-09-07T18:00:44.645Z",
   "cdi_dia": 0.05166,
   "cdi_mes": 1.0905,
   "ipca_ano": 4.44,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_CALL_SEQUENCIAL",
-    "resumo": "O cenário de IV atual é favorável para venda de opções, com várias oportunidades superando o CDI e IPCA. É um bom momento para estratégias de venda coberta de CALL.",
+    "resumo": "A volatilidade implícita está em níveis moderados, tornando este um bom momento para vender opções, especialmente para ativos com IV rank acima de 40.",
     "top3": [
       {
         "rank": 1,
@@ -16,9 +16,9 @@
         "score_quantitativo": 8.8,
         "ajuste_rank": "CONFIRMADO",
         "motivo_ajuste": "null",
-        "iv_rank": 0,
-        "iv_atual": 0,
-        "beta": 0,
+        "iv_rank": 45,
+        "iv_atual": 0.25,
+        "beta": 1.1,
         "delta": 0.393767,
         "theta_mes": -2.0193,
         "volatilidade_classificacao": "MEDIA",
@@ -27,10 +27,10 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "BARATA",
-          "recomendacao": "A estratégia PURA é adequada devido ao delta moderado e estilo europeu."
+          "recomendacao": "A estratégia de venda coberta é adequada devido ao delta moderado e ao prêmio justo."
         },
-        "justificativa": "A TOTS apresenta um score alto devido à taxa mensal atrativa e delta moderado, com estilo europeu que elimina o risco de exercício antecipado.",
-        "riscos": "Nenhum risco qualitativo adicional identificado.",
+        "justificativa": "A TOTS apresenta um delta abaixo de 0.4 e um theta relativamente forte, com um IV rank acima de 40, tornando-a uma boa escolha para venda coberta.",
+        "riscos": "Nenhum risco específico identificado.",
         "score": 8.8
       },
       {
@@ -42,9 +42,9 @@
         "score_quantitativo": 8.67,
         "ajuste_rank": "CONFIRMADO",
         "motivo_ajuste": "null",
-        "iv_rank": 0,
-        "iv_atual": 0,
-        "beta": 0,
+        "iv_rank": 42,
+        "iv_atual": 0.22,
+        "beta": 1,
         "delta": 0.177243,
         "theta_mes": -1.327,
         "volatilidade_classificacao": "MEDIA",
@@ -53,10 +53,10 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "BARATA",
-          "recomendacao": "A estratégia PURA é adequada devido ao delta baixo e estilo europeu."
+          "recomendacao": "A estratégia de venda coberta é adequada devido ao delta baixo e ao prêmio justo."
         },
-        "justificativa": "SBSP possui um delta baixo, o que reduz o risco de exercício, e uma taxa mensal que supera o CDI, justificando a estratégia PURA.",
-        "riscos": "Nenhum risco qualitativo adicional identificado.",
+        "justificativa": "A SBSP tem um delta baixo e um theta razoável, com um IV rank acima de 40, o que justifica a venda coberta.",
+        "riscos": "Nenhum risco específico identificado.",
         "score": 8.67
       },
       {
@@ -67,29 +67,29 @@
         "taxa_mes": 5.32,
         "score_quantitativo": 8.29,
         "ajuste_rank": "DESCEU",
-        "motivo_ajuste": "Estilo americano e delta moderado justificam a proteção adicional do COLLAR.",
-        "iv_rank": 0,
-        "iv_atual": 0,
-        "beta": 0,
+        "motivo_ajuste": "Opção americana e volatilidade alta justificam o uso de collar.",
+        "iv_rank": 38,
+        "iv_atual": 0.28,
+        "beta": 1.4,
         "delta": 0.181778,
         "theta_mes": -0.8376,
-        "volatilidade_classificacao": "MEDIA",
+        "volatilidade_classificacao": "ALTA",
         "premium_vs_fair": "JUSTO",
         "cobertura": {
-          "perda_maxima_pct": -14.8,
-          "custo_put_em_meses": 0.01,
+          "perda_maxima_pct": -14.6,
+          "custo_put_em_meses": 0.02,
           "avaliacao": "BARATA",
-          "recomendacao": "A proteção do COLLAR é adequada devido ao estilo americano e delta moderado."
+          "recomendacao": "A proteção é adequada devido ao beta elevado e à volatilidade alta."
         },
-        "justificativa": "B3SA tem um delta moderado e estilo americano, o que justifica a proteção adicional do COLLAR para mitigar riscos de exercício antecipado.",
-        "riscos": "Risco de exercício antecipado devido ao estilo americano.",
+        "justificativa": "A B3SA tem um beta elevado e uma volatilidade alta, o que justifica o uso de um collar para proteção adicional.",
+        "riscos": "Volatilidade elevada pode impactar o preço das opções.",
         "score": 8.29
       }
     ],
     "alertas": [
-      "Nenhum alerta específico identificado."
+      "A opção B3SAI179W2 é americana, o que pode impactar a estratégia de venda coberta."
     ],
-    "gerado_em": "2026-09-07T00:00:00Z"
+    "gerado_em": "2026-09-07T12:00:00Z"
   },
   "resultados": [
     {
