@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-07T19:00:37.171Z",
+  "updated_at": "2026-09-08T12:00:40.253Z",
   "cdi_dia": 0.05166,
   "cdi_mes": 1.0905,
   "ipca_ano": 4.44,
   "ia_analise": {
     "estrategia_geral": "COMPRAR_ACAO_CALL_SEQUENCIAL",
-    "resumo": "O cenário atual de IV está favorável para venda de opções, com várias oportunidades superando o CDI e IPCA. A volatilidade implícita está em níveis que justificam a venda de CALLs puras.",
+    "resumo": "O cenário atual de IV está favorável para a venda de opções, com várias oportunidades superando o CDI e IPCA. As opções europeias são preferíveis devido ao menor risco de exercício antecipado.",
     "top3": [
       {
         "rank": 1,
@@ -27,10 +27,10 @@
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "BARATA",
-          "recomendacao": "A estratégia PURA é adequada devido ao delta moderado e estilo europeu."
+          "recomendacao": "Opção europeia com delta moderado e theta negativo, ideal para venda coberta."
         },
-        "justificativa": "A TOTS apresenta um score elevado de 8.8, com delta abaixo de 0.45 e estilo europeu, tornando-a uma boa opção para venda coberta. A taxa mensal de 6.45% supera o CDI, e o theta é forte, indicando boa remuneração.",
-        "riscos": "Nenhum risco qualitativo significativo identificado.",
+        "justificativa": "A TOTS apresenta um score alto devido à taxa mensal atrativa e estilo europeu, minimizando riscos de exercício antecipado. O delta está dentro do limite aceitável para uma venda coberta.",
+        "riscos": "Nenhum risco específico identificado.",
         "score": 8.8
       },
       {
@@ -47,16 +47,16 @@
         "beta": 0,
         "delta": 0.177243,
         "theta_mes": -1.327,
-        "volatilidade_classificacao": "MEDIA",
+        "volatilidade_classificacao": "BAIXA",
         "premium_vs_fair": "JUSTO",
         "cobertura": {
           "perda_maxima_pct": 0,
           "custo_put_em_meses": 0,
           "avaliacao": "BARATA",
-          "recomendacao": "A estratégia PURA é adequada devido ao delta baixo e estilo europeu."
+          "recomendacao": "Opção europeia com delta baixo, ideal para estratégias de venda coberta com menor risco."
         },
-        "justificativa": "SBSP tem um score de 8.67, com delta baixo e estilo europeu, o que minimiza riscos. A taxa mensal de 4.73% é atrativa e supera o CDI.",
-        "riscos": "Nenhum risco qualitativo significativo identificado.",
+        "justificativa": "SBSP tem um delta baixo e uma taxa mensal que supera o CDI, tornando-a uma boa escolha para venda coberta. A volatilidade é baixa, o que reduz o risco.",
+        "riscos": "Nenhum risco específico identificado.",
         "score": 8.67
       },
       {
@@ -67,7 +67,7 @@
         "taxa_mes": 5.32,
         "score_quantitativo": 8.29,
         "ajuste_rank": "DESCEU",
-        "motivo_ajuste": "Estilo americano e delta alto justificam o uso de COLLAR.",
+        "motivo_ajuste": "Estilo americano aumenta risco de exercício antecipado.",
         "iv_rank": 0,
         "iv_atual": 0,
         "beta": 0,
@@ -79,17 +79,17 @@
           "perda_maxima_pct": -14.8,
           "custo_put_em_meses": 0.01,
           "avaliacao": "BARATA",
-          "recomendacao": "A proteção COLLAR é recomendada devido ao estilo americano e delta relativamente alto."
+          "recomendacao": "Proteção barata com PUT cobrindo quedas significativas, ideal para ativos com maior risco."
         },
-        "justificativa": "B3SA tem um score de 8.29, mas o estilo americano e delta de 0.181778 sugerem maior risco, justificando o uso de COLLAR para proteção adicional.",
-        "riscos": "Estilo americano pode aumentar o risco de exercício antecipado.",
+        "justificativa": "Apesar do score quantitativo alto, o estilo americano da opção aumenta o risco de exercício antecipado, justificando a escolha de um COLLAR para proteção adicional.",
+        "riscos": "Risco de exercício antecipado devido ao estilo americano.",
         "score": 8.29
       }
     ],
     "alertas": [
-      "Nenhum alerta específico identificado."
+      "Opções americanas apresentam risco de exercício antecipado."
     ],
-    "gerado_em": "2026-09-07T00:00:00Z"
+    "gerado_em": "2026-09-08T00:00:00Z"
   },
   "resultados": [
     {
